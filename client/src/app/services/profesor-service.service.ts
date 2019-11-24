@@ -1,0 +1,107 @@
+import { tallerInterface } from './../models/taller';
+import { evaluacionInterface } from './../models/evaluacion';
+import { tareaInterface } from './../models/tarea';
+
+import { cursoInterface } from './../models/crurso-interface';
+import { iCursoInterface } from './../models/ingresar-curso-interface';
+import { AuthService } from './auth.service';
+import { MateriaIdComponent } from './../components/admin/materia-id/materia-id.component';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map} from 'rxjs/operators';
+import { isNullOrUndefined } from 'util';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProfesorServiceService {
+
+  constructor(private http: HttpClient, private authService: AuthService) { }
+  curso: Observable<any>;
+  cursos: Observable<any>;
+
+  getcursoId(id: string){
+    
+    const url_api =`http://localhost:3000/curso/profesor/${id}`;
+    return (this.curso = this.http.get(url_api));
+  }
+
+  setCurso( curso: cursoInterface){
+    let admin_string = JSON.stringify(curso);
+    localStorage.setItem('Currentcurso', admin_string);
+  }
+
+  getCurrentCuso(): cursoInterface{
+    let admin_string = localStorage.getItem("Currentcurso");
+    if ( !isNullOrUndefined(admin_string)){
+      let admin: cursoInterface = JSON.parse(admin_string);
+      return admin;
+    }
+    else{
+      return null;
+    }
+  }
+
+  getAlumnoC(id: string){
+    
+    const url_api =`http://localhost:3000/registroCA/curso/${id}`;
+    return (this.curso = this.http.get(url_api));
+  }
+
+  //TAREAS
+
+  getTareaC(id: string){
+    
+    const url_api =`http://localhost:3000/tarea/curso/${id}`;
+    return (this.curso = this.http.get(url_api));
+  }
+
+  saveTarea(tarea: tareaInterface)
+  {
+    const url_api = 'http://localhost:3000/tarea';
+    return this.http.post<tareaInterface>(url_api, tarea)
+    .pipe(map(data => data ));
+    
+  }
+
+  //EVALUACIONES
+
+  getEvaluacionC(id: string){
+    
+    const url_api =`http://localhost:3000/evaluacion/curso/${id}`;
+    return (this.curso = this.http.get(url_api));
+  }
+
+  saveEvaluacion(evaluacion: evaluacionInterface)
+  {
+    const url_api = 'http://localhost:3000/evaluacion';
+    return this.http.post<evaluacionInterface>(url_api, evaluacion)
+    .pipe(map(data => data ));
+    
+  }
+
+  //Talleres
+
+  getTallerC(id: string){
+    
+    const url_api =`http://localhost:3000/taller/curso/${id}`;
+    return (this.curso = this.http.get(url_api));
+  }
+
+  saveTaller(taller: tallerInterface)
+  {
+    const url_api = 'http://localhost:3000/taller';
+    return this.http.post<tallerInterface>(url_api, taller)
+    .pipe(map(data => data ));
+    
+  }
+
+
+
+  
+}
+
+
+
+

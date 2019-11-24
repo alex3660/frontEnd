@@ -1,0 +1,31 @@
+<app-nav-profesor></app-nav-profesor>
+<p>profesor-navegacion works!</p>
+
+<table class="table">
+        <thead class="thead-pimary">
+          <tr>
+            <th scope="col">Codigo Curso</th>
+                    
+            <th scope="col">Materia</th>
+            <th scope="col">Paralelo</th>
+            <th scope="col">Aula</th>
+            <th scope="col">Periodo</th>
+            
+            
+          </tr>
+        </thead>
+       
+        <tbody>
+        <tr *ngFor="let curso of cursos" (click)="abrirCurso(curso)" >
+            <th scope="row">{{curso.codigoCurso}}</th>
+            
+            <td>{{curso.nombreMateria}}</td>
+            <td>{{curso.Paralelo}}</td> 
+            <td>{{curso.aula}}</td>
+            <td>{{curso.PL}}</td>        
+            
+            
+                  
+        </tr>
+        </tbody>
+      </table>

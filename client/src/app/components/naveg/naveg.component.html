@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/admin/inicio">
+        <img class="card-img-top" src="https://www.utpl.edu.ec/proyectomiddleware/sites/default/files/images/logo-politecnica.png" style="max-width: 100px; max-height: 100px"  alt="">
+      </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+
+
+
+    <a class="navbar-brand" routerLink="/admin/inicio">DETRI</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+           <a class="nav-link" routerLink="/admin/alumno">Alumnos</a>
+              
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/profesor">Profesores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/materia">Materias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/curso">Cursos</a>
+        </li>
+      </ul>
+    </div>
+    <div class="ml-auto" id="navbarNav">
+        
+        <ul class="navbar-nav">
+          <li class="nav-item">            
+            <a class="nav-link" routerLink="/" (click)="logout()">Cerrar Session</a>
+          </li>
+        
+        </ul>
+      </div>
+  </nav>
+
+     
+  

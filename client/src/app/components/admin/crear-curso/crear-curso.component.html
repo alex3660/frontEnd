@@ -1,0 +1,54 @@
+<app-naveg>
+
+  </app-naveg>
+<div> 
+    <mat-card>
+      <mat-grid-list cols="4" rowHeight="20pxd">
+        <mat-grid-tile colspan="4" rowspan='1'>
+          <mat-card-title >Gestion de usuarios</mat-card-title>
+  
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card>
+  </div>
+<ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin/curso">Lista Cursos</a>
+    
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin/curso/ingresar">Ingresar Curso</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/curso/agregaca">Asignar Alumnos</a>
+     </li>
+    
+  </ul>
+  
+<table class="table">
+    <thead class="thead-pimary">
+      <tr>
+        <th scope="col">Codigo Curso</th>
+        <th scope="col">Nombre Profesor</th>        
+        <th scope="col">Materia</th>
+        <th scope="col">Paralelo</th>
+        <th scope="col">Aula</th>
+        <th scope="col">Periodo</th>
+        
+        
+      </tr>
+    </thead>
+   
+    <tbody>
+    <tr *ngFor="let curso of cursos" >
+        <th scope="row">{{curso.codigoCurso}}</th>
+        <td>{{curso.nombre}}</td>
+        <td>{{curso.nombreMateria}}</td>
+        <td>{{curso.Paralelo}}</td> 
+        <td>{{curso.aula}}</td>
+        <td>{{curso.PL}}</td>        
+        
+        
+              
+    </tr>
+    </tbody>
+  </table>

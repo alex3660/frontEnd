@@ -1,0 +1,56 @@
+<app-nav-profesor></app-nav-profesor>
+
+<ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profesor/curso/menu">Lista Alumnos</a>
+        
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profesor/tareas">Tarea</a>
+        </li>
+
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/evaluaciones">Evaluacion</a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/foro">Foro</a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/talleres">Taller</a>
+        </li>
+
+        <li class="nav-item ml-auto">               
+                        <li class="nav-item">
+                          
+                          <a class="btn btn-outline-primary" routerLink="/profesor/talleres/ingresar" role="button">Ingresar Taller</a>
+                        </li>
+        
+        
+      </ul>
+      <table class="table table-striped">
+                <thead class="thead-pimary">
+                  <tr>
+                    <th scope="col">Nombre</th>        
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Fecha Creacion</th>
+                    <th scope="col">Fecha Entrega</th>
+                    <th scope="col">Hora Entrega</th>
+                    <th scope="col">Tipo</th>
+                    
+                    
+                  </tr>
+                </thead>
+               
+                <tbody>
+                <tr *ngFor="let taller of talleres">
+                    <th scope="row">{{taller.nombre}}</th>
+                    <td>{{taller.descripcion}}</td>
+                    <td>{{taller.fechaCreacion | date}}</td>
+                    <td>{{taller.fechaEntrega | date}}</td>
+                    <td>{{taller.horaEntrega}}</td>
+                    <td>{{taller.tipoEntrega}}</td>
+                    <td><button type="button" class="btn btn-link">Editar</button></td>
+                    
+                </tr>
+                </tbody>
+              </table>
+      

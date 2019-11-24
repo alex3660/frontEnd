@@ -1,0 +1,56 @@
+<app-nav-profesor></app-nav-profesor>
+
+<ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profesor/curso/menu">Lista Alumnos</a>
+        
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profesor/tareas">Tarea</a>
+        </li>
+
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/evaluaciones">Evaluacion</a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/foro">Foro</a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/talleres">Taller</a>
+        </li>
+        <li class="nav-item ml-auto">               
+              <li class="nav-item">
+                
+                <a class="btn btn-outline-primary" routerLink="/profesor/evaluaciones/ingresar" role="button">Ingresar evaluacion</a>
+              </li>     
+        
+        
+      </ul>
+      <table class="table table-striped">
+                <thead class="thead-pimary">
+                  <tr>
+                    <th scope="col">Nombre</th>        
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Fecha Creacion</th>
+                    <th scope="col">Fecha Entrega</th>
+                    <th scope="col">Hora Entrega</th>
+                    <th scope="col">Tipo
+                              
+                    </th>
+                    
+                    
+                  </tr>
+                </thead>
+               
+                <tbody>
+                <tr *ngFor="let evaluacion of evaluaciones">
+                    <th scope="row">{{evaluacion.nombre}}</th>
+                    <td>{{evaluacion.descripcion}}</td>
+                    <td>{{evaluacion.fechaCreacion | date}}</td>
+                    <td>{{evaluacion.fechaEntrega | date}}</td>
+                    <td>{{evaluacion.horaEntrega}}</td>
+                    <td>{{evaluacion.tipoEvaluacion}}</td>
+                    <td><button type="button" class="btn btn-link">Editar</button></td>
+                    
+                </tr>
+                </tbody>
+              </table>

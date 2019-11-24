@@ -1,0 +1,52 @@
+<app-naveg>
+
+  </app-naveg>
+<div> 
+    <mat-card>
+      <mat-grid-list cols="4" rowHeight="20pxd">
+        <mat-grid-tile colspan="4" rowspan='1'>
+          <mat-card-title >Gestion de usuarios</mat-card-title>
+  
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card>
+  </div>
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin/materia">Lista Materias</a>
+  
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin/materia/ingresar">Ingresar Materias</a>
+  </li>
+  <div class="ml-auto" id="navbarNav">
+        
+      <ul class="navbar-nav">
+        <li class="nav-item">            
+            <input type="text" class="form-contro" name="filtro" placeholder="Buscar..." [(ngModel)]="filtro">
+        </li>
+      
+      </ul>
+    </div>
+  
+</ul>
+
+<table class="table table-striped">
+    <thead class="thead-pimary">
+      <tr>
+        <th scope="col">Codigo</th>
+        <th scope="col">Nombre</th>        
+        <th scope="col">Numero horas</th>
+        
+      </tr>
+    </thead>
+   
+    <tbody>
+    <tr *ngFor="let materia of materias | filtrom:filtro" (click)="editar(materia)">
+        <th scope="row">{{materia.codMateria}}</th>
+        <td>{{materia.nombre}}</td>
+        <td>{{materia.numHoras}}</td>
+        <td><button type="button" class="btn btn-link">Editar</button></td>
+        
+    </tr>
+    </tbody>
+  </table>

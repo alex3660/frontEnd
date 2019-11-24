@@ -1,0 +1,44 @@
+<app-nav-profesor></app-nav-profesor>
+
+<ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profesor/curso/menu">Lista Alumnos</a>
+        
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profesor/tareas">Tarea</a>
+        </li>
+
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/evaluaciones">Evaluacion</a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/foro">Foro</a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/talleres">Taller</a>
+        </li>
+        
+        
+      </ul>
+
+
+<table class="table table-striped">
+                <thead class="thead-pimary">
+                  <tr>                         
+                    <th scope="col">Nombre</th>
+                                        
+                  </tr>
+                </thead>
+               
+                <tbody>
+                <tr *ngFor="let alumno of alumnos" >
+                    <th scope="row">{{alumno.nombreAlumno}}</th>                  
+                    
+                    
+                    
+                          
+                </tr>
+                </tbody>
+              </table>
+            
+`

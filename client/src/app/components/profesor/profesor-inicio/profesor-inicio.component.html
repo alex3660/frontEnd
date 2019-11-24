@@ -1,0 +1,31 @@
+<app-nav-profesor></app-nav-profesor>
+
+
+    <section id="profile" class="container">
+            <div class="row mt-5">
+              <div class="offset-lg-4 col-lg-4 col-sm-6 col-12 main-section text-center card">
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12 col-12 profile-header"></div>
+                </div>
+                <div class="row user-details">
+                  <div class="col-12">
+                    <img src="http://www.epn.edu.ec/wp-content/uploads/LOGO_EPN.jpg" class="square img-thumbnail" alt="profile">
+                                   
+                    <hr>
+                    <span>
+                        <tr *ngFor="let profesor of user">                    
+                        
+                            <td>{{profesor.nombre1}} {{profesor.nombre2}} {{profesor.apellido1}} {{profesor.apellido2}}</td>  
+          
+                          </tr>                                   
+                    </span>
+                    <hr>
+                    <span>Bienvenido                                                    
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    
+

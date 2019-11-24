@@ -1,0 +1,83 @@
+<app-naveg>
+
+    </app-naveg>
+  <div> 
+      <mat-card>
+        <mat-grid-list cols="4" rowHeight="20pxd">
+          <mat-grid-tile colspan="4" rowspan='1'>
+            <mat-card-title >Gestion de usuarios</mat-card-title>
+    
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card>
+    </div>
+  <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/curso">Lista Cursos</a>
+      
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/curso/ingresar">Ingresar Curso</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/curso/agregaca">Asignar Alumnos</a>
+        </li>
+      
+    </ul>
+    
+    <section id="register" class="mb-5 mt-5">
+        <div class="container">
+          <div class="row">
+      
+            <div class="col-xs-12 col-sm-12 col-md-12 mx-auto">
+              <div class="card_register">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <form #formRegister="ngForm" (ngSubmit)="buscarp(formRegister)">
+                      <h1 class="h3 mb-3 font-weight-normal">Ingresar Curso</h1>
+                      
+                                            
+                      
+                      <div class="form-group">
+                        <input type="text" #name="ngModel" name="cedula" class="form-control" placeholder=" Cedula Profesor" [(ngModel)]="profe.cedula" required 
+                          >
+                      </div> 
+                      <div class="form-group">
+                        <input type="text" #name="ngModel" name="numUnico" class="form-control" placeholder="Codigo Materia" [(ngModel)]="materi.codMateria" required         >
+                      </div>                        
+                          
+                      
+                      <button type="submit" class="btn btn-lg btn-primary btn-block">Buscar</button>
+                      
+                    </form>
+
+                    <form #formRegister="ngForm" (ngSubmit)="ingresarCurso(formRegister)">                                              
+                        
+                        
+                        <div class="form-group">
+                          <input type="text" #name="ngModel" name="name1" class="form-control" placeholder="Paralelo" [(ngModel)]="this.curso.paralelo" required 
+                            >
+                        </div>
+                        <div class="form-group">
+                            <input type="text" #name="ngModel" name="name2" class="form-control" placeholder="Aula" [(ngModel)]="this.curso.aula" required 
+                              >
+                          </div>
+                          <div class="form-group">
+                              <input type="text" #name="ngModel" name="name3" class="form-control" placeholder="Perdiodo lectivo" [(ngModel)]="this.curso.periodoLectivo" required 
+                                >
+                            </div>
+                            
+  
+                            
+                        
+                        <button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar</button>
+                        
+                      </form>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    

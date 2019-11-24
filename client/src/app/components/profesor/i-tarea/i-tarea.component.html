@@ -1,0 +1,82 @@
+<app-nav-profesor></app-nav-profesor>
+
+<ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profesor/curso/menu">Lista Alumnos</a>
+        
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profesor/tareas">Tarea</a>
+        </li>
+
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/evaluaciones">Evaluacion</a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/foro">Foro</a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/talleres">Taller</a>
+        </li>
+        
+        
+      </ul>
+      
+      <section id="register" class="mb-5 mt-5">
+        <div class="container">
+          <div class="row">
+      
+            <div class="col-xs-12 col-sm-12 col-md-12 mx-auto">
+              <div class="card_register">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <form #formRegister="ngForm" (ngSubmit)="ingresarTaller(formRegister)">
+                      <h1 class="h3 mb-3 font-weight-normal">Ingresar Tarea</h1>
+                      
+                      <div class="form-group">
+                        <input type="text" #name="ngModel" name="cedula" class="form-control" placeholder="Titulo de Tarea" [(ngModel)]="tarea.nombre" required 
+                          >
+                      </div> 
+
+                      <div class="form-group">
+                          <input type="date" id="date" name="date" [(ngModel)]="tarea.fechaEntrega" class="form-control">
+                        
+                      </div>
+
+                      <div class="form-group">
+                            <input type="time" id="hora" name="hora" [(ngModel)]="tarea.horaEntrega" class="form-control">
+                          
+                        </div>
+
+                      
+
+                      <div class="form-group">
+                            <label for="exampleFormControlSelect1">Slecione una OpcionS</label>
+                            <select name ="tipo"  id="exampleFormControlSelect1" placeholder="TIPO" class="form-control" [(ngModel)]="tarea.tipoEntrega">
+                              <option value="Fisico">Fisico</option>
+                              <option value="Email">Email</option>
+                              <option value="Aula Virtual">Aula Virtual</option>
+                             </select>
+                          </div>
+
+                      <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea name="descripcion" id="descripcion" class="form-control" cols="50" rows="4" [(ngModel)]="tarea.descripcion"></textarea>
+                      </div>
+
+                     
+                      
+                     
+                      
+                      <button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar</button>
+                      
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+
+

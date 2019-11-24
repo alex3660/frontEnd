@@ -1,0 +1,66 @@
+<app-nav-profesor></app-nav-profesor>
+<div> 
+        <mat-card>
+          <mat-grid-list cols="4" rowHeight="20pxd">
+            <mat-grid-tile colspan="4" rowspan='1'>
+              <mat-card-title >Gestion de usuarios</mat-card-title>
+      
+            </mat-grid-tile>
+          </mat-grid-list>
+        </mat-card>
+      </div>
+
+<ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profesor/curso/menu">Lista Alumnos</a>
+        
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profesor/tareas">Tarea</a>
+        </li>
+
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/evaluaciones">Evaluacion</a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/foro">Foro</a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/talleres">Taller</a>
+        </li>
+
+
+        <li class="nav-item ml-auto">               
+              <li class="nav-item">
+                
+                <a class="btn btn-outline-primary" routerLink="/profesor/tareas/ingresar" role="button">Ingresar Tarea</a>
+              </li>        
+        
+      </ul>
+      
+      <table class="table table-striped">
+          <thead class="thead-pimary">
+            <tr>
+              <th scope="col">Nombre</th>        
+              <th scope="col">Descripcion</th>
+              <th scope="col">Fecha Creacion</th>
+              <th scope="col">Fecha Entrega</th>
+              <th scope="col">Hora Entrega</th>
+              <th scope="col">Tipo</th>
+              
+              
+            </tr>
+          </thead>
+         
+          <tbody>
+          <tr *ngFor="let tarea of tareas">
+              <th scope="row">{{tarea.nombre}}</th>
+              <td>{{tarea.descripcion}}</td>
+              <td>{{tarea.fechaCreacion | date}}</td>
+              <td>{{tarea.fechaEntrega | date}}</td>
+              <td>{{tarea.horaEntrega}}</td>
+              <td>{{tarea.tipoEntrega}}</td>
+              <td><button type="button" class="btn btn-link">Editar</button></td>
+              
+          </tr>
+          </tbody>
+        </table>
