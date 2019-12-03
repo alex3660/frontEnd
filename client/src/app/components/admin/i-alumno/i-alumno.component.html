@@ -28,13 +28,16 @@
   <div class="col-xs-4 col-sm-4 col-md-4 mx-auto ml-auto" id="navbarNa">
     <ul>
         
-        <input type="file" class="custom-file" id="customFileLang" (change)="incomingfile($event)" lang="es" placeholder=" Seleccione carpeta" accept=".xlsx">
+        <input type="file" class="custom-file" id="custom-file" (change)="incomingfile($event)" language="es" placeholder=" Seleccione carpeta" accept=".xlsx">
 
         <button type="button" class="btn btn-xs btn-primary btn-block" (click)="Upload()" >Cargar Archivo</button>
 
-    </ul>        
+    </ul>  
+
       
     </div>
+
+    
   
   
   <section id="register" class="mb-5 mt-5">
@@ -55,26 +58,35 @@
                   <div class="form-group">
                     <input type="text" #name="ngModel" name="numUnico" class="form-control" placeholder="Numero Unico" [(ngModel)]="user.numUnico" required         >
                   </div>  
+
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                          <input type="text" #name="ngModel" name="name1" class="form-control" placeholder="Nombre 1" [(ngModel)]="user.nombre1" required 
+                          maxlength="15">
+                
+                      </div>
+                      <div class="form-group col-md-6">
+                          <input type="text" #name="ngModel" name="name2" class="form-control" placeholder="Nombre 2" [(ngModel)]="user.nombre2" required 
+                          maxlength="15">
+                       </div>
+                
+                    </div>
+                           
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="text" #name="ngModel" name="apellido1" class="form-control" placeholder="Apellido 1" [(ngModel)]="user.apellido1" required 
+                            maxlength="15">
                   
-                  <div class="form-group">
-                    <input type="text" #name="ngModel" name="name1" class="form-control" placeholder="Nombre 1" [(ngModel)]="user.nombre1" required 
-                      maxlength="15">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" #name="ngModel" name="name2" class="form-control" placeholder="Nombre 2" [(ngModel)]="user.nombre2" required 
-                      maxlength="15">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" #name="ngModel" name="apellido1" class="form-control" placeholder="Apellido 1" [(ngModel)]="user.apellido1" required 
-                      maxlength="15">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" #name="ngModel" name="apellido2" class="form-control" placeholder="Apellido 2" [(ngModel)]="user.apellido2" required 
-                      maxlength="15">
-                  </div> 
-                               
-  
-  
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="text" #name="ngModel" name="apellido2" class="form-control" placeholder="Apellido 2" [(ngModel)]="user.apellido2" required 
+                            maxlength="15">
+                  
+                           </div>
+                  
+                      </div>
+                             
+                         
   
                   
                   <div class="form-group">
@@ -88,7 +100,7 @@
                   
                  
                   
-                  <button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar</button>
+                  <button type="submit" class="btn btn-lg btn-primary float-right">Ingresar</button>
                   
                 </form>
               </div>
@@ -99,4 +111,7 @@
     </div>
   </section>
 
+
   
+
+ 

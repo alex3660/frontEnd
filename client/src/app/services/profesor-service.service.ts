@@ -1,13 +1,15 @@
+import { repositorioInterface } from './../models/repositorio';
 import { tallerInterface } from './../models/taller';
 import { evaluacionInterface } from './../models/evaluacion';
 import { tareaInterface } from './../models/tarea';
+
 
 import { cursoInterface } from './../models/crurso-interface';
 import { iCursoInterface } from './../models/ingresar-curso-interface';
 import { AuthService } from './auth.service';
 import { MateriaIdComponent } from './../components/admin/materia-id/materia-id.component';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map} from 'rxjs/operators';
 import { isNullOrUndefined } from 'util';
@@ -98,7 +100,13 @@ export class ProfesorServiceService {
   }
 
 
+//Repositorio
+uploadFile(formData, codCurso: string) {
+  
 
+  let urlAPI = `http://localhost:3000/down/${codCurso}`;
+  return this.http.post(urlAPI, formData);
+}
   
 }
 

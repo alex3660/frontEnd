@@ -1,3 +1,5 @@
+import { RepositorioComponent } from './components/profesor/repositorio/repositorio.component';
+import { IForoComponent } from './components/profesor/i-foro/i-foro.component';
 import { IEvaluacionesComponent } from './components/profesor/i-evaluaciones/i-evaluaciones.component';
 import { ITareaComponent } from './components/profesor/i-tarea/i-tarea.component';
 import { EditarPComponent } from './components/admin/editar-p/editar-p.component';
@@ -54,10 +56,12 @@ const routes: Routes = [
   {path: 'profesor/evaluaciones', component: EvaluacionesComponent},
   {path: 'profesor/evaluaciones/ingresar', component: IEvaluacionesComponent},
   {path: 'profesor/foro', component: ForoComponent},
+  {path: 'profesor/foro/ingresar', component: IForoComponent},
   {path: 'profesor/talleres', component: TalleresComponent},
   {path: 'profesor/talleres/ingresar', component: ITalleresComponent},
   {path: 'profesor/tareas', component: TareasComponent},
   {path: 'profesor/tareas/ingresar', component: ITareaComponent},
+  {path: 'profesor/repositorio', component: RepositorioComponent},
   
 
 ];

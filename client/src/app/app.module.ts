@@ -51,6 +51,8 @@ import { ITareaComponent } from './components/profesor/i-tarea/i-tarea.component
 import { IEvaluacionesComponent } from './components/profesor/i-evaluaciones/i-evaluaciones.component';
 import { IForoComponent } from './components/profesor/i-foro/i-foro.component';
 import { ITalleresComponent } from './components/profesor/i-talleres/i-talleres.component';
+import { MensajeForoComponent } from './components/profesor/mensaje-foro/mensaje-foro.component';
+import { RepositorioComponent } from './components/profesor/repositorio/repositorio.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +93,9 @@ import { ITalleresComponent } from './components/profesor/i-talleres/i-talleres.
     ITareaComponent,
     IEvaluacionesComponent,
     IForoComponent,
-    ITalleresComponent
+    ITalleresComponent,
+    MensajeForoComponent,
+    RepositorioComponent
     
       
   ],

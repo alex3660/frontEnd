@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
             this.authService.setAdmin(res.admin);
           this.authService.seToken(res.token);
             this.router.navigate(['/admin/inicio']);
+            
 
           }
           else{
