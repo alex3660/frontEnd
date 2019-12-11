@@ -1,3 +1,4 @@
+import { foroInterface } from './../models/foro';
 import { repositorioInterface } from './../models/repositorio';
 import { tallerInterface } from './../models/taller';
 import { evaluacionInterface } from './../models/evaluacion';
@@ -106,6 +107,16 @@ uploadFile(formData, codCurso: string) {
 
   let urlAPI = `http://localhost:3000/down/${codCurso}`;
   return this.http.post(urlAPI, formData);
+}
+
+//Foro
+
+saveForo(foro: foroInterface)
+{
+  const url_api = 'http://localhost:3000/foro';
+  return this.http.post<foroInterface>(url_api, foro)
+  .pipe(map(data => data ));
+  
 }
   
 }

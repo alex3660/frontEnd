@@ -32,11 +32,11 @@ export class RepositorioComponent implements OnInit {
 
   upload() {
     let formData = new FormData();
-    for (var i = 0; i < this.uploadedFiles.length; i++) {
+    for (var i = 0; i < this.uploadedFiles.length ; i++) {
       formData.append("uploads[]", this.uploadedFiles[i], this.uploadedFiles[i].name);
 
     }
-    this.profeApi.uploadFile(formData,this.curso.codigoCurso).subscribe((res)=> {
+    this.profeApi.uploadFile(formData,this.curso.idCurso).subscribe((res)=> {
       console.log('response received is ', res);
     });
     }
