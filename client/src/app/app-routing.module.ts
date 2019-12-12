@@ -1,3 +1,4 @@
+import { MensajeForoComponent } from './components/profesor/mensaje-foro/mensaje-foro.component';
 import { RepositorioComponent } from './components/profesor/repositorio/repositorio.component';
 import { IForoComponent } from './components/profesor/i-foro/i-foro.component';
 import { IEvaluacionesComponent } from './components/profesor/i-evaluaciones/i-evaluaciones.component';
@@ -57,6 +58,7 @@ const routes: Routes = [
   {path: 'profesor/evaluaciones/ingresar', component: IEvaluacionesComponent},
   {path: 'profesor/foro', component: ForoComponent},
   {path: 'profesor/foro/ingresar', component: IForoComponent},
+  {path: 'profesor/foro/comentario', component: MensajeForoComponent},
   {path: 'profesor/talleres', component: TalleresComponent},
   {path: 'profesor/talleres/ingresar', component: ITalleresComponent},
   {path: 'profesor/tareas', component: TareasComponent},

@@ -1,3 +1,4 @@
+import { foroListInterface } from './../models/foro-list';
 import { foroInterface } from './../models/foro';
 import { repositorioInterface } from './../models/repositorio';
 import { tallerInterface } from './../models/taller';
@@ -45,6 +46,23 @@ export class ProfesorServiceService {
       return null;
     }
   }
+
+  setForo( foro: foroListInterface){
+    let admin_string = JSON.stringify(foro);
+    localStorage.setItem('CurrentForo', admin_string);
+  }
+
+  getCurrentForo(): foroListInterface{
+    let admin_string = localStorage.getItem("CurrentForo");
+    if ( !isNullOrUndefined(admin_string)){
+      let admin: foroListInterface = JSON.parse(admin_string);
+      return admin;
+    }
+    else{
+      return null;
+    }
+  }
+
 
   getAlumnoC(id: string){
     
@@ -118,8 +136,21 @@ saveForo(foro: foroInterface)
   .pipe(map(data => data ));
   
 }
+
+getforoC(id: string){
+    
+  const url_api =`http://localhost:3000/foro/enum/${id}`;
+  return (this.curso = this.http.get(url_api));
+}
+
+getComentario(id: string){
+  const url_api =`http://localhost:3000/comentario/foro/${id}`;
+  return (this.curso = this.http.get(url_api));
+}
   
 }
+
+
 
 
 
