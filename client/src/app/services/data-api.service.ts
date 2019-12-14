@@ -38,7 +38,7 @@ export class DataApiService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  
+  url='http://192.168.0.3:3000'
 
   headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json",
@@ -107,14 +107,14 @@ export class DataApiService {
 
   getMaterias(){
     let token = this.authService.gettoken();
-    const url_api = 'http://localhost:3000/materia';
+    const url_api = this.url+'/materia';
     return this.http.get(url_api);
     
   }
 
   getMateriaId(id: string){
     let token = this.authService.gettoken();
-    const url_api = `http://localhost:3000/materia/codigo/${id}`;
+    const url_api = this.url+`/materia/codigo/${id}`;
     return (this.materia = this.http.get(url_api))
   }
 
@@ -122,7 +122,7 @@ export class DataApiService {
     //token
     //not null
     let token = this.authService.gettoken();
-    const url_api = 'http://localhost:3000/materia';
+    const url_api = this.url+'/materia';
     return this.http.post<MateriaInterface>(url_api, materia)
     .pipe(map(data => data ));
     
@@ -132,7 +132,7 @@ export class DataApiService {
     //token
     //not null
     let token = this.authService.gettoken();
-    const url_api = 'http://localhost:3000/materia';
+    const url_api = this.url+'/materia';
     return this.http.put<MateriaInterface>(url_api, alumno)
     .pipe(map(data => data ));
     
@@ -159,7 +159,7 @@ export class DataApiService {
   //ADMINISTRACION PROFESOR
   getProfesor(){
     let token = this.authService.gettoken();
-    const url_api = 'http://localhost:3000/profesor';
+    const url_api = this.url+'/profesor';
     return this.http.get(url_api);
     
   }
@@ -182,7 +182,7 @@ export class DataApiService {
 
   getProfesorId(cedula: string){
     let token = this.authService.gettoken();
-    const url_api =`http://localhost:3000/profesor/cedula/${cedula}`;
+    const url_api =this.url+`/profesor/cedula/${cedula}`;
     return (this.profesor = this.http.get(url_api))
   }
 
@@ -190,7 +190,7 @@ export class DataApiService {
     //token
     //not null
     let token = this.authService.gettoken();
-    const url_api = 'http://localhost:3000/profesor';
+    const url_api = this.url+'/profesor';
     return this.http.post<profesorInterface>(url_api, profesor, {headers: this.headers})
     .pipe(map(data => data ));
     
@@ -201,7 +201,7 @@ export class DataApiService {
     localStorage.setItem('CurrentP', admin_string);
   }
   getCurrentP(): profesorInterface{
-    let admin_string = localStorage.getItem("CurrentP");
+    let admin_string = localStorage.getItem("Currentprofe");
     if ( !isNullOrUndefined(admin_string)){
       let admin: profesorInterface = JSON.parse(admin_string);
       return admin;
@@ -215,7 +215,7 @@ export class DataApiService {
     //token
     //not null
     let token = this.authService.gettoken();
-    const url_api = 'http://localhost:3000/profesor';
+    const url_api = this.url+'/profesor';
     return this.http.put<profesorInterface>(url_api, alumno)
     .pipe(map(data => data ));
     
@@ -225,7 +225,7 @@ export class DataApiService {
   //ADMINISTRACION Estudiante
   getAlumno(){
     let token = this.authService.gettoken();
-    const url_api = 'http://localhost:3000/alumno';
+    const url_api = this.url+'/alumno';
     return this.http.get(url_api);
     
   }
@@ -233,7 +233,7 @@ export class DataApiService {
     //token
     //not null
     let token = this.authService.gettoken();
-    const url_api = 'http://localhost:3000/alumno';
+    const url_api = this.url+'/alumno';
     return this.http.post<alumnoInterface>(url_api, alumno)
     .pipe(map(data => data ));
     
@@ -243,7 +243,7 @@ export class DataApiService {
     //token
     //not null
     let token = this.authService.gettoken();
-    const url_api = 'http://localhost:3000/alumno';
+    const url_api = this.url+'/alumno';
     return this.http.put<alumnoInterface>(url_api, alumno)
     .pipe(map(data => data ));
     
@@ -251,7 +251,7 @@ export class DataApiService {
 
   getAlumnoId(id: string){
     
-    const url_api =`http://localhost:3000/alumno/cedula/${id}`;
+    const url_api =this.url+`/alumno/cedula/${id}`;
     return (this.alumno = this.http.get(url_api))
   }
 
@@ -274,20 +274,20 @@ export class DataApiService {
 
    //ADMINISTRACION Cursos
    getCurso():Observable<cursoInterface> {
-    const url_api = 'http://localhost:3000/curso';
+    const url_api = this.url+'/curso';
     return this.http.get<cursoInterface>(url_api);
     
   }
 
   getcursoId(id: string){
     
-    const url_api =`http://localhost:3000/curso/codigo/${id}`;
+    const url_api =this.url+`/curso/codigo/${id}`;
     return (this.alumno = this.http.get(url_api));
   }
 
   savecurso(curso: iCursoInterface){
     
-    const url_api = 'http://localhost:3000/curso';
+    const url_api = this.url+'/curso';
     return this.http.post<iCursoInterface>(url_api, curso)
     .pipe(map(data => data ));
     
@@ -295,7 +295,7 @@ export class DataApiService {
   
   saveAlumnocurso(registroca: asignarCursointerface){
     
-    const url_api ='http://localhost:3000/registroCA';
+    const url_api =this.url+'/registroCA';
     return this.http.post<asignarCursointerface>(url_api, registroca)
     .pipe(map(data => data ));
     

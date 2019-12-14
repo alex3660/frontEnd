@@ -22,12 +22,15 @@ import { isNullOrUndefined } from 'util';
 export class ProfesorServiceService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
+
+  url='http://192.168.0.3:3000';
+
   curso: Observable<any>;
   cursos: Observable<any>;
 
   getcursoId(id: string){
     
-    const url_api =`http://localhost:3000/curso/profesor/${id}`;
+    const url_api =this.url+`/curso/profesor/${id}`;
     return (this.curso = this.http.get(url_api));
   }
 
@@ -66,7 +69,7 @@ export class ProfesorServiceService {
 
   getAlumnoC(id: string){
     
-    const url_api =`http://localhost:3000/registroCA/curso/${id}`;
+    const url_api =this.url+`/registroCA/curso/${id}`;
     return (this.curso = this.http.get(url_api));
   }
 
@@ -74,13 +77,13 @@ export class ProfesorServiceService {
 
   getTareaC(id: string){
     
-    const url_api =`http://localhost:3000/tarea/curso/${id}`;
+    const url_api =this.url+`/tarea/curso/${id}`;
     return (this.curso = this.http.get(url_api));
   }
 
   saveTarea(tarea: tareaInterface)
   {
-    const url_api = 'http://localhost:3000/tarea';
+    const url_api = this.url+'/tarea';
     return this.http.post<tareaInterface>(url_api, tarea)
     .pipe(map(data => data ));
     
@@ -90,13 +93,13 @@ export class ProfesorServiceService {
 
   getEvaluacionC(id: string){
     
-    const url_api =`http://localhost:3000/evaluacion/curso/${id}`;
+    const url_api =this.url+`/evaluacion/curso/${id}`;
     return (this.curso = this.http.get(url_api));
   }
 
   saveEvaluacion(evaluacion: evaluacionInterface)
   {
-    const url_api = 'http://localhost:3000/evaluacion';
+    const url_api = this.url+'/evaluacion';
     return this.http.post<evaluacionInterface>(url_api, evaluacion)
     .pipe(map(data => data ));
     
@@ -106,13 +109,13 @@ export class ProfesorServiceService {
 
   getTallerC(id: string){
     
-    const url_api =`http://localhost:3000/taller/curso/${id}`;
+    const url_api =this.url+`/taller/curso/${id}`;
     return (this.curso = this.http.get(url_api));
   }
 
   saveTaller(taller: tallerInterface)
   {
-    const url_api = 'http://localhost:3000/taller';
+    const url_api = this.url+'/taller';
     return this.http.post<tallerInterface>(url_api, taller)
     .pipe(map(data => data ));
     
@@ -122,13 +125,13 @@ export class ProfesorServiceService {
 //Repositorio
 uploadFile(formData, codCurso: string) {  
 
-  let urlAPI = `http://localhost:3000/down/${codCurso}`;
+  let urlAPI = this.url+`/down/${codCurso}`;
   return this.http.post(urlAPI, formData);
 }
 
 getRepositorioC(id: string){
     
-  const url_api =`http://localhost:3000/down/path/${id}`;
+  const url_api =this.url+`/down/path/${id}`;
   return (this.curso = this.http.get(url_api));
 }
 
@@ -136,7 +139,7 @@ getRepositorioC(id: string){
 
 saveForo(foro: foroInterface)
 {
-  const url_api = 'http://localhost:3000/foro';
+  const url_api = this.url+'/foro';
   return this.http.post<foroInterface>(url_api, foro)
   .pipe(map(data => data ));
   
@@ -144,12 +147,12 @@ saveForo(foro: foroInterface)
 
 getforoC(id: string){
     
-  const url_api =`http://localhost:3000/foro/enum/${id}`;
+  const url_api =this.url+`/enum/${id}`;
   return (this.curso = this.http.get(url_api));
 }
 
 getComentario(id: string){
-  const url_api =`http://localhost:3000/comentario/foro/${id}`;
+  const url_api =this.url+`/comentario/foro/${id}`;
   return (this.curso = this.http.get(url_api));
 }
   

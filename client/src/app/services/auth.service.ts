@@ -17,6 +17,8 @@ export class AuthService {
   private token: string;
   constructor( private http: HttpClient) { }
 
+  url='http://192.168.0.3:3000'
+
   public jwrespose : JwtResponseI = {
 
     userName: '',
@@ -33,7 +35,7 @@ export class AuthService {
   loginP(user: JwtResponseI): Observable<any> {
     //token
     //not null
-    const url_api = 'http://localhost:3000/login';
+    const url_api = this.url+'/login';
     return this.http.post<JwtResponseI>(url_api, user)
     .pipe(map(data => data ));
     
