@@ -120,11 +120,16 @@ export class ProfesorServiceService {
 
 
 //Repositorio
-uploadFile(formData, codCurso: string) {
-  
+uploadFile(formData, codCurso: string) {  
 
   let urlAPI = `http://localhost:3000/down/${codCurso}`;
   return this.http.post(urlAPI, formData);
+}
+
+getRepositorioC(id: string){
+    
+  const url_api =`http://localhost:3000/down/path/${id}`;
+  return (this.curso = this.http.get(url_api));
 }
 
 //Foro
