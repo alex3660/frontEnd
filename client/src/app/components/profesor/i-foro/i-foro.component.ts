@@ -34,7 +34,7 @@ export class IForoComponent implements OnInit {
     this.curso=this.profeApi.getCurrentCuso();
     this.foro.idCurso=this.curso.idCurso;
     this.profesor=this.datapi.getCurrentP()
-    this.foro.nombre=this.profesor.nombre1+' '+this.profesor.nombre2+' '+this.profesor.apellido1+' '+this.profesor.apellido2
+    this.foro.nombre=this.profesor[0].nombre1+' '+this.profesor[0].nombre2+' '+this.profesor[0].apellido1+' '+this.profesor[0].apellido2
     console.log(this.foro);
     this.profeApi.saveForo(this.foro)
     .subscribe(

@@ -29,6 +29,7 @@ export class RepositorioComponent implements OnInit {
     console.log(this.curso.codigoCurso);
     this.listaRepositorio();
     
+    
   }
 
   fileChange(element) {
@@ -52,7 +53,9 @@ export class RepositorioComponent implements OnInit {
     listaRepositorio(){
       this.curso= this.profeApi.getCurrentCuso();
       this.profeApi.getRepositorioC(this.curso.idCurso)
-      .subscribe((descargas: descargaInterface) => (this.descargas = descargas));
+      .subscribe((descargas: descargaInterface) => {(this.descargas = descargas);
+      
+      });
       
     }
 

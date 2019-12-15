@@ -198,7 +198,7 @@ export class DataApiService {
 
   setCProfesor( admin:profesorInterface){
     let admin_string = JSON.stringify(admin);
-    localStorage.setItem('CurrentP', admin_string);
+    localStorage.setItem('Currentprofe', admin_string);
   }
   getCurrentP(): profesorInterface{
     let admin_string = localStorage.getItem("Currentprofe");

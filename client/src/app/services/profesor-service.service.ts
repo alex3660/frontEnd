@@ -147,7 +147,7 @@ saveForo(foro: foroInterface)
 
 getforoC(id: string){
     
-  const url_api =this.url+`/enum/${id}`;
+  const url_api =this.url+`/foro/enum/${id}`;
   return (this.curso = this.http.get(url_api));
 }
 
