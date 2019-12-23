@@ -1,4 +1,6 @@
-<p>repositorio works!</p>
+<app-nav-profesor></app-nav-profesor>
+
+
 <div class="mainContainer">  
         <div class="content">
             <div class="header">
@@ -32,7 +34,7 @@
       
       <ul class="list-group list-group-flush" >
         <li class="list-group-item" *ngFor="let descarga of descargas">
-         <a  href="/CVJorgeGuerra.pdf" download="">{{descarga.nombre}}  {{descarga.direccion}}</a>
+         <a  href="http://192.168.0.4:3000/down/descarga/{{descarga.idRecurso}}" download>{{descarga.nombre}} {{descarga.direccion}} </a>
 
 
 
@@ -41,4 +43,4 @@
        
       </ul>
 
-      <a  href="/C://9IUY2fe2N0-mNOEt4ktQHsO0.docx" download>ffff</a>
+      <a  href="http://192.168.0.4:3000/down/descarga" download>ffff</a>
