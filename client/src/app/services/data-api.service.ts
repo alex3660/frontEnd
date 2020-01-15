@@ -38,7 +38,7 @@ export class DataApiService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  url='http://192.168.0.3:3000'
+  url='http://192.168.0.4:3000'
 
   headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json",

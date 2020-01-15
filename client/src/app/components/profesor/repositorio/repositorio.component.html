@@ -1,6 +1,28 @@
 <app-nav-profesor></app-nav-profesor>
 
 
+<ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/profesor/curso/menu">Lista Alumnos</a>
+    
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/profesor/tareas">Tarea</a>
+    </li>
+
+    <li class="nav-item">
+            <a class="nav-link" routerLink="/profesor/evaluaciones">Evaluacion</a>
+    </li>
+    <li class="nav-item">
+            <a class="nav-link" routerLink="/profesor/foro">Foro</a>
+    </li>
+    <li class="nav-item">
+            <a class="nav-link" routerLink="/profesor/talleres">Taller</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/profesor/repositorio">Repositorio</a>
+</li>
+</ul>
+
 <div class="mainContainer">  
         <div class="content">
             <div class="header">
@@ -33,14 +55,31 @@
       
       
       <ul class="list-group list-group-flush" >
-        <li class="list-group-item" *ngFor="let descarga of descargas">
-         <a  href="http://192.168.0.4:3000/down/descarga/{{descarga.idRecurso}}" download>{{descarga.nombre}} {{descarga.direccion}} </a>
+            <div class="form-row">
+                    <div class="form-group col-md-6">
+                        
+        <li class="list-group-item ml-auto" *ngFor="let descarga of descargas">
+               
+                {{descarga.nombre}} 
+                   
+    
+            </li>
+              
+                    </div>
+                    <div class="form-group col-md-6">
+                            <li class="list-group-item ml-auto" *ngFor="let descarga of descargas">
+                                    <a  href="http://192.168.0.4:3000/down/descarga/{{descarga.idRecurso}}" download> Descargar </a>   
+                    
+                            </li>
+                     </div>
+              
+                  </div>
 
 
-
-        </li>
+        
+ 
         
        
       </ul>
 
-      <a  href="http://192.168.0.4:3000/down/descarga" download>ffff</a>
+      

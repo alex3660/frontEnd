@@ -44,6 +44,8 @@ export class RepositorioComponent implements OnInit {
     }
     this.profeApi.uploadFile(formData,this.curso.idCurso).subscribe((res)=> {
       console.log('response received is ', res);
+      this.ngOnInit();
+      
       
 
     });
@@ -54,6 +56,7 @@ export class RepositorioComponent implements OnInit {
       this.curso= this.profeApi.getCurrentCuso();
       this.profeApi.getRepositorioC(this.curso.idCurso)
       .subscribe((descargas: descargaInterface) => {(this.descargas = descargas);
+        this.ngOnInit();
       
       });
       
