@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataApiService } from 'src/app/services/data-api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as XLSX from 'ts-xlsx';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -12,7 +13,7 @@ import * as XLSX from 'ts-xlsx';
 })
 export class IMateriaComponent implements OnInit {
 
-  constructor(private dataApi: DataApiService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private dataApi: DataApiService, private router: Router, private activatedRoute: ActivatedRoute, private modalService: NgbModal) { }
   arrayBuffer:any;
   file:File;
   incomingfile(event) 
@@ -57,6 +58,12 @@ export class IMateriaComponent implements OnInit {
         err => console.error(err)
       )
   }
+
+  open(content) {
+    this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});
+  }
+
+
   Upload() {
     
     let fileReader = new FileReader();

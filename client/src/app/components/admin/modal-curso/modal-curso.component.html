@@ -1,5 +1,14 @@
 <app-nav-profesor></app-nav-profesor>
+<div> 
+  <mat-card>
+    <mat-grid-list cols="4" rowHeight="20pxd">
+      <mat-grid-tile colspan="4" rowspan='1'>
+        <mat-card-title >Gestion de usuarios</mat-card-title>
 
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card>
+</div>
 <ul class="nav nav-pills">
         <li class="nav-item">
           <a class="nav-link" routerLink="/profesor/curso/menu">Lista Alumnos</a>
@@ -26,16 +35,19 @@
 
 
 <table class="table table-striped">
-                <thead class="thead-pimary">
+                <thead class="thead-dark">
                   <tr>                         
+                    <th scope="col">No.</th>                         
                     <th scope="col">Nombre</th>
                                         
                   </tr>
                 </thead>
                
                 <tbody>
-                <tr *ngFor="let alumno of alumnos" >
-                    <th scope="row">{{alumno.nombreAlumno}}</th>                  
+                <tr *ngFor="let alumno of alumnos; index as i" >
+                  <th scope="row"> {{i+1}}</th>
+                  <td>{{alumno.nombreAlumno}}</td> 
+                                   
                     
                     
                     
@@ -44,4 +56,3 @@
                 </tbody>
               </table>
             
-`

@@ -30,9 +30,9 @@
   
 </ul>
 <table class="table table-striped">
-  <thead class="thead-pimary">
+  <thead class="thead-dark">
     <tr>
-      <th scope="col">Número Único</th>
+      <th scope="col">N.Único</th>
       <th scope="col">Cédula</th>        
       <th scope="col">Nombre</th>
       <th scope="col">User Name</th>
@@ -40,11 +40,13 @@
       <th scope="col">Teléfono</th>
       <th scope="col">Oficina</th>
       <th scope="col">Estado</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
       </tr>
   </thead>
  
   <tbody>
-  <tr *ngFor="let profesor of profesores | filtrop:filtro" (click)="editar(profesor)">
+  <tr *ngFor="let profesor of profesores | filtrop:filtro | paginate: { itemsPerPage: 6, currentPage: pageActual }">
       <th scope="row">{{profesor.numUnico}}</th>
       <td>{{profesor.cedula}}</td>
       <td>{{profesor.nombre1}} {{profesor.nombre2}} {{profesor.apellido1}} {{profesor.apellido2}}</td>
@@ -53,9 +55,11 @@
       <td>{{profesor.telefono}}</td>
       <td>{{profesor.oficina}}</td>
       <td>{{profesor.estado}}</td>
-      <td><button type="button" class="btn btn-link">Editar</button></td>
+      <td><button type="button" class="btn btn-info" (click)="editar(profesor)">Editar</button></td>
+        <td><button type="button" class="btn btn-danger" (click)="eliminar(profesor.idProfesor)">Eliminar</button></td>
       
             
   </tr>
   </tbody>
 </table>
+<pagination-controls (pageChange)="pageActual = $event"></pagination-controls>

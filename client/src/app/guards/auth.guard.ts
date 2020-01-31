@@ -16,7 +16,7 @@ export class AuthGuard1 implements CanActivate{
       
     }
     else{
-      this.router.navigate(['/']);
+      this.router.navigate(['/profesor/inicio']);
       return false;
      
     }

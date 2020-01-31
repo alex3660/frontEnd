@@ -38,7 +38,7 @@ export class DataApiService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  url='http://192.168.0.4:3000'
+  url='http://192.168.100.2:3000'
 
   headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json",
@@ -138,6 +138,16 @@ export class DataApiService {
     
   }
 
+  deleteMateria(id: string){
+    //token
+    //not null
+    let token = this.authService.gettoken();
+    const url_api = this.url+`/materia/${id}`;
+    return this.http.delete(url_api)
+    .pipe(map(data => data ));
+    
+  }
+
  
 
   setMateria( admin: MateriaInterface){
@@ -195,6 +205,15 @@ export class DataApiService {
     .pipe(map(data => data ));
     
   }
+  deleteProfesoR(id: string){
+    //token
+    //not null
+    let token = this.authService.gettoken();
+    const url_api = this.url+`/profesor/${id}`;
+    return this.http.delete(url_api)
+    .pipe(map(data => data ));
+    
+  }
 
   setCProfesor( admin:profesorInterface){
     let admin_string = JSON.stringify(admin);
@@ -245,6 +264,16 @@ export class DataApiService {
     let token = this.authService.gettoken();
     const url_api = this.url+'/alumno';
     return this.http.put<alumnoInterface>(url_api, alumno)
+    .pipe(map(data => data ));
+    
+  }
+
+  deleteAlumno(id: string){
+    //token
+    //not null
+    let token = this.authService.gettoken();
+    const url_api = this.url+`/alumno/${id}`;
+    return this.http.delete(url_api)
     .pipe(map(data => data ));
     
   }

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataApiService } from 'src/app/services/data-api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as XLSX from 'ts-xlsx';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -14,10 +15,11 @@ import * as XLSX from 'ts-xlsx';
 })
 export class IAlumnoComponent implements OnInit {
 
-  constructor(private dataApi: DataApiService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private dataApi: DataApiService, private router: Router, private activatedRoute: ActivatedRoute, private modalService: NgbModal) { }
 
   arrayBuffer:any;
   file:File;
+  closeResult: string;
   incomingfile(event) 
     {
     this.file= event.target.files[0]; 
@@ -71,6 +73,13 @@ export class IAlumnoComponent implements OnInit {
       )
   }
 
+  open(content) {
+    this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});
+  }
+ 
+
+
+
   Upload() {
     
     let fileReader = new FileReader();
@@ -95,9 +104,9 @@ export class IAlumnoComponent implements OnInit {
           console.log(res);
           this.router.navigate(['/admin/alumno']);
         },
-        err => {console.error(err),
-          alert('ERROR EN DATOS');}
-          
+        err => {console.error(err)
+          //alert('ERROR EN DATOS');
+        }         
       )
           
          
@@ -111,6 +120,7 @@ export class IAlumnoComponent implements OnInit {
 
    
 }
+
 
   
 

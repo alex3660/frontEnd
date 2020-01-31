@@ -18,17 +18,10 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/admin/materia/ingresar">Ingresar Materias</a>
       </li>
+      <button class="btn btn-link float-right" (click)="open(content)">Cargar Archivo</button>
     
   </ul>
-  <div class="col-xs-4 col-sm-4 col-md-4 mx-auto ml-auto" id="navbarNa">
-      <ul>
-          <input type="file"  (change)="incomingfile($event)" placeholder=" Seleccione carpeta" accept=".xlsx">
-  
-          <button type="button" class="btn btn-xs btn-primary btn-block" (click)="Upload()" >Cargar Archivo</button>
-  
-      </ul>        
-        
-      </div>
+ 
   
   <section id="register" class="mb-5 mt-5">
     <div class="container">
@@ -56,7 +49,7 @@
                   
                  
                   
-                  <button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar</button>
+                  <button type="submit" class="btn btn-lg btn-primary float-right">Ingresar</button>
                   
                 </form>
               </div>
@@ -66,3 +59,35 @@
       </div>
     </div>
   </section>
+
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Ingresar Materias</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="dateOfBirth"></label>
+          <div class="input-group">
+            
+        <input type="file" class="custom-file" id="custom-file" (change)="incomingfile($event)" language="es" placeholder=" Seleccione carpeta" accept=".xlsx">
+
+       
+            <div class="input-group-append">
+              <button type="button" class="btn btn-xs btn-primary float-right" (click)="Upload()" (click)="modal.dismiss('Cross click')" >Cargar Archivo</button>
+              <pre>{{closeResult}}</pre>
+              
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    </ng-template> 
+  
+  <hr>
+  
+  <pre>{{closeResult}}</pre>

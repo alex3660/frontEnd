@@ -17,6 +17,7 @@ export class IngresarAlumnoComponent implements OnInit {
   constructor(private dataApi: DataApiService, private router: Router) { }
   private alumnos: alumnoInterface;
   filtro = '';
+  pageActual: number = 1;
 
 
 
@@ -36,7 +37,23 @@ export class IngresarAlumnoComponent implements OnInit {
     this.dataApi.setAlumno(alumno);    
     this.router.navigate(['/admin/alumno/editar']);
 
+  }
 
+  eliminar(alumnoid: string){
+    
+    
+    this.dataApi.deleteAlumno(alumnoid).subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['/admin/alumno']);
+        this.ngOnInit();
+      },
+      err => {console.error(err);
+        alert('No se elimino el Alumno');
+      }
+    );
+       
+   
   }
   
   

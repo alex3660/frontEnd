@@ -53,6 +53,10 @@ import { IForoComponent } from './components/profesor/i-foro/i-foro.component';
 import { ITalleresComponent } from './components/profesor/i-talleres/i-talleres.component';
 import { MensajeForoComponent } from './components/profesor/mensaje-foro/mensaje-foro.component';
 import { RepositorioComponent } from './components/profesor/repositorio/repositorio.component';
+import { ModaLCursoprofesorComponent } from './components/admin/moda-l-cursoprofesor/moda-l-cursoprofesor.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ModaExelAlComponent } from './components/admin/moda-exel-al/moda-exel-al.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -95,7 +99,9 @@ import { RepositorioComponent } from './components/profesor/repositorio/reposito
     IForoComponent,
     ITalleresComponent,
     MensajeForoComponent,
-    RepositorioComponent
+    RepositorioComponent,
+    ModaLCursoprofesorComponent,
+    ModaExelAlComponent
     
       
   ],
@@ -108,7 +114,9 @@ import { RepositorioComponent } from './components/profesor/repositorio/reposito
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgxPaginationModule,
+    NgbModule
     
        
   ],

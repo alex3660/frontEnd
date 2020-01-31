@@ -7,8 +7,18 @@ export class FiltropPipe implements PipeTransform {
 
   transform(value: any, arg: any): any {
     const listaBusqueda =[];
+    
     for(const profesor of value){
-      if(profesor.nombre1.toLowerCase().indexOf(arg.toLowerCase()) > -1){
+      var Nombre1 =profesor.nombre1+' '+profesor.nombre2+' '+ profesor.apellido1+' '+profesor.apellido2;
+      var Nombre2 =profesor.apellido1+' '+profesor.apellido2+' '+profesor.nombre1+' '+profesor.nombre2;
+      
+      if(Nombre1.toLowerCase().indexOf(arg.toLowerCase()) > -1){
+        listaBusqueda.push(profesor)
+       }
+       else if(Nombre2.toLowerCase().indexOf(arg.toLowerCase()) > -1){
+        listaBusqueda.push(profesor)
+       }
+      else if(profesor.nombre1.toLowerCase().indexOf(arg.toLowerCase()) > -1){
        listaBusqueda.push(profesor)
       }
 

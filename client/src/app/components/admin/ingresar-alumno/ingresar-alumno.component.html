@@ -35,23 +35,24 @@
 </ul>
 
 
-<table class="table table-striped">
-    <thead class="thead-pimary">
+<table class="table  table-striped">
+    <thead class="thead-dark" style="background-color: #2e2e30!important;" >
       <tr>
-        <th scope="col">Número Único</th>
+        <th scope="col">N. Único</th>
         <th scope="col">Cédula</th>        
         <th scope="col">Nombre</th>
         <th scope="col">User Name</th>
         <th scope="col">Correo</th>
         <th scope="col">Teléfono</th>
         <th scope="col">Estado</th>
-        <th scope="col"></th>
+        <th scope="col"> </th>
+        <th scope="col"> </th>
         
       </tr>
     </thead>
    
     <tbody>
-    <tr *ngFor="let alumno of alumnos | filter:filtro" (click)="editar(alumno)">
+    <tr *ngFor="let alumno of alumnos  | filter:filtro | paginate: { itemsPerPage: 6, currentPage: pageActual }" >
         <th scope="row">{{alumno.numUnico}}</th>
         <td>{{alumno.cedula}}</td>
         <td>{{alumno.nombre1}} {{alumno.nombre2}} {{alumno.apellido1}} {{alumno.apellido2}}</td>
@@ -59,11 +60,13 @@
         <td>{{alumno.correo}}</td>
         <td>{{alumno.telefono}}</td>        
         <td>{{alumno.estado}}</td>
-        <td><button type="button" class="btn btn-link">Editar</button></td>
+        <td><button type="button" class="btn btn-info" (click)="editar(alumno)">Editar</button></td>
+        <td><button type="button" class="btn btn-danger" (click)="eliminar(alumno.idAlumno)">Eliminar</button></td>
         
               
     </tr>
     </tbody>
   </table>
+  <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
 
   

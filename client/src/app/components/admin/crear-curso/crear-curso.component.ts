@@ -1,7 +1,11 @@
+
 import { cursoInterface } from './../../../models/crurso-interface';
 import { Component, OnInit } from '@angular/core';
 import { DataApiService } from 'src/app/services/data-api.service';
 import { MatTableDataSource, throwMatDialogContentAlreadyAttachedError } from '@angular/material';
+import { ProfesorServiceService } from 'src/app/services/profesor-service.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,12 +15,12 @@ import { MatTableDataSource, throwMatDialogContentAlreadyAttachedError } from '@
 })
 export class CrearCursoComponent implements OnInit {
 
-  constructor(private readonly dataApi: DataApiService) {
+  constructor(private profeApi : ProfesorServiceService, private authService : AuthService, private dataApi: DataApiService, private router: Router) {
    }
   public cursos: cursoInterface;
- 
-
-   
+  filtro = '';
+  pageActual: number = 1;
+  
 
   ngOnInit() {
     this.getCurso();
@@ -29,6 +33,14 @@ export class CrearCursoComponent implements OnInit {
     .subscribe((cursos: cursoInterface) => {this.cursos = cursos});
 
 
+  }
+  
+    lista(Curso: cursoInterface){
+      this.profeApi.setCurso(Curso)
+      this.router.navigate(['/admin/curso/lista']);
+  
+  
+    
   }
 
   

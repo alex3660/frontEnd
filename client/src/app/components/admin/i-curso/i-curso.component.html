@@ -20,8 +20,7 @@
       </li>
       <li class="nav-item">
           <a class="nav-link" routerLink="/admin/curso/agregaca">Asignar Alumnos</a>
-        </li>
-      
+        </li>     
     </ul>
     
     <section id="register" class="mb-5 mt-5">
@@ -38,16 +37,17 @@
                                             
                       
                       <div class="form-group">
-                        <input type="text" #name="ngModel" name="cedula" class="form-control" placeholder=" Cedula Profesor" [(ngModel)]="profe.cedula" required 
-                          >
+                        <input type="text" #name="ngModel" name="cedula" class="form-control" placeholder=" Cedula Profesor" [(ngModel)]="profe.cedula" (click)="open(content)" required >
+                        
                       </div> 
+                                            
+
                       <div class="form-group">
-                        <input type="text" #name="ngModel" name="numUnico" class="form-control" placeholder="Codigo Materia" [(ngModel)]="materi.codMateria" required         >
+                        <input type="text" #name="ngModel" name="numUnico" class="form-control" placeholder="Codigo Materia" [(ngModel)]="materi.codMateria" (click)="openM(contM)" required         >
                       </div>                        
                           
                       
-                      <button type="submit" class="btn btn-lg btn-primary btn-block">Buscar</button>
-                      
+                                            
                     </form>
 
                     <form #formRegister="ngForm" (ngSubmit)="ingresarCurso(formRegister)">                                              
@@ -69,7 +69,7 @@
   
                             
                         
-                        <button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar</button>
+                        <button type="submit" class="btn btn-lg btn-primary float-right">Ingresar</button>
                         
                       </form>
                     
@@ -80,4 +80,113 @@
           </div>
         </div>
       </section>
+
+
+
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <input type="text" class="form-contro" name="filtro" placeholder="Buscar..." [(ngModel)]="filtro">
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="dateOfBirth"></label>
+              <table class="table table-striped">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">N.Único</th>
+                    <th scope="col">Cédula</th>        
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Oficina</th>
+                    
+                    </tr>
+                </thead>
+               
+                <tbody>
+                <tr *ngFor="let profesor of profesores | filtrop:filtro | paginate: { itemsPerPage: 6, currentPage: pageActual }" (click)="buscarp(profesor.cedula)">
+                  
+                    <th scope="row">{{profesor.numUnico}}</th>
+                    <td>{{profesor.cedula}}</td>
+                    <td>{{profesor.nombre1}} {{profesor.nombre2}} {{profesor.apellido1}} {{profesor.apellido2}}</td>
+                    <td>{{profesor.oficina}}</td>
+                                              
+                </tr>
+                
+                </tbody>
+                
+              </table>
+              <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+              <div class="input-group">
+                
+               
+           
+                <div class="input-group-append">
+                 
+                  
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        </ng-template> 
+      
+      <hr>
+      
+      <pre>{{closeResult}}</pre>
+
+
+
+
+      <ng-template #contM let-modal>
+        <div class="modal-header">
+          <input type="text" class="form-contro" name="filtro" placeholder="Buscar..." [(ngModel)]="filtro">
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="dateOfBirth"></label>
+              <table class="table table-striped">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Nombre</th>        
+                    <th scope="col">Numero horas</th>
+                    
+                    
+                  </tr>
+                </thead>
+               
+                <tbody>
+                <tr *ngFor="let materia of materias | filtrom:filtro  | paginate: { itemsPerPage: 6, currentPage: pageActual }" (click)="buscarM(materia.codMateria)" >
+                    <th scope="row">{{materia.codMateria}}</th>
+                    <td>{{materia.nombre}}</td>
+                    <td>{{materia.numHoras}}</td>
+                   
+                </tr>
+                </tbody>
+              </table>
+              <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+              <div class="input-group">
+                
+               
+           
+                <div class="input-group-append">
+                 
+                  
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        </ng-template> 
+      
+      <hr>
+      
+      <pre>{{closeResult}}</pre>
     

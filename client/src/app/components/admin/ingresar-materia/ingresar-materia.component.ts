@@ -16,6 +16,7 @@ export class IngresarMateriaComponent implements OnInit {
   
   private materias: MateriaInterface;
   filtro = '';
+  pageActual: number = 1;
 
   ngOnInit() {
     this.getMaterias();
@@ -34,6 +35,22 @@ export class IngresarMateriaComponent implements OnInit {
     this.router.navigate(['/admin/materia/editar']);
 
 
+  }
+  eliminar(materiaid: string){
+    
+    
+    this.dataApi.deleteMateria(materiaid).subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['/admin/materia']);
+        this.ngOnInit();
+      },
+      err => {console.error(err);
+        alert('No se elimino el Alumno');
+      }
+    );
+       
+   
   }
 
 }

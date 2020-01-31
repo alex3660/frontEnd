@@ -13,6 +13,7 @@ export class IngresarProfesorComponent implements OnInit {
   constructor(private dataApi: DataApiService, private router: Router) { }
   private profesores: profesorInterface;
   filtro = '';
+  pageActual: number = 1;
 
   ngOnInit() {
     this.getProfesor();
@@ -34,5 +35,22 @@ export class IngresarProfesorComponent implements OnInit {
     this.router.navigate(['/admin/profesor/editar']);
 
 
+  }
+
+  eliminar(profesorid: string){
+    
+    
+    this.dataApi.deleteProfesoR(profesorid).subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['/admin/profesor']);
+        this.ngOnInit();
+      },
+      err => {console.error(err);
+        alert('No se elimino el Profesor');
+      }
+    );
+       
+   
   }
 }

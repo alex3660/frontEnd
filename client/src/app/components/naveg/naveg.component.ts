@@ -16,9 +16,9 @@ export class NavegComponent implements OnInit {
   }
 
   logout(): void {
-    //localStorage.removeItem('CurrentAdmin');
-    //localStorage.removeItem('token');
+    
     this.authService.logout();
+    localStorage.clear();
 
   }
 

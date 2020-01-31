@@ -23,7 +23,7 @@ export class ProfesorServiceService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  url='http://192.168.0.4:3000';
+  url='http://192.168.100.2:3000';
 
   curso: Observable<any>;
   cursos: Observable<any>;
