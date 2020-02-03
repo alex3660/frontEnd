@@ -1,3 +1,6 @@
+import { AalumnoIndividualCursoComponent } from './components/admin/aalumno-individual-curso/aalumno-individual-curso.component';
+import { EditTallerComponent } from './components/profesor/edit-taller/edit-taller.component';
+import { EditEvaluacionComponent } from './components/profesor/edit-evaluacion/edit-evaluacion.component';
 import { ModaLCursoprofesorComponent } from './components/admin/moda-l-cursoprofesor/moda-l-cursoprofesor.component';
 import { MensajeForoComponent } from './components/profesor/mensaje-foro/mensaje-foro.component';
 import { RepositorioComponent } from './components/profesor/repositorio/repositorio.component';
@@ -34,6 +37,7 @@ import { AdminNavegarComponent } from './components/admin/admin-inicio/admin-nav
 import { IMateriaComponent } from './components/admin/i-materia/i-materia.component';
 import { ITalleresComponent } from './components/profesor/i-talleres/i-talleres.component';
 import { ProfesorGuard } from './guards/profesor.guard';
+import { EditTareaComponent } from './components/profesor/edit-tarea/edit-tarea.component';
 
 
 
@@ -47,6 +51,7 @@ const routes: Routes = [
   {path: 'admin/curso', component: CrearCursoComponent, canActivate: [AuthGuard1]},
   {path: 'admin/curso/ingresar', component: ICursoComponent, canActivate: [AuthGuard1]},
   {path: 'admin/curso/agregaca', component: AgregaAlumnoCursoComponent, canActivate: [AuthGuard1]},
+  {path: 'admin/curso/agregaia', component: AalumnoIndividualCursoComponent, canActivate: [AuthGuard1]},
   {path: 'admin/curso/editar', component: EditarCComponent, canActivate: [AuthGuard1]},
   {path: 'admin/curso/lista', component: ModaLCursoprofesorComponent, canActivate: [AuthGuard1]},
   {path: 'admin/materia', component: IngresarMateriaComponent, canActivate: [AuthGuard1]},
@@ -68,7 +73,9 @@ const routes: Routes = [
   {path: 'profesor/tareas', component: TareasComponent, canActivate: [ProfesorGuard]},
   {path: 'profesor/tareas/ingresar', component: ITareaComponent, canActivate: [ProfesorGuard]},
   {path: 'profesor/repositorio', component: RepositorioComponent, canActivate: [ProfesorGuard]},
-  
+  {path: 'profesor/editar/tarea', component: EditTareaComponent, canActivate: [ProfesorGuard]},
+  {path: 'profesor/editar/evaluacion', component: EditEvaluacionComponent, canActivate: [ProfesorGuard]},
+  {path: 'profesor/editar/taller', component: EditTallerComponent, canActivate: [ProfesorGuard]},
 
 ];
 

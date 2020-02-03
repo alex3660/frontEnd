@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { evaluacionInterface } from './../../../models/evaluacion';
 import { Component, OnInit } from '@angular/core';
 import { cursoInterface } from 'src/app/models/crurso-interface';
@@ -10,7 +11,7 @@ import { ProfesorServiceService } from 'src/app/services/profesor-service.servic
 })
 export class EvaluacionesComponent implements OnInit {
 
-  constructor(private profeApi: ProfesorServiceService) { }
+  constructor(private profeApi: ProfesorServiceService, private router: Router) { }
 
   curso:cursoInterface;
   evaluaciones: evaluacionInterface;
@@ -25,6 +26,29 @@ export class EvaluacionesComponent implements OnInit {
     this.profeApi.getEvaluacionC(this.curso.idCurso)
     .subscribe((evaluaciones: evaluacionInterface) => (this.evaluaciones = evaluaciones));
     
+  }
+
+  editar(evaluacion: evaluacionInterface){
+    this.profeApi.setEvaluacion(evaluacion);    
+    this.router.navigate(['profesor/editar/evaluacion']);
+
+  }
+
+  eliminar(evaluacionid: string){
+    
+    
+    this.profeApi.deleteEvaluacion(evaluacionid).subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['/profesor/evaluaciones']);
+        this.ngOnInit();
+      },
+      err => {console.error(err);
+        alert('No se elimino Evaluacion');
+      }
+    );
+       
+   
   }
 
 }

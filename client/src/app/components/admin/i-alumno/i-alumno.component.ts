@@ -15,7 +15,9 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class IAlumnoComponent implements OnInit {
 
-  constructor(private dataApi: DataApiService, private router: Router, private activatedRoute: ActivatedRoute, private modalService: NgbModal) { }
+  constructor(private dataApi: DataApiService, 
+    private router: Router, private activatedRoute: ActivatedRoute, 
+    private modalService: NgbModal) { }
 
   arrayBuffer:any;
   file:File;

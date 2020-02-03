@@ -1,9 +1,10 @@
+import { tareaInterface } from 'src/app/models/tarea';
 import { foroListInterface } from './../models/foro-list';
 import { foroInterface } from './../models/foro';
 import { repositorioInterface } from './../models/repositorio';
 import { tallerInterface } from './../models/taller';
 import { evaluacionInterface } from './../models/evaluacion';
-import { tareaInterface } from './../models/tarea';
+
 
 
 import { cursoInterface } from './../models/crurso-interface';
@@ -15,6 +16,7 @@ import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map} from 'rxjs/operators';
 import { isNullOrUndefined } from 'util';
+import { comentarioForoInterface } from '../models/comentario-foro';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,7 @@ export class ProfesorServiceService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  url='http://192.168.100.2:3000';
+  url='http://192.168.0.15:3000';
 
   curso: Observable<any>;
   cursos: Observable<any>;
@@ -43,6 +45,55 @@ export class ProfesorServiceService {
     let admin_string = localStorage.getItem("Currentcurso");
     if ( !isNullOrUndefined(admin_string)){
       let admin: cursoInterface = JSON.parse(admin_string);
+      return admin;
+    }
+    else{
+      return null;
+    }
+  }
+
+  setTarea( tarea: tareaInterface){
+    let admin_string = JSON.stringify(tarea);
+    localStorage.setItem('CurrentTarea', admin_string);
+  }
+
+  getCurrentTarea(): tareaInterface{
+    let admin_string = localStorage.getItem("CurrentTarea");
+    if ( !isNullOrUndefined(admin_string)){
+      let admin: tareaInterface = JSON.parse(admin_string);
+      return admin;
+    }
+    else{
+      return null;
+    }
+  }
+
+
+  setEvaluacion( evaluacion: evaluacionInterface){
+    let admin_string = JSON.stringify(evaluacion);
+    localStorage.setItem('CurrentEvaluacion', admin_string);
+  }
+
+  getCurrentEvaluacion(): evaluacionInterface{
+    let admin_string = localStorage.getItem("CurrentEvaluacion");
+    if ( !isNullOrUndefined(admin_string)){
+      let admin: evaluacionInterface = JSON.parse(admin_string);
+      return admin;
+    }
+    else{
+      return null;
+    }
+  }
+
+  setTaller( evaluacion: tallerInterface){
+    let admin_string = JSON.stringify(evaluacion);
+    localStorage.setItem('CurrentTaller', admin_string);
+  }
+
+  getCurrentTaller(): tallerInterface{
+    let admin_string = localStorage.getItem("CurrentEvaluacion");
+    if ( !isNullOrUndefined(admin_string)){
+      let admin: tallerInterface = JSON.parse(admin_string);
       return admin;
     }
     else{
@@ -89,6 +140,26 @@ export class ProfesorServiceService {
     
   }
 
+  editTarea(tarea: tareaInterface){
+    //token
+    //not null
+    let token = this.authService.gettoken();
+    const url_api = this.url+'/tarea';
+    return this.http.put<tareaInterface>(url_api, tarea)
+    .pipe(map(data => data ));
+    
+  }
+
+  deleteTarea(id: string){
+    //token
+    //not null
+    let token = this.authService.gettoken();
+    const url_api = this.url+`/tarea/${id}`;
+    return this.http.delete(url_api)
+    .pipe(map(data => data ));
+    
+  }
+
   //EVALUACIONES
 
   getEvaluacionC(id: string){
@@ -105,6 +176,27 @@ export class ProfesorServiceService {
     
   }
 
+  editEvaluacion(evaluacion: evaluacionInterface){
+    //token
+    //not null
+    let token = this.authService.gettoken();
+    const url_api = this.url+'/evaluacion';
+    return this.http.put<evaluacionInterface>(url_api, evaluacion)
+    .pipe(map(data => data ));
+    
+  }
+
+  deleteEvaluacion(id: string){
+    //token
+    //not null
+    let token = this.authService.gettoken();
+    const url_api = this.url+`/evaluacion/${id}`;
+    return this.http.delete(url_api)
+    .pipe(map(data => data ));
+    
+  }
+
+
   //Talleres
 
   getTallerC(id: string){
@@ -117,6 +209,27 @@ export class ProfesorServiceService {
   {
     const url_api = this.url+'/taller';
     return this.http.post<tallerInterface>(url_api, taller)
+    .pipe(map(data => data ));
+    
+  }
+
+  editTaller(taller: tallerInterface){
+    //token
+    //not null
+    let token = this.authService.gettoken();
+    const url_api = this.url+'/taller';
+    return this.http.put<tallerInterface>(url_api, taller)
+    .pipe(map(data => data ));
+    
+  }
+
+
+  deleteTaller(id: string){
+    //token
+    //not null
+    let token = this.authService.gettoken();
+    const url_api = this.url+`/taller/${id}`;
+    return this.http.delete(url_api)
     .pipe(map(data => data ));
     
   }
@@ -155,8 +268,33 @@ getComentario(id: string){
   const url_api =this.url+`/comentario/foro/${id}`;
   return (this.curso = this.http.get(url_api));
 }
+
+saveComentario(comentario: comentarioForoInterface)
+{
+  const url_api = this.url+'/comentario';
+  return this.http.post<comentarioForoInterface>(url_api, comentario)
+  .pipe(map(data => data ));
   
 }
+
+descarga(id: string){
+  const url_api =this.url+`/down/descarga/${id}`;
+  return (this.curso = this.http.get(url_api));
+}
+
+deleteRepositorio(id: string){
+  //token
+  //not null
+  let token = this.authService.gettoken();
+  const url_api = this.url+`/down/delete/${id}`;
+  return this.http.delete(url_api)
+  .pipe(map(data => data ));
+  
+}
+
+  
+}
+
 
 
 

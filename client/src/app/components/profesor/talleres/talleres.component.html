@@ -1,5 +1,16 @@
 <app-nav-profesor></app-nav-profesor>
 
+<div> 
+  <mat-card>
+    <mat-grid-list cols="4" rowHeight="20pxd">
+      <mat-grid-tile colspan="4" rowspan='1'>
+        <mat-card-title >Gestion de usuarios</mat-card-title>
+
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card>
+</div>
+
 <ul class="nav nav-pills">
         <li class="nav-item">
           <a class="nav-link" routerLink="/profesor/curso/menu">Lista Alumnos</a>
@@ -30,13 +41,15 @@
         
       </ul>
       <table class="table table-striped">
-                <thead class="thead-pimary">
+                <thead class="thead-dark">
                   <tr>
                     <th scope="col">Nombre</th>        
                     <th scope="col">Descripcion</th>
                     <th scope="col">Fecha Creacion</th>
                     <th scope="col">Fecha Entrega</th>
                     <th scope="col">Hora Entrega</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Tipo</th>
                     <th scope="col">Tipo</th>
                     
                     
@@ -51,7 +64,8 @@
                     <td>{{taller.fechaEntrega | date}}</td>
                     <td>{{taller.horaEntrega}}</td>
                     <td>{{taller.tipoEntrega}}</td>
-                    <td><button type="button" class="btn btn-link">Editar</button></td>
+                    <td><button type="button" class="btn btn-info" (click)="editar(taller)">Editar</button></td>
+                    <td><button type="button" class="btn btn-danger" (click)="eliminar(taller.idTaller)">Eliminar</button></td>
                     
                 </tr>
                 </tbody>

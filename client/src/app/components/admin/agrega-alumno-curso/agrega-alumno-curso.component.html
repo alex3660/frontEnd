@@ -21,6 +21,9 @@
       <li class="nav-item">
           <a class="nav-link" routerLink="/admin/curso/agregaca">Asignar Alumnos</a>
        </li>
+       <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/curso/agregaia">Asignar Alumno</a>
+     </li>
       
     </ul>
 
@@ -33,53 +36,27 @@
                 <div class="card">
                   <div class="card-body text-center">
                     <form #formRegister="ngForm" (ngSubmit)="buscarc(formRegister)">
-                      <h1 class="h3 mb-3 font-weight-normal">Ingresar Curso</h1>
-                      <div class="form-group">
-                          <input type="text" #name="ngModel" name="numUnico" class="form-control" placeholder="Codigo Curso" [(ngModel)]="curso.codigoCurso" required >
-                        </div>                        
-                            
-                        
-                        <button type="submit" class="btn btn-lg btn-primary btn-block">Buscar Curso</button>
-                        <div> 
-                            <mat-card>
-                              <mat-grid-list cols="4" rowHeight="20pxd">
-                                <mat-grid-tile colspan="4" rowspan='1'>
-                                  <mat-card-title >Gestion de usuarios</mat-card-title>
-                          
-                                </mat-grid-tile>
-                              </mat-grid-list>
-                            </mat-card>
-                          </div>                   
-                      
-                      <div class="form-group">
+                      <h1 class="h3 mb-3 font-weight-normal">Asignar Alumnos a Curso</h1>      
                        
-                        <input type="file"  (change)="incomingfile($event)" placeholder=" Seleccione carpeta" accept=".xlsx">
-
-
-                          <button type="button" class="btn btn-xs btn-primary btn-block" (click)="Upload()" >Cargar Archivo</button>
-                                                
+                      <div class="form-group">
+                        <div class="form-row">
+                          <div class="form-group col-md-5">
+                            <input type="text" #name="ngModel" name="numUnico" class="form-control" placeholder="Codigo Curso" [(ngModel)]="curso.codigoCurso" (click)="open(content)" required >
+                          </div>
+                          <div class="form-group col-md-7">
+                            <input type="file"  (change)="incomingfile($event)" placeholder=" Seleccione carpeta" accept=".xlsx">
+                            <button type="button" class="btn btn-xs btn-info float-right" (click)="Upload()" >Cargar Archivo</button>
+                          </div> 
+                      
+                        </div>
+                                              
                       </div> 
+                      <button type="submit" class="btn btn-md btn-primary float-right " (click)="Upload()">Asignar Alumnos</button>
                       
                       
                       
                     </form>
-                    <div> 
-                            <mat-card>
-                              <mat-grid-list cols="4" rowHeight="20pxd">
-                                <mat-grid-tile colspan="4" rowspan='1'>
-                                  <mat-card-title >Gestion de usuarios</mat-card-title>
-                          
-                                </mat-grid-tile>
-                              </mat-grid-list>
-                            </mat-card>
-                          </div>
 
-                    <form #formRegister="ngForm" (ngSubmit)="Guardar(formRegister)">                                            
-                        
-                        
-                    <button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar Curso</button>
-                        
-                      </form>
                     
                   </div>
                 </div>
@@ -91,54 +68,62 @@
 
 
 
-
-    <section id="register" class="mb-5 mt-5">
-            <div class="container">
-              <div class="row">
-          
-                <div class="col-xs-12 col-sm-12 col-md-12 mx-auto">
-                  <div class="card_register">
-                    <div class="card">
-                      <div class="card-body text-center">
-                        <form #formRegister="ngForm" (ngSubmit)="buscarp(formRegister)">
-                          <h1 class="h3 mb-3 font-weight-normal">Ingresar Curso</h1>
-                          
-                                                
-                          
-                          <div class="form-group">
-                            <input type="text" #name="ngModel" name="cedula" class="form-control" placeholder=" Cedula Alumno" [(ngModel)]="alumno.cedula" required 
-                              >
-                          </div> 
-                          <div class="form-group">
-                            <input type="text" #name="ngModel" name="numUnico" class="form-control" placeholder="Codigo Curso" [(ngModel)]="curso.codigoCurso" required         >
-                          </div>                        
-                              
-                          
-                          <button type="submit" class="btn btn-lg btn-primary btn-block">Buscar</button>
-                          
-                        </form>
-                        <div> 
-                                <mat-card>
-                                  <mat-grid-list cols="4" rowHeight="20pxd">
-                                    <mat-grid-tile colspan="4" rowspan='1'>
-                                      <mat-card-title >Gestion de usuarios</mat-card-title>
-                              
-                                    </mat-grid-tile>
-                                  </mat-grid-list>
-                                </mat-card>
-                              </div>
-    
-                        <form #formRegister="ngForm" (ngSubmit)="Guardar(formRegister)">                                            
-                            
-                            
-                        <button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar Curso</button>
-                            
-                          </form>
+          <ng-template #content let-modal>
+            <div class="modal-header">
+              <input type="text" class="form-contro" name="filtro" placeholder="Buscar..." [(ngModel)]="filtro">
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="dateOfBirth"></label>
+                  <table class="table table-striped">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Cod. Curso</th>
+                        <th scope="col">Nombre Profesor</th>        
+                        <th scope="col">Materia</th>
+                        <th scope="col">Paralelo</th>
+                        <th scope="col">Aula</th>
+                        <th scope="col">Periodo</th>
                         
-                      </div>
+                        
+                      </tr>
+                    </thead>
+                   
+                    <tbody>
+                    <tr *ngFor="let curso of cursos | filtroc:filtro  | paginate: { itemsPerPage: 6, currentPage: pageActual }" (click)="buscarc(curso.codigoCurso)">
+                        <th scope="row">{{curso.codigoCurso}}</th>
+                        <td>{{curso.nombre}}</td>
+                        <td>{{curso.nombreMateria}}</td>
+                        <td>{{curso.Paralelo}}</td> 
+                        <td>{{curso.aula}}</td>
+                        <td>{{curso.periodoLectivo}}</td>  
+                        
+                        
+                              
+                    </tr>
+                    </tbody>
+                  </table>
+                
+                  <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+                  <div class="input-group">
+                    
+                   
+               
+                    <div class="input-group-append">
+                     
+                      
                     </div>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
-          </section>
+            </ng-template> 
+          
+          <hr>
+          
+          <pre>{{closeResult}}</pre>
+    

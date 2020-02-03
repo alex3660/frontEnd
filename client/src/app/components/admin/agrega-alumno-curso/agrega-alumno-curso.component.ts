@@ -5,6 +5,7 @@ import { DataApiService } from 'src/app/services/data-api.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as XLSX from 'ts-xlsx';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -14,14 +15,15 @@ import * as XLSX from 'ts-xlsx';
 })
 export class AgregaAlumnoCursoComponent implements OnInit {
 
-  constructor(private dataApi: DataApiService, private router: Router) { }
+  constructor(private dataApi: DataApiService, private router: Router, private modalService: NgbModal) { }
   arrayBuffer:any;
   file:File;
+  filtro = '';
+  pageActual: number = 1;
   incomingfile(event) 
     {
     this.file= event.target.files[0]; 
     }
-
 
   alumno:alumnoInterface={
     idAlumno:'',
@@ -29,7 +31,7 @@ export class AgregaAlumnoCursoComponent implements OnInit {
   };
   curso:cursoInterface={
     idCurso:'',
-    codigoCurso:''
+    codigoCurso:'',
   };
   rca: asignarCursointerface={
     idCurso:'',
@@ -41,8 +43,20 @@ export class AgregaAlumnoCursoComponent implements OnInit {
   listRca: asignarCursointerface[]=[];
   lista: string[]=[];
 
+  public cursos: cursoInterface;
+
 
   ngOnInit() {
+    this.getCurso();
+  }
+
+
+  getCurso(){
+    this.dataApi
+    .getCurso()
+    .subscribe((cursos: cursoInterface) => {this.cursos = cursos});
+
+
   }
 
   buscarp(){
@@ -61,12 +75,14 @@ export class AgregaAlumnoCursoComponent implements OnInit {
 
   }
 
-  buscarc(){
+  buscarc(id: string){
 
   this.dataApi
-  .getcursoId(this.curso.codigoCurso)
+  .getcursoId(id)
   .subscribe((materia: cursoInterface) => {(this.curso = materia),
-    console.log(materia),
+    alert('Curso Asignado'),
+    console.log(materia),  
+    this.curso.codigoCurso=id,
     this.rca.idCurso=materia[0].idCurso})
      
 
@@ -137,15 +153,13 @@ export class AgregaAlumnoCursoComponent implements OnInit {
 
     }
     fileReader.readAsArrayBuffer(this.file);
-    //console.log(this.lista);
-    
-   
-    
-
-   
-
-
-   
+    //console.log(this.lista);   
 }
+
+open(content) {
+  this.modalService.open(content, { size: 'lg' });
+}
+
+
   
 }

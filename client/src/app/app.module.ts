@@ -57,6 +57,10 @@ import { ModaLCursoprofesorComponent } from './components/admin/moda-l-cursoprof
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ModaExelAlComponent } from './components/admin/moda-exel-al/moda-exel-al.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditTareaComponent } from './components/profesor/edit-tarea/edit-tarea.component';
+import { EditEvaluacionComponent } from './components/profesor/edit-evaluacion/edit-evaluacion.component';
+import { EditTallerComponent } from './components/profesor/edit-taller/edit-taller.component';
+import { AalumnoIndividualCursoComponent } from './components/admin/aalumno-individual-curso/aalumno-individual-curso.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +105,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MensajeForoComponent,
     RepositorioComponent,
     ModaLCursoprofesorComponent,
-    ModaExelAlComponent
+    ModaExelAlComponent,
+    EditTareaComponent,
+    EditEvaluacionComponent,
+    EditTallerComponent,
+    AalumnoIndividualCursoComponent
     
       
   ],

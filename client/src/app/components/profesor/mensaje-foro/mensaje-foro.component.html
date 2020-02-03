@@ -1,5 +1,16 @@
 <app-nav-profesor></app-nav-profesor>
 
+<div> 
+  <mat-card>
+    <mat-grid-list cols="4" rowHeight="20pxd">
+      <mat-grid-tile colspan="4" rowspan='1'>
+        <mat-card-title >Gestion de usuarios</mat-card-title>
+
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card>
+</div>
+
 <ul class="nav nav-pills">
         <li class="nav-item">
           <a class="nav-link" routerLink="/profesor/curso/menu">Lista Alumnos</a>
@@ -24,16 +35,55 @@
       </ul>
 
       <ul class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let comentario of comentarios">
-            <div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
-                <h4 id="fat">{{comentario.nombre}}</h4>
-                <p>{{comentario.comentario}}</p>
-               
-              </div>
+        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let comentario of comentarios  | paginate: { itemsPerPage: 4, currentPage: pageActual }">
+          <a  class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{comentario.nombre}}</h5>
+              <small class="text-muted">{{comentario.fecha | date}}&nbsp;{{comentario.hora}}</small>
+            </div>
+            <p class="mb-1">{{comentario.comentario}}</p>
+           
+          </a>  
+
          
         </li>
         
       </ul>
+      <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+
+        
+      <section id="register" class="mb-5 mt-5">
+        <div class="container">
+          <div class="row">
+      
+            <div class="col-xs-12 col-sm-12 col-md-12 mx-auto">
+              <div class="card_register">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <form #formRegister="ngForm" (ngSubmit)="agregarComentario(formRegister)">
+                      <h1 class="h3 mb-3 font-weight-normal">Ingresar Comentario</h1>
+                      
+                      
+                      <div class="form-group">
+                        
+                        <textarea name="descripcion" id="descripcion" class="form-control" cols="50" rows="4" [(ngModel)]="coment.comentario"></textarea>
+                      </div>
+
+                     
+                      
+                     
+                      
+                      <button type="submit" class="btn btn-lg btn-primary float-right">Ingresar</button>
+                      
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
 
       

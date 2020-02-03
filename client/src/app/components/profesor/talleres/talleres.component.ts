@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { tallerInterface } from './../../../models/taller';
 import { Component, OnInit } from '@angular/core';
 import { tareaInterface } from 'src/app/models/tarea';
@@ -11,7 +12,7 @@ import { ProfesorServiceService } from 'src/app/services/profesor-service.servic
 })
 export class TalleresComponent implements OnInit {
 
-  constructor(private profeApi: ProfesorServiceService) { }
+  constructor(private profeApi: ProfesorServiceService, private router: Router) { }
 
   curso:cursoInterface;
   talleres: tallerInterface;
@@ -26,5 +27,31 @@ export class TalleresComponent implements OnInit {
     .subscribe((talleres: tareaInterface) => (this.talleres = talleres));
     
   }
+
+  editar(taller: tallerInterface){
+    this.profeApi.setTaller(taller);    
+    this.router.navigate(['profesor/editar/taller']);
+
+  }
+
+
+  eliminar(tallerid: string){
+    
+    
+    this.profeApi.deleteTaller(tallerid).subscribe(
+      res => {
+        console.log('jojk');
+        this.router.navigate(['/profesor/talleres']);
+        this.ngOnInit();
+      },
+      err => {console.error(err);
+        alert('No se elimino el taller');
+        this.ngOnInit();
+      }
+      
+    );
+  }
+
+  
 
 }

@@ -1,5 +1,16 @@
 <app-nav-profesor></app-nav-profesor>
 
+<div> 
+  <mat-card>
+    <mat-grid-list cols="4" rowHeight="20pxd">
+      <mat-grid-tile colspan="4" rowspan='1'>
+        <mat-card-title >Gestion de usuarios</mat-card-title>
+
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card>
+</div>
+
 <ul class="nav nav-pills">
         <li class="nav-item">
           <a class="nav-link" routerLink="/profesor/curso/menu">Lista Alumnos</a>
@@ -40,27 +51,28 @@
                           >
                       </div> 
 
-                      <div class="form-group">
+                      <div class="form-row">
+                        <div class="form-group col-md-4">
+                          <label for="exampleFormControlSelect1">Fecha</label>
                           <input type="date" id="date" name="date" [(ngModel)]="tarea.fechaEntrega" class="form-control">
-                        
-                      </div>
-
-                      <div class="form-group">
-                            <input type="time" id="hora" name="hora" [(ngModel)]="tarea.horaEntrega" class="form-control">
-                          
                         </div>
-
-                      
-
-                      <div class="form-group">
-                            <label for="exampleFormControlSelect1">Slecione una OpcionS</label>
+                        <div class="form-group col-md-4">
+                          <label for="exampleFormControlSelect1">Hora</label>
+                          <input type="time" id="hora" name="hora" [(ngModel)]="tarea.horaEntrega" class="form-control">
+                        </div> 
+                        <div class="form-group col-md-4">
+                          <label for="exampleFormControlSelect1">Selecione una Opcion</label>
                             <select name ="tipo"  id="exampleFormControlSelect1" placeholder="TIPO" class="form-control" [(ngModel)]="tarea.tipoEntrega">
                               <option value="Fisico">Fisico</option>
                               <option value="Email">Email</option>
                               <option value="Aula Virtual">Aula Virtual</option>
                              </select>
-                          </div>
+                        </div> 
+        
+    
+                      </div>
 
+                      
                       <div class="form-group">
                         <label for="descripcion">Descripción</label>
                         <textarea name="descripcion" id="descripcion" class="form-control" cols="50" rows="4" [(ngModel)]="tarea.descripcion"></textarea>
@@ -70,7 +82,7 @@
                       
                      
                       
-                      <button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar</button>
+                      <button type="submit" class="btn btn-lg btn-primary float-right">Ingresar</button>
                       
                     </form>
                   </div>

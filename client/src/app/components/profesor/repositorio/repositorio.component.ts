@@ -3,8 +3,11 @@ import { descargaInterface } from './../../../models/descarga';
 import { cursoInterface } from './../../../models/crurso-interface';
 import { repositorioInterface } from './../../../models/repositorio';
 import { ProfesorServiceService } from './../../../services/profesor-service.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { faUserAlt, faFileAlt} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-repositorio',
@@ -13,20 +16,35 @@ import { Router } from '@angular/router';
 })
 export class RepositorioComponent implements OnInit {
 
-  constructor(private profeApi: ProfesorServiceService, private router: Router) { }
+  constructor(
+    private profeApi: ProfesorServiceService, 
+    private router: Router,
+    private modalService: NgbModal,
+    @Inject(DOCUMENT) private documento: Document) { }
 
+
+    arrayBuffer:any;
+    file:File;
+    element: File;
+    closeResult: string
+    faCoffee = faUserAlt;
+    faKey = faFileAlt;;
+    incomingfile(event) 
+      {
+      this.file= event.target.files; 
+      }
 
   curso: cursoInterface={
     codigoCurso:''
   }
+
 
   descargas: descargaInterface
 
   uploadedFiles: Array < File > ;
 
   ngOnInit() {
-    this.curso= this.profeApi.getCurrentCuso();
-    console.log(this.curso.codigoCurso);
+    this.curso= this.profeApi.getCurrentCuso();    
     this.listaRepositorio();
     
     
@@ -53,13 +71,41 @@ export class RepositorioComponent implements OnInit {
     }
 
     listaRepositorio(){
+      console.log('hola');
       this.curso= this.profeApi.getCurrentCuso();
       this.profeApi.getRepositorioC(this.curso.idCurso)
       .subscribe((descargas: descargaInterface) => {(this.descargas = descargas);
-        this.ngOnInit();
+        
       
       });
       
     }
 
+    llamarDescargar(){
+      
+      let descargar = this.documento.getElementById("descargar");
+      descargar
+
+    }
+
+    open(content) {
+      this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});
+    }
+
+    eliminar(repoid: string){
+    
+    
+      this.profeApi.deleteRepositorio(repoid).subscribe(
+        res => {
+          console.log(res);
+          this.router.navigate(['/profesor/repositorio']);
+          this.ngOnInit();
+        },
+        err => {console.error(err);
+          alert('No se elimino el tarea');
+          this.ngOnInit();
+        }
+        
+      );
+    }
 }

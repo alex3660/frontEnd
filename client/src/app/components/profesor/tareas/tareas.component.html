@@ -41,7 +41,7 @@
       </ul>
       
       <table class="table table-striped">
-          <thead class="thead-pimary">
+          <thead class="thead-dark">
             <tr>
               <th scope="col">Nombre</th>        
               <th scope="col">Descripcion</th>
@@ -49,6 +49,8 @@
               <th scope="col">Fecha Entrega</th>
               <th scope="col">Hora Entrega</th>
               <th scope="col">Tipo</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
               
               
             </tr>
@@ -62,7 +64,8 @@
               <td>{{tarea.fechaEntrega | date}}</td>
               <td>{{tarea.horaEntrega}}</td>
               <td>{{tarea.tipoEntrega}}</td>
-              <td><button type="button" class="btn btn-link">Editar</button></td>
+              <td><button type="button" class="btn btn-info" (click)="editar(tarea)" >Editar</button></td>
+              <td><button type="button" class="btn btn-danger" (click)="eliminar(tarea.idTarea)" >Eliminar</button></td>
               
           </tr>
           </tbody>

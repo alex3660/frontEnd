@@ -16,6 +16,7 @@ export class NavProfesorComponent implements OnInit {
 
   logoutP(): void {
     this.authService.logoutP();
+    localStorage.clear();
 
   }
 

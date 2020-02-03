@@ -1,4 +1,14 @@
 <app-nav-profesor></app-nav-profesor>
+<div> 
+  <mat-card>
+    <mat-grid-list cols="4" rowHeight="20pxd">
+      <mat-grid-tile colspan="4" rowspan='1'>
+        <mat-card-title >Gestion de usuarios</mat-card-title>
+
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card>
+</div>
 
 <ul class="nav nav-pills">
         <li class="nav-item">
@@ -16,12 +26,13 @@
         </li>
         <li class="nav-item">
                 <a class="nav-link" routerLink="/profesor/talleres">Taller</a>
-        </li>        
-        
+        </li>   
+             
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profesor/repositorio">Repositorio</a>
+  </li>
       </ul>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/profesor/repositorio">Repositorio</a>
-</li>
+      
 
        
       <section id="register" class="mb-5 mt-5">
@@ -49,7 +60,7 @@
                       
                      
                       
-                      <button type="submit" class="btn btn-lg btn-primary btn-block">Ingresar</button>
+                      <button type="submit" class="btn btn-lg btn-primary float-right">Ingresar</button>
                       
                     </form>
                   </div>

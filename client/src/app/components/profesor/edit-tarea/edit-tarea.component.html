@@ -28,7 +28,6 @@
         <li class="nav-item">
                 <a class="nav-link" routerLink="/profesor/talleres">Taller</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link" routerLink="/profesor/repositorio">Repositorio</a>
   </li>
@@ -44,53 +43,46 @@
               <div class="card_register">
                 <div class="card">
                   <div class="card-body text-center">
-                    <form #formRegister="ngForm" (ngSubmit)="ingresarTaller(formRegister)">
-                      <h1 class="h3 mb-3 font-weight-normal">Ingresar Taller</h1>
-
-                      
+                    <form #formRegister="ngForm" (ngSubmit)="editarTarea(formRegister)">
+                      <h1 class="h3 mb-3 font-weight-normal">Editar Tarea</h1>
                       
                       <div class="form-group">
-                        <input type="text" #name="ngModel" name="cedula" class="form-control" placeholder="Titulo de Taller" [(ngModel)]="taller.nombre" required 
+                        <input type="text" #name="ngModel" name="cedula" class="form-control" placeholder="Titulo de Tarea" [(ngModel)]="tarea.nombre" required 
                           >
                       </div> 
-
 
                       <div class="form-row">
                         <div class="form-group col-md-4">
                           <label for="exampleFormControlSelect1">Fecha</label>
-                          <input type="date" id="date" name="date" [(ngModel)]="taller.fechaEntrega" class="form-control">
-                        
-                          
+                          <input type="date" id="date" name="date" [(ngModel)]="tarea.fechaEntrega" class="form-control">
                         </div>
                         <div class="form-group col-md-4">
                           <label for="exampleFormControlSelect1">Hora</label>
-                          <input type="time" id="hora" name="hora" [(ngModel)]="taller.horaEntrega" class="form-control">
-                          
-                          
+                          <input type="time" id="hora" name="hora" [(ngModel)]="tarea.horaEntrega" class="form-control">
                         </div> 
                         <div class="form-group col-md-4">
                           <label for="exampleFormControlSelect1">Selecione una Opcion</label>
-                          <select name ="tipo"  id="exampleFormControlSelect1" placeholder="TIPO" class="form-control" [(ngModel)]="taller.tipoEntrega">
-                            <option value="Fisico">Fisico</option>
-                            <option value="Email">Email</option>
-                            <option value="Aula Virtual">Aula Virtual</option>
-                           </select>
-                            
+                            <select name ="tipo"  id="exampleFormControlSelect1" placeholder="TIPO" class="form-control" [(ngModel)]="tarea.tipoEntrega">
+                              <option value="Fisico">Fisico</option>
+                              <option value="Email">Email</option>
+                              <option value="Aula Virtual">Aula Virtual</option>
+                             </select>
                         </div> 
         
     
                       </div>
 
+                      
                       <div class="form-group">
                         <label for="descripcion">Descripción</label>
-                        <textarea name="descripcion" id="descripcion" class="form-control" cols="50" rows="4" [(ngModel)]="taller.descripcion"></textarea>
+                        <textarea name="descripcion" id="descripcion" class="form-control" cols="50" rows="4" [(ngModel)]="tarea.descripcion"></textarea>
                       </div>
 
                      
                       
                      
                       
-                      <button type="submit" class="btn btn-lg btn-primary float-right">Ingresar</button>
+                      <button type="submit" class="btn btn-lg btn-primary float-right">Guardar</button>
                       
                     </form>
                   </div>
