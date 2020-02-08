@@ -1,3 +1,5 @@
+import { ProfesorServiceService } from './services/profesor-service.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -128,7 +130,9 @@ import { AalumnoIndividualCursoComponent } from './components/admin/aalumno-indi
     
        
   ],
-  providers: [DataApiService],
+  providers: [DataApiService,
+  AuthService,
+ProfesorServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

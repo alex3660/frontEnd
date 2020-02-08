@@ -1,3 +1,4 @@
+import { eliminarInterface } from './../../../models/eliminar';
 import { tareaInterface } from 'src/app/models/tarea';
 import { cursoInterface } from './../../../models/crurso-interface';
 import { Component, OnInit } from '@angular/core';
@@ -14,6 +15,10 @@ export class TareasComponent implements OnInit {
   constructor(private profeApi: ProfesorServiceService,  private router: Router) { }
   curso:cursoInterface;
   tareas: tareaInterface;
+  elim : eliminarInterface={
+    idEvento:'',
+    idCurso:''
+  }
 
   ngOnInit() {
     this.listaTarea();
@@ -33,10 +38,11 @@ export class TareasComponent implements OnInit {
 
   }
 
-  eliminar(tareaid: string){
-    
-    
-    this.profeApi.deleteTarea(tareaid).subscribe(
+  eliminar(tareaid: string, idcurso: string){
+    this.elim.idEvento=tareaid;
+    this.elim.idCurso= idcurso;
+    console.log(this.elim)
+    this.profeApi.deleteTarea(this.elim).subscribe(
       res => {
         console.log(res);
         this.router.navigate(['/profesor/tareas']);

@@ -63,7 +63,7 @@
                     <td>{{evaluacion.horaEntrega}}</td>
                     <td>{{evaluacion.tipoEvaluacion}}</td>
                     <td><button type="button" class="btn btn-info" (click)="editar(evaluacion)" >Editar</button></td>
-                    <td><button type="button" class="btn btn-danger" (click)="eliminar(evaluacion.idEvaluacion)"  >Eliminar</button></td>
+                    <td><button type="button" class="btn btn-danger" (click)="eliminar(evaluacion.idEvaluacion, evaluacion.idCurso)"  >Eliminar</button></td>
                     
                 </tr>
                 </tbody>

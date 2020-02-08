@@ -1,3 +1,4 @@
+import { eliminarInterface } from './../models/eliminar';
 import { tareaInterface } from 'src/app/models/tarea';
 import { foroListInterface } from './../models/foro-list';
 import { foroInterface } from './../models/foro';
@@ -25,7 +26,7 @@ export class ProfesorServiceService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  url='http://192.168.0.15:3000';
+  url='http://192.168.0.8:3000';
 
   curso: Observable<any>;
   cursos: Observable<any>;
@@ -91,7 +92,7 @@ export class ProfesorServiceService {
   }
 
   getCurrentTaller(): tallerInterface{
-    let admin_string = localStorage.getItem("CurrentEvaluacion");
+    let admin_string = localStorage.getItem("CurrentTaller");
     if ( !isNullOrUndefined(admin_string)){
       let admin: tallerInterface = JSON.parse(admin_string);
       return admin;
@@ -150,13 +151,14 @@ export class ProfesorServiceService {
     
   }
 
-  deleteTarea(id: string){
+  deleteTarea(elimin:eliminarInterface){
     //token
     //not null
+
     let token = this.authService.gettoken();
-    const url_api = this.url+`/tarea/${id}`;
-    return this.http.delete(url_api)
-    .pipe(map(data => data ));
+    const url_api = this.url+`/tarea/delete`;
+    return this.http.put<eliminarInterface>(url_api, elimin)
+    .pipe(map(data => data ));  
     
   }
 
@@ -186,12 +188,12 @@ export class ProfesorServiceService {
     
   }
 
-  deleteEvaluacion(id: string){
+  deleteEvaluacion(elim: eliminarInterface){
     //token
     //not null
     let token = this.authService.gettoken();
-    const url_api = this.url+`/evaluacion/${id}`;
-    return this.http.delete(url_api)
+    const url_api = this.url+`/evaluacion/delete`;
+    return this.http.put<eliminarInterface>(url_api, elim)
     .pipe(map(data => data ));
     
   }
@@ -224,12 +226,12 @@ export class ProfesorServiceService {
   }
 
 
-  deleteTaller(id: string){
+  deleteTaller(elimn : eliminarInterface){
     //token
     //not null
     let token = this.authService.gettoken();
-    const url_api = this.url+`/taller/${id}`;
-    return this.http.delete(url_api)
+    const url_api = this.url+`/taller/delete`;
+    return this.http.put<eliminarInterface>(url_api,elimn)
     .pipe(map(data => data ));
     
   }

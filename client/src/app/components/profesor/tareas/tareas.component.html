@@ -65,7 +65,7 @@
               <td>{{tarea.horaEntrega}}</td>
               <td>{{tarea.tipoEntrega}}</td>
               <td><button type="button" class="btn btn-info" (click)="editar(tarea)" >Editar</button></td>
-              <td><button type="button" class="btn btn-danger" (click)="eliminar(tarea.idTarea)" >Eliminar</button></td>
+              <td><button type="button" class="btn btn-danger" (click)="eliminar(tarea.idTarea, tarea.idCurso)" >Eliminar</button></td>
               
           </tr>
           </tbody>

@@ -1,3 +1,4 @@
+import { eliminarInterface } from './../../../models/eliminar';
 import { Router } from '@angular/router';
 import { tallerInterface } from './../../../models/taller';
 import { Component, OnInit } from '@angular/core';
@@ -16,6 +17,10 @@ export class TalleresComponent implements OnInit {
 
   curso:cursoInterface;
   talleres: tallerInterface;
+  elim:eliminarInterface={
+    idEvento:'',
+    idCurso:'',
+  };
 
   ngOnInit() {
     this.listaTaller()
@@ -35,12 +40,13 @@ export class TalleresComponent implements OnInit {
   }
 
 
-  eliminar(tallerid: string){
+  eliminar(tallerid: string, cursoIi: string){
+    this.elim.idEvento=tallerid,
+    this.elim.idCurso=cursoIi,
     
-    
-    this.profeApi.deleteTaller(tallerid).subscribe(
+    this.profeApi.deleteTaller(this.elim).subscribe(
       res => {
-        console.log('jojk');
+        
         this.router.navigate(['/profesor/talleres']);
         this.ngOnInit();
       },

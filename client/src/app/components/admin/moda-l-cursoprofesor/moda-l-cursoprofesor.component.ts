@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfesorServiceService } from 'src/app/services/profesor-service.service';
 import { alumnoCursoInterface } from 'src/app/models/alumno-curso';
 import { cursoInterface } from 'src/app/models/crurso-interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-moda-l-cursoprofesor',
@@ -11,7 +12,7 @@ import { cursoInterface } from 'src/app/models/crurso-interface';
 })
 export class ModaLCursoprofesorComponent implements OnInit {
 
-  constructor(private profeApi: ProfesorServiceService, private dataApi: DataApiService) { }
+  constructor(private profeApi: ProfesorServiceService, private dataApi: DataApiService, private router: Router) { }
 
   alumnos:alumnoCursoInterface;
   curso:cursoInterface;
@@ -30,6 +31,21 @@ export class ModaLCursoprofesorComponent implements OnInit {
     .subscribe((alumnos: alumnoCursoInterface) => (this.alumnos = alumnos));
 
   
+}
+
+eliminar(id: string){
+    
+    
+  this.dataApi.deleteAlumnoCurso(id).subscribe(
+    res => {
+      console.log(res);
+      this.router.navigate(['/admin/curso/lista']);
+      this.ngOnInit();
+    },
+    err => {console.error(err);
+      alert('No se elimino el Alumno');
+    }
+  );
 }
 
 }

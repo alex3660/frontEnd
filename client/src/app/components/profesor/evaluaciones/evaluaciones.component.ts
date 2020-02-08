@@ -3,6 +3,7 @@ import { evaluacionInterface } from './../../../models/evaluacion';
 import { Component, OnInit } from '@angular/core';
 import { cursoInterface } from 'src/app/models/crurso-interface';
 import { ProfesorServiceService } from 'src/app/services/profesor-service.service';
+import { eliminarInterface } from 'src/app/models/eliminar';
 
 @Component({
   selector: 'app-evaluaciones',
@@ -15,6 +16,10 @@ export class EvaluacionesComponent implements OnInit {
 
   curso:cursoInterface;
   evaluaciones: evaluacionInterface;
+  elim:eliminarInterface={
+    idEvento:'',
+    idCurso:'',
+  };
 
 
   ngOnInit() {
@@ -34,10 +39,12 @@ export class EvaluacionesComponent implements OnInit {
 
   }
 
-  eliminar(evaluacionid: string){
+  eliminar(evaluacionid: string, idCurso: string){
+    this.elim.idEvento=evaluacionid,
+    this.elim.idCurso=idCurso,
     
     
-    this.profeApi.deleteEvaluacion(evaluacionid).subscribe(
+    this.profeApi.deleteEvaluacion(this.elim).subscribe(
       res => {
         console.log(res);
         this.router.navigate(['/profesor/evaluaciones']);

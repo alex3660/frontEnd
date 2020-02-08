@@ -32,6 +32,7 @@ export class MensajeForoComponent implements OnInit {
     this.foro= this.profeApi.getCurrentForo();
     this.profeApi.getComentario(this.foro.idForo)
     .subscribe((comentarios: comentarioInterface) => (this.comentarios = comentarios))
+    
   }
 
   agregarComentario(){
