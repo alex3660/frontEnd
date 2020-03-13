@@ -63,6 +63,8 @@ import { EditTareaComponent } from './components/profesor/edit-tarea/edit-tarea.
 import { EditEvaluacionComponent } from './components/profesor/edit-evaluacion/edit-evaluacion.component';
 import { EditTallerComponent } from './components/profesor/edit-taller/edit-taller.component';
 import { AalumnoIndividualCursoComponent } from './components/admin/aalumno-individual-curso/aalumno-individual-curso.component';
+import { CrontasenaComponent } from './components/crontasena/crontasena.component';
+import { MensajeCursoComponent } from './components/profesor/mensaje-curso/mensaje-curso.component';
 
 @NgModule({
   declarations: [
@@ -111,7 +113,9 @@ import { AalumnoIndividualCursoComponent } from './components/admin/aalumno-indi
     EditTareaComponent,
     EditEvaluacionComponent,
     EditTallerComponent,
-    AalumnoIndividualCursoComponent
+    AalumnoIndividualCursoComponent,
+    CrontasenaComponent,
+    MensajeCursoComponent
     
       
   ],

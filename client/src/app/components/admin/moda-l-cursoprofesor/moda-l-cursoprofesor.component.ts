@@ -35,7 +35,7 @@ export class ModaLCursoprofesorComponent implements OnInit {
 
 eliminar(id: string){
     
-    
+  console.log(id);
   this.dataApi.deleteAlumnoCurso(id).subscribe(
     res => {
       console.log(res);

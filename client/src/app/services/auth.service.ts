@@ -12,12 +12,13 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  AUTH_SERVER: string = 'http://localhost:3000/login';
+  
+  
   authSubject = new BehaviorSubject(false);
   private token: string;
   constructor( private http: HttpClient) { }
 
-  url='http://192.168.0.8:3000'
+  url='http://192.168.100.3:3000'
 
   public jwrespose : JwtResponseI = {
 

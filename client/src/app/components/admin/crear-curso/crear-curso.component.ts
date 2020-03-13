@@ -38,11 +38,23 @@ export class CrearCursoComponent implements OnInit {
     lista(Curso: cursoInterface){
       this.profeApi.setCurso(Curso)
       this.router.navigate(['/admin/curso/lista']);
-  
-  
     
   }
 
+  eliminar(id: string){
+    
+    console.log(id);
+    this.dataApi.deleteCurso(id).subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['/admin/curso']);
+        this.ngOnInit();
+      },
+      err => {console.error(err);
+        alert('No se elimino el Curso');
+      }
+    );
+  }
   
   
     

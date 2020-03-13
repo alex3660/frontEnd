@@ -38,7 +38,7 @@ export class DataApiService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  url='http://192.168.0.8:3000'
+  url='http://192.168.100.3:3000'
 
   headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json",
@@ -339,5 +339,16 @@ export class DataApiService {
     .pipe(map(data => data ));
     
   }
+
+  deleteCurso(id: string){
+    //token
+    //not null
+    let token = this.authService.gettoken();
+    const url_api = this.url+`/curso/${id}`;
+    return this.http.delete(url_api)
+    .pipe(map(data => data ));
+    
+  }
+
 
 }

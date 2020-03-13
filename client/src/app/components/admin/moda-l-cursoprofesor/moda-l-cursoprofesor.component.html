@@ -41,8 +41,8 @@
             <tr *ngFor="let alumno of alumnos; index as i" >
                 <th scope="row"> {{i+1}}</th>
                 <td>{{alumno.nombreAlumno}}</td>
-                <td></td>
-                <td><button type="button" class="btn btn-danger float-rigth" click="eliminar(alumno.idCurso_Alumno)" >Eliminar</button></td>                  
+                
+                <td><td><button type="button" class="btn btn-danger" (click)="eliminar(alumno.idCurso_Alumno)">Eliminar</button></td>                  
                 
                 
                 
