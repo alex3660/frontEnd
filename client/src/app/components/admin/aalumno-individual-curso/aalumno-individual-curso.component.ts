@@ -21,7 +21,7 @@ export class AalumnoIndividualCursoComponent implements OnInit {
   
   alumno:alumnoInterface={
     idAlumno:'',
-    cedula:''
+    cedula:'',
   };
   curso:cursoInterface={
     idCurso:'',
@@ -29,7 +29,7 @@ export class AalumnoIndividualCursoComponent implements OnInit {
   };
   rca: asignarCursointerface={
     idCurso:'',
-    idAlumno:''
+    idAlumno:'',
     
   };
 
@@ -56,7 +56,7 @@ export class AalumnoIndividualCursoComponent implements OnInit {
       console.log(materia),  
       this.curso.codigoCurso=id,
       this.rca.idCurso=materia[0].idCurso})
-       
+      console.log(this.rca) 
   
     }
 
@@ -75,7 +75,8 @@ export class AalumnoIndividualCursoComponent implements OnInit {
       alert('Alumno Asignado'),
       this.alumno.cedula=cedula,
       console.log(profesor), 
-      this.rca.idAlumno=profesor[0].idAlumno});       
+      this.rca.idAlumno=profesor[0].idAlumno}); 
+           
     }
 
     Guardar(){
@@ -88,7 +89,7 @@ export class AalumnoIndividualCursoComponent implements OnInit {
             this.router.navigate(['/admin/curso']);
           },
           err => console.error(err)
-        );     
+        );    
   
   
     }

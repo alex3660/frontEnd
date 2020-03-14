@@ -53,7 +53,17 @@ export class LoginComponent implements OnInit {
           else{
             this.authService.setProfesor(res.profesor);
             this.authService.seToken(res.token);
-            this.router.navigate(['/profesor/inicio']);
+            if(res.profesor[0].estado == 'Nuevo')
+            {
+              
+              this.router.navigate(['/profesor/passwd']);
+
+            }
+            else{
+              this.router.navigate(['/profesor/inicio']);
+
+            }
+            
           }
           
 

@@ -34,7 +34,7 @@
           <div class="card_register">
             <div class="card">
               <div class="card-body text-center">
-                <form #formRegister="ngForm" (ngSubmit)="buscarp(formRegister)">
+                <form #formRegister="ngForm" (ngSubmit)="Guardar(formRegister)">
                   <h1 class="h3 mb-3 font-weight-normal">Ingresar Curso</h1>
                   
                                         
@@ -43,13 +43,14 @@
                     <input type="text" #name="ngModel" name="cedula" class="form-control" placeholder=" Cedula Alumno" [(ngModel)]="alumno.cedula" (click)="openM(contM)" required                    >
                   </div> 
                   <div class="form-group">
-                    <input type="text" #name="ngModel" name="numUnico" class="form-control" placeholder="Codigo Curso" [(ngModel)]="curso.codigoCurso" (click)="open(content)" required  >
-                  </div>                        
+                    <input type="text" #name="ngModel" name="Curso" class="form-control" placeholder="Codigo Curso" [(ngModel)]="curso.codigoCurso" (click)="open(content)" required  >
+                  </div> 
+                  <button type="submit" class="btn btn-lg btn-primary float-right" (ngSubmit)="Guardar(formRegister)">Asignar</button>
+                                           
                       
                   
                 </form>
                 <form #formRegister="ngForm" (ngSubmit)="Guardar(formRegister)">                                 
-                    <button type="submit" class="btn btn-lg btn-primary float-right">Asignar</button>
                     
                 </form>
                 

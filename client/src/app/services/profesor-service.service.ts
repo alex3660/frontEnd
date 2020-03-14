@@ -1,3 +1,4 @@
+import { contrasenaInterface } from './../models/contrasena';
 import { eliminarInterface } from './../models/eliminar';
 import { tareaInterface } from 'src/app/models/tarea';
 import { foroListInterface } from './../models/foro-list';
@@ -26,7 +27,7 @@ export class ProfesorServiceService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  url='http://192.168.100.3:3000';
+  url='http://ec2-18-224-19-123.us-east-2.compute.amazonaws.com:3000';
 
   curso: Observable<any>;
   cursos: Observable<any>;
@@ -290,6 +291,17 @@ deleteRepositorio(id: string){
   let token = this.authService.gettoken();
   const url_api = this.url+`/down/delete/${id}`;
   return this.http.delete(url_api)
+  .pipe(map(data => data ));
+  
+}
+
+
+editContrasena(contrasena: contrasenaInterface){
+  //token
+  //not null
+  let token = this.authService.gettoken();
+  const url_api = this.url+'/login/change';
+  return this.http.post<contrasenaInterface>(url_api, contrasena)
   .pipe(map(data => data ));
   
 }

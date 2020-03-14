@@ -1,4 +1,10 @@
+import { contrasenaInterface } from './../../models/contrasena';
+import { ProfesorServiceService } from 'src/app/services/profesor-service.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { profesorInterface } from 'src/app/models/profesor-inteface';
+import { AuthService } from 'src/app/services/auth.service';
+import { DataApiService } from 'src/app/services/data-api.service';
 
 @Component({
   selector: 'app-crontasena',
@@ -7,9 +13,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrontasenaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private profeApi : ProfesorServiceService,  private router: Router, private authService: AuthService, private dataApiService :DataApiService) { }
+
+  contrasena : contrasenaInterface={
+    id:'',
+    tipo:'Profesor',
+    passwordNueva:''
+  }
+
+  user:profesorInterface;
+
+  temp : string;
 
   ngOnInit() {
+  }
+
+  cambiarContrasena(){
+
+
+    if(this.contrasena.passwordNueva == this.temp){
+      this.profeApi.editContrasena(this.contrasena)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.router.navigate(['/profesor/inicio']);
+        },
+        err => console.error(err)
+      )
+  
+    }
+
   }
 
 }

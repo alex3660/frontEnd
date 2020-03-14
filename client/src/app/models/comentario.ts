@@ -7,7 +7,4 @@ export interface comentarioInterface{
     hora?:string
     fecha?:string
     nombre?:string
-
-
-
 }

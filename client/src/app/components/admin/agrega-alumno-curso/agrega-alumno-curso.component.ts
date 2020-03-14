@@ -138,7 +138,7 @@ export class AgregaAlumnoCursoComponent implements OnInit {
         //console.log(this.lista)
         var temp:asignarCursointerface;
         this.lista.forEach((n)=>[ 
-        temp={idAlumno: n ,idCurso: this.rca.idCurso}, console.log(temp),
+        temp={idCurso: this.rca.idCurso, idAlumno: n}, console.log(temp),
         this.dataApi.saveAlumnocurso(temp)
         .subscribe(
           res => {
