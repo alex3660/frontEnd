@@ -66,6 +66,7 @@ export class IAlumnoComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+          alert('ALUMNO INGRESADO CON EXITO!')
           this.router.navigate(['/admin/alumno']);
         },
         err => {console.error(err);
@@ -104,18 +105,15 @@ export class IAlumnoComponent implements OnInit {
           .subscribe(
           res => {
           console.log(res);
+          //alert('Alumno Ingresado con EXITO!')
           this.router.navigate(['/admin/alumno']);
         },
         err => {console.error(err)
           //alert('ERROR EN DATOS');
         }         
-      )
-          
-         
-          
+      )           
         
         }
-        
     }
     fileReader.readAsArrayBuffer(this.file);
 

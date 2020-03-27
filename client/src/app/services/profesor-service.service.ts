@@ -26,7 +26,7 @@ import { comentarioForoInterface } from '../models/comentario-foro';
 export class ProfesorServiceService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
-
+  
   url='http://ec2-18-224-19-123.us-east-2.compute.amazonaws.com:3000';
 
   curso: Observable<any>;

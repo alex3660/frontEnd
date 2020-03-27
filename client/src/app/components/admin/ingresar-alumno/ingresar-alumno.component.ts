@@ -34,6 +34,7 @@ export class IngresarAlumnoComponent implements OnInit {
   }
 
   editar(alumno: alumnoInterface){
+    
     this.dataApi.setAlumno(alumno);    
     this.router.navigate(['/admin/alumno/editar']);
 
@@ -41,7 +42,7 @@ export class IngresarAlumnoComponent implements OnInit {
 
   eliminar(alumnoid: string){
     
-    
+   if( confirm('Esta seguro de eliminar el Alumno')){
     this.dataApi.deleteAlumno(alumnoid).subscribe(
       res => {
         console.log(res);
@@ -52,6 +53,9 @@ export class IngresarAlumnoComponent implements OnInit {
         alert('No se elimino el Alumno');
       }
     );
+
+   } 
+    
        
    
   }

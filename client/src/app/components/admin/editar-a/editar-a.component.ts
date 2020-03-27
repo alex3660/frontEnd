@@ -23,8 +23,8 @@ export class EditarAComponent implements OnInit {
   }
 
   nuevoAlumno() {
-    
-    this.dataApi.editAlumno(this.user)
+    if( confirm('ESTA SEGURO DE GUARDAR LOS CAMBIOS!!!')){
+      this.dataApi.editAlumno(this.user)
       .subscribe(
         res => {
           console.log(res);
@@ -32,6 +32,8 @@ export class EditarAComponent implements OnInit {
         },
         err => console.error(err)
       )
+    }
+    
   }
 
   

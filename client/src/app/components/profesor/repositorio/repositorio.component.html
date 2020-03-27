@@ -46,15 +46,15 @@
                 &nbsp;
               
                 {{descarga.nombre}}
+                
 
 
                 <button type="button" class="btn btn-danger float-right"(click)="eliminar(descarga.idRecurso)">Eliminar</button> 
                 
                 <button type="submit" class="btn btn-success float-right " style="margin-right: 10px"  (click)="llamarDescargar()">
                     
-                    <a id="descargar" href="http://192.168.0.8:3000/down/descarga/{{descarga.idRecurso}} "  style="color: #f4f9ff!important;" download> Descargar </a> 
+                    <a id="descargar" href="http://ec2-18-224-19-123.us-east-2.compute.amazonaws.com:3000/down/descarga/{{descarga.idRecurso}} "  style="color: #f4f9ff!important;" download> Descargar  </a> 
                 </button>        
-     
         </li>
        </div>
                 

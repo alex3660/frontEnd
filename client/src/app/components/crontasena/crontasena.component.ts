@@ -29,8 +29,9 @@ export class CrontasenaComponent implements OnInit {
   }
 
   cambiarContrasena(){
-
-
+    this.user = this.authService.getProfesor();
+    this.contrasena.id= this.user[0].idProfesor;
+    console.log(this.contrasena)
     if(this.contrasena.passwordNueva == this.temp){
       this.profeApi.editContrasena(this.contrasena)
       .subscribe(
@@ -42,6 +43,7 @@ export class CrontasenaComponent implements OnInit {
       )
   
     }
+    
 
   }
 

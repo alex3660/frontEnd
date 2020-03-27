@@ -59,13 +59,19 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/profesor/passwd']);
 
             }
+
+            else if(res.profesor[0].estado == 'Inactivo'){
+
+              alert('SU INGRESO NO ES POSSIBLE')
+
+            }
+
+
             else{
               this.router.navigate(['/profesor/inicio']);
 
-            }
-            
-          }
-          
+            }            
+          }          
 
         },
         err => {console.error(err);

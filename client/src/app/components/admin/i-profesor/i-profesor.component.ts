@@ -47,6 +47,7 @@ export class IProfesorComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+          alert('PROFESOR INGRESADO CON EXITO!');
           this.router.navigate(['/admin/profesor']);
         },
         err => console.error(err)

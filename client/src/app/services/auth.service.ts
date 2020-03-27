@@ -18,8 +18,8 @@ export class AuthService {
   private token: string;
   constructor( private http: HttpClient) { }
 
-  url='http://ec2-18-224-19-123.us-east-2.compute.amazonaws.com:3000'
-
+ url='http://ec2-18-224-19-123.us-east-2.compute.amazonaws.com:3000'
+  //url ='http://192.168.100.7:3000'
   public jwrespose : JwtResponseI = {
 
     userName: '',
