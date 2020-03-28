@@ -1,4 +1,4 @@
-export interface tallerInterface{
+export class tallerInterface{
     idTaller?:string;
     idCurso?:string;
     nombre?:string;

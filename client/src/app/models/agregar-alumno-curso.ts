@@ -1,4 +1,4 @@
-export interface asignarCursointerface {  
+export class asignarCursointerface {  
     idCurso?: string;
     idAlumno?:string;
    

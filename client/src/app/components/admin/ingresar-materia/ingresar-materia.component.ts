@@ -38,18 +38,20 @@ export class IngresarMateriaComponent implements OnInit {
   }
   eliminar(materiaid: string){
     
+    if( confirm('ESTA SEGURO DE ELIMINAR EL PROFESOR')){
+      this.dataApi.deleteMateria(materiaid).subscribe(
+        res => {
+          console.log(res);
+          this.router.navigate(['/admin/materia']);
+          this.ngOnInit();
+        },
+        err => {console.error(err);
+          alert('No se elimino el Alumno');
+        }
+      );
+         
+    }
     
-    this.dataApi.deleteMateria(materiaid).subscribe(
-      res => {
-        console.log(res);
-        this.router.navigate(['/admin/materia']);
-        this.ngOnInit();
-      },
-      err => {console.error(err);
-        alert('No se elimino el Alumno');
-      }
-    );
-       
    
   }
 

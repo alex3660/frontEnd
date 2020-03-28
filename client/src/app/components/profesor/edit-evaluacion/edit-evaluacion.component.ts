@@ -19,8 +19,8 @@ export class EditEvaluacionComponent implements OnInit {
   }
 
   editarE() {
-    
-    this.profeApi.editEvaluacion(this.evaluacion)
+    if( confirm('ESTA SEGURO DE GUARDAR LOS CAMBIOS!!!')){
+      this.profeApi.editEvaluacion(this.evaluacion)
       .subscribe(
         res => {
           console.log(res);
@@ -28,6 +28,8 @@ export class EditEvaluacionComponent implements OnInit {
         },
         err => console.error(err)
       )
+    }
+    
   }
 
 }

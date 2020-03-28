@@ -1,5 +1,5 @@
 
-export interface iCursoInterface {
+export class iCursoInterface {
     codigoCurso?: string;
     idProfesor?: string;
     idMateria?: string;

@@ -1,3 +1,5 @@
+import { mensajeIngreso } from './../models/mensaje';
+
 import { contrasenaInterface } from './../models/contrasena';
 import { eliminarInterface } from './../models/eliminar';
 import { tareaInterface } from 'src/app/models/tarea';
@@ -302,6 +304,19 @@ editContrasena(contrasena: contrasenaInterface){
   let token = this.authService.gettoken();
   const url_api = this.url+'/login/change';
   return this.http.post<contrasenaInterface>(url_api, contrasena)
+  .pipe(map(data => data ));
+  
+}
+
+getMensaje(id: string){
+  const url_api =this.url+`/mensaje/curso/${id}`;
+  return (this.curso = this.http.get(url_api));
+}
+
+saveMensaje(id: string, mensaje: mensajeIngreso)
+{
+  const url_api = this.url+'/mensaje';
+  return this.http.post<mensajeIngreso>(url_api, mensaje)
   .pipe(map(data => data ));
   
 }

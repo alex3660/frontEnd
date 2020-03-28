@@ -1,4 +1,4 @@
-export interface comentarioInterface{
+export class comentarioInterface{
 
     idForo?: string
     idCurso?:string;

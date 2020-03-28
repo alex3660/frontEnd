@@ -44,7 +44,8 @@ export class CrearCursoComponent implements OnInit {
   eliminar(id: string){
     
     console.log(id);
-    this.dataApi.deleteCurso(id).subscribe(
+    if( confirm('ESTA SEGURO DE ELIMINAR EL CURSO')){
+      this.dataApi.deleteCurso(id).subscribe(
       res => {
         console.log(res);
         this.router.navigate(['/admin/curso']);
@@ -53,7 +54,8 @@ export class CrearCursoComponent implements OnInit {
       err => {console.error(err);
         alert('No se elimino el Curso');
       }
-    );
+    );}
+    
   }
   
   

@@ -1,4 +1,4 @@
-export interface contrasenaInterface{
+export class contrasenaInterface{
 
     id?: string
     passwordNueva?:string;

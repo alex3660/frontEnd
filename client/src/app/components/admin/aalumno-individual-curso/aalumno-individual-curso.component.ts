@@ -86,6 +86,7 @@ export class AalumnoIndividualCursoComponent implements OnInit {
         .subscribe(
           res => {
             console.log(res);
+            alert('ALUMNO ASIGNADO CON EXITO!');
             this.router.navigate(['/admin/curso']);
           },
           err => console.error(err)

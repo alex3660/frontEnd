@@ -1,4 +1,4 @@
-export interface adminInterface {  
+export class adminInterface {  
     idAdministrador?: string; 
     cedula?: string;
     nombre1?: string;

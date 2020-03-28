@@ -36,6 +36,7 @@ export class IEvaluacionesComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res);
+        alert('INGRESO DE EVALUACION EXITOSO!!!');
         this.router.navigate(['/profesor/evaluaciones']);
       },
       err => console.error(err)

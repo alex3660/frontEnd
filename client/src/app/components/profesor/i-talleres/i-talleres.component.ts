@@ -37,6 +37,7 @@ export class ITalleresComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res);
+        alert('INGRESO DE TALLER EXITOSO!!!');
         this.router.navigate(['/profesor/talleres']);
       },
       err => console.error(err)

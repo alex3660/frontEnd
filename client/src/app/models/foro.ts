@@ -1,4 +1,4 @@
-export interface foroInterface{
+export class foroInterface{
 
     idCurso?:string;
     tema?:string;

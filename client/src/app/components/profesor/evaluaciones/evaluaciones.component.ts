@@ -41,19 +41,22 @@ export class EvaluacionesComponent implements OnInit {
 
   eliminar(evaluacionid: string, idCurso: string){
     this.elim.idEvento=evaluacionid,
-    this.elim.idCurso=idCurso,
+    this.elim.idCurso=idCurso;
     
+    if( confirm('ESTA SEGURO DE ELIMINAR LA EVALUACION!!!')){
+      this.profeApi.deleteEvaluacion(this.elim).subscribe(
+        res => {
+          console.log(res);
+          this.router.navigate(['/profesor/evaluaciones']);
+          this.ngOnInit();
+        },
+        err => {console.error(err);
+          alert('No se elimino Evaluacion');
+        }
+      );
+
+    }
     
-    this.profeApi.deleteEvaluacion(this.elim).subscribe(
-      res => {
-        console.log(res);
-        this.router.navigate(['/profesor/evaluaciones']);
-        this.ngOnInit();
-      },
-      err => {console.error(err);
-        alert('No se elimino Evaluacion');
-      }
-    );
        
    
   }

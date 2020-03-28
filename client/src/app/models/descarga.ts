@@ -1,4 +1,4 @@
-export interface descargaInterface {    
+export class descargaInterface {    
     idRecurso?: string;
     idCurso?: string;
     nombre?: string;

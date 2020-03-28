@@ -1,4 +1,4 @@
-export interface alumnoCursoInterface {
+export class alumnoCursoInterface {
     idCurso_Alumno?:string;
     idCurso?:string;
     nombreAlumno?: string;

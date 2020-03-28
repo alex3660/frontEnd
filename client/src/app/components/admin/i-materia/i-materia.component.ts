@@ -53,6 +53,7 @@ export class IMateriaComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+          alert('MATERIA INGRESADO CON EXITO!');
           this.router.navigate(['/admin/materia']);
         },
         err => console.error(err)

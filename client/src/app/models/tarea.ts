@@ -1,4 +1,4 @@
-export interface tareaInterface{
+export class tareaInterface{
     idTarea?:string;
     idCurso?:string;
     nombre?:string;
@@ -8,6 +8,9 @@ export interface tareaInterface{
     horaEntrega?:string;
     fechaEntrega?:string;
     tipoEntrega?:string
-
     
 }
+
+
+
+

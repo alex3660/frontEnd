@@ -1,1 +1,88 @@
-<p>mensaje-curso works!</p>
+<app-nav-profesor></app-nav-profesor>
+
+<div> 
+  <mat-card>
+    <mat-grid-list cols="4" rowHeight="20pxd">
+      <mat-grid-tile colspan="4" rowspan='1'>
+        <mat-card-title >Gestion de usuarios</mat-card-title>
+
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card>
+</div>
+
+<ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profesor/curso/menu">Lista Alumnos</a>
+        
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profesor/tareas">Tarea</a>
+        </li>
+
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/evaluaciones">Evaluacion</a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/foro">Foro</a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/talleres">Taller</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profesor/repositorio">Repositorio</a>
+        </li>        
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/profesor/mensaje">Mensaje</a>
+        </li> 
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let mensaje of mensajeLista  | paginate: { itemsPerPage: 4, currentPage: pageActual }">
+          <a  class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              
+              <small class="text-muted">{{mensaje.fecha | date}}&nbsp;{{mensaje.hora}}</small>
+            </div>
+            <p class="mb-1">{{mensaje.mensaje}}</p>
+           
+          </a>  
+
+         
+        </li>
+        
+      </ul>
+      <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+
+
+
+<section id="register" class="mb-5 mt-5">
+        <div class="container">
+          <div class="row">
+      
+            <div class="col-xs-12 col-sm-12 col-md-12 mx-auto">
+              <div class="card_register">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <form #formRegister="ngForm" (ngSubmit)="agregarMensaje(formRegister)">
+                      <h1 class="h3 mb-3 font-weight-normal">Ingresar Mensaje</h1>
+                      
+                      
+                      <div class="form-group">
+                        
+                        <textarea name="descripcion" id="descripcion" class="form-control" cols="50" rows="4" [(ngModel)]="men.mensaje"></textarea>
+                      </div>
+
+                     
+                      
+                     
+                      
+                      <button type="submit" class="btn btn-lg btn-primary float-right">Ingresar</button>
+                      
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>

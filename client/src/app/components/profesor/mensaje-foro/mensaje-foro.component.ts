@@ -20,7 +20,7 @@ export class MensajeForoComponent implements OnInit {
   profesor: profesorInterface;
   comentarios: comentarioInterface;
   coment: comentarioForoInterface ={
-    comentario:'',
+  comentario:'',
   };
 
 
@@ -45,7 +45,7 @@ export class MensajeForoComponent implements OnInit {
     this.profeApi.saveComentario(this.coment)
     .subscribe(
       res => {
-        
+        alert('INGRESO DE COMENTARIO EXITOSO!!!');
         this.router.navigate(['/profesor/foro/comentario']);
         this.ngOnInit();
       },

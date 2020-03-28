@@ -42,18 +42,21 @@ export class TareasComponent implements OnInit {
     this.elim.idEvento=tareaid;
     this.elim.idCurso= idcurso;
     console.log(this.elim)
-    this.profeApi.deleteTarea(this.elim).subscribe(
-      res => {
-        console.log(res);
-        this.router.navigate(['/profesor/tareas']);
-        this.ngOnInit();
-      },
-      err => {console.error(err);
-       // alert('No se elimino el tarea');
-        //this.ngOnInit();
-      }
-      
-    );
+    if( confirm('ESTA SEGURO DE ELIMINAR LA TAREA!!!')){
+      this.profeApi.deleteTarea(this.elim).subscribe(
+        res => {
+          console.log(res);
+          this.router.navigate(['/profesor/tareas']);
+          this.ngOnInit();
+        },
+        err => {console.error(err);
+         // alert('No se elimino el tarea');
+          //this.ngOnInit();
+        }
+        
+      );
+    }
+    
   }
 
 }

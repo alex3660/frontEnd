@@ -41,21 +41,24 @@ export class TalleresComponent implements OnInit {
 
 
   eliminar(tallerid: string, cursoIi: string){
-    this.elim.idEvento=tallerid,
-    this.elim.idCurso=cursoIi,
-    
-    this.profeApi.deleteTaller(this.elim).subscribe(
-      res => {
+    this.elim.idEvento=tallerid;
+    this.elim.idCurso=cursoIi;
+    if( confirm('ESTA SEGURO DE ELIMINAR EL TALLER!!!')){
+      this.profeApi.deleteTaller(this.elim).subscribe(
+        res => {
+          
+          this.router.navigate(['/profesor/talleres']);
+          this.ngOnInit();
+        },
+        err => {console.error(err);
+          alert('No se elimino el taller');
+          this.ngOnInit();
+        }
         
-        this.router.navigate(['/profesor/talleres']);
-        this.ngOnInit();
-      },
-      err => {console.error(err);
-        alert('No se elimino el taller');
-        this.ngOnInit();
-      }
-      
-    );
+      );
+
+    }
+    
   }
 
   

@@ -62,6 +62,7 @@ export class RepositorioComponent implements OnInit {
     }
     this.profeApi.uploadFile(formData,this.curso.idCurso).subscribe((res)=> {
       console.log('response received is ', res);
+      alert('ARCHIVO SUBIDO CON EXITO!!!');
       this.ngOnInit();
       
       
@@ -93,8 +94,7 @@ export class RepositorioComponent implements OnInit {
     }
 
     eliminar(repoid: string){
-    
-    
+    if( confirm('ESTA SEGURO DE ELIMINAR EL ARCHIVO')){
       this.profeApi.deleteRepositorio(repoid).subscribe(
         res => {
           console.log(res);
@@ -107,5 +107,8 @@ export class RepositorioComponent implements OnInit {
         }
         
       );
+    }
+    
+      
     }
 }

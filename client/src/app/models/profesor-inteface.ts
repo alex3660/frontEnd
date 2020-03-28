@@ -1,4 +1,4 @@
-export interface profesorInterface {
+export class profesorInterface {
       
     idProfesor?: string; 
     numUnico?: string;

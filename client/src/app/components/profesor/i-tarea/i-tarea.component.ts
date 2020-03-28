@@ -37,6 +37,7 @@ export class ITareaComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res);
+        alert('INGRESO DE TAREA EXITOSO!!!');
         this.router.navigate(['/profesor/tareas']);
       },
       err => console.error(err)

@@ -39,17 +39,20 @@ export class IngresarProfesorComponent implements OnInit {
 
   eliminar(profesorid: string){
     
+    if( confirm('ESTA SEGURO DE ELIMINAR EL PROFESOR')){
+
+      this.dataApi.deleteProfesoR(profesorid).subscribe(
+        res => {
+          console.log(res);
+          this.router.navigate(['/admin/profesor']);
+          this.ngOnInit();
+        },
+        err => {console.error(err);
+          alert('No se elimino el Profesor'); 
+        }
+      );
+    }
     
-    this.dataApi.deleteProfesoR(profesorid).subscribe(
-      res => {
-        console.log(res);
-        this.router.navigate(['/admin/profesor']);
-        this.ngOnInit();
-      },
-      err => {console.error(err);
-        alert('No se elimino el Profesor');
-      }
-    );
        
    
   }

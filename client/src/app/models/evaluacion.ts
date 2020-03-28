@@ -1,4 +1,4 @@
-export interface evaluacionInterface{
+export class evaluacionInterface{
     idEvaluacion?:string;
     idCurso?:string;
     nombre?:string;

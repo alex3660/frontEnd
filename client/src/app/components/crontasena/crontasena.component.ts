@@ -37,6 +37,7 @@ export class CrontasenaComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+          alert('CONTRASEÑA CAMBIADA');
           this.router.navigate(['/profesor/inicio']);
         },
         err => console.error(err)

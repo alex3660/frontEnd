@@ -20,8 +20,9 @@ export class EditTallerComponent implements OnInit {
   }
 
   editarTaller() {
-    
-    this.profeApi.editTaller(this.taller)
+    console.log(this.taller);
+    if( confirm('ESTA SEGURO DE GUARDAR LOS CAMBIOS!!!')){
+      this.profeApi.editTaller(this.taller)
       .subscribe(
         res => {
           console.log(res);
@@ -29,6 +30,8 @@ export class EditTallerComponent implements OnInit {
         },
         err => console.error(err)
       )
+    }
+   
   }
 
 

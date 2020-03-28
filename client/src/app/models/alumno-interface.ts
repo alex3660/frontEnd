@@ -1,4 +1,4 @@
-export interface alumnoInterface {  
+export class alumnoInterface {  
     idAlumno?: string; 
     numUnico?: string;
     cedula?: string;

@@ -20,8 +20,9 @@ export class EditTareaComponent implements OnInit {
 
   
   editarTarea() {
-    
-    this.profeApi.editTarea(this.tarea)
+    console.log(this.tarea)
+    if( confirm('ESTA SEGURO DE GUARDAR LOS CAMBIOS!!!')){
+      this.profeApi.editTarea(this.tarea)
       .subscribe(
         res => {
           console.log(res);
@@ -29,6 +30,8 @@ export class EditTareaComponent implements OnInit {
         },
         err => console.error(err)
       )
+    }
+    
   }
 
 }

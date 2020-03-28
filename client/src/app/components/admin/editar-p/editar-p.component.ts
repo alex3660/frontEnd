@@ -19,8 +19,8 @@ export class EditarPComponent implements OnInit {
   }
 
   editP() {
-    
-    this.dataApi.editProfesor(this.user)
+    if( confirm('ESTA SEGURO DE GUARDAR LOS CAMBIOS!!!')){
+      this.dataApi.editProfesor(this.user)
       .subscribe(
         res => {
           console.log(res);
@@ -28,6 +28,10 @@ export class EditarPComponent implements OnInit {
         },
         err => console.error(err)
       )
+
+
+    }
+    
   }
 
 

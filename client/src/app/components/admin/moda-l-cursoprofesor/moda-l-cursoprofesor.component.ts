@@ -36,16 +36,19 @@ export class ModaLCursoprofesorComponent implements OnInit {
 eliminar(id: string){
     
   console.log(id);
-  this.dataApi.deleteAlumnoCurso(id).subscribe(
-    res => {
-      console.log(res);
-      this.router.navigate(['/admin/curso/lista']);
-      this.ngOnInit();
-    },
-    err => {console.error(err);
-      alert('No se elimino el Alumno');
-    }
-  );
+  if( confirm('ESTA SEGURO DE ELIMINAR EL ALUMNO')){
+    this.dataApi.deleteAlumnoCurso(id).subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['/admin/curso/lista']);
+        this.ngOnInit();
+      },
+      err => {console.error(err);
+        alert('No se elimino el Alumno');
+      }
+    );
+  }
+  
 }
 
 }

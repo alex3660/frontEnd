@@ -1,5 +1,5 @@
-export interface repositorioInterface {    
+export class repositorioInterface {    
     codCurso?: string;
-    archivo?: FormData;     
+    archivo?: FormData;  
   
 }

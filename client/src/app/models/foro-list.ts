@@ -1,4 +1,4 @@
-export interface foroListInterface{
+export class foroListInterface{
 
     idForo?: string
     idCurso?:string;

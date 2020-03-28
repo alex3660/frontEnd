@@ -96,6 +96,7 @@ export class ICursoComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+          alert('CURSO INGRESADO CON EXITO!');
           this.router.navigate(['/admin/curso']);
         },
         err => {console.error(err);

@@ -40,6 +40,7 @@ export class IForoComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res);
+        alert('INGRESO DE FORO EXITOSO!!!');
         this.router.navigate(['/profesor/foro']);
       },
       err => console.error(err)

@@ -1,4 +1,4 @@
-export interface JwtResponseI {
+export class JwtResponseI {
      
       userName: string;
       passwd: string;

@@ -18,8 +18,8 @@ export class EditarMComponent implements OnInit {
   }
 
   editM() {
-    
-    this.dataApi.editMateria(this.materia)
+    if( confirm('ESTA SEGURO DE GUARDAR LOS CAMBIOS!!!')){
+      this.dataApi.editMateria(this.materia)
       .subscribe(
         res => {
           console.log(res);
@@ -27,6 +27,8 @@ export class EditarMComponent implements OnInit {
         },
         err => console.error(err)
       )
+    }
+    
   }
 
 }

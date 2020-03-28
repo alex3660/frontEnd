@@ -1,3 +1,4 @@
+import { MensajeCursoComponent } from './components/profesor/mensaje-curso/mensaje-curso.component';
 import { CrontasenaComponent } from './components/crontasena/crontasena.component';
 import { AalumnoIndividualCursoComponent } from './components/admin/aalumno-individual-curso/aalumno-individual-curso.component';
 import { EditTallerComponent } from './components/profesor/edit-taller/edit-taller.component';
@@ -78,6 +79,7 @@ const routes: Routes = [
   {path: 'profesor/editar/evaluacion', component: EditEvaluacionComponent, canActivate: [ProfesorGuard]},
   {path: 'profesor/editar/taller', component: EditTallerComponent, canActivate: [ProfesorGuard]},
   {path: 'profesor/passwd', component: CrontasenaComponent, canActivate: [ProfesorGuard]},
+  {path: 'profesor/mensaje', component: MensajeCursoComponent, canActivate: [ProfesorGuard]},
 
 ];
 
