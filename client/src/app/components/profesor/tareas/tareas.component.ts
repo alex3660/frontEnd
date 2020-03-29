@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class TareasComponent implements OnInit {
 
-  constructor(private profeApi: ProfesorServiceService,  private router: Router) { }
+  constructor(public profeApi: ProfesorServiceService,  private router: Router) { }
   curso:cursoInterface;
   tareas: tareaInterface;
   elim : eliminarInterface={

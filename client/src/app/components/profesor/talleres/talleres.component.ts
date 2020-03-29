@@ -13,7 +13,7 @@ import { ProfesorServiceService } from 'src/app/services/profesor-service.servic
 })
 export class TalleresComponent implements OnInit {
 
-  constructor(private profeApi: ProfesorServiceService, private router: Router) { }
+  constructor(public profeApi: ProfesorServiceService, private router: Router) { }
 
   curso:cursoInterface;
   talleres: tallerInterface;

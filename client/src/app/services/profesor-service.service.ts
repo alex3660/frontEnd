@@ -1,3 +1,4 @@
+import { environment } from './../../../../client/src/environments/environment.prod';
 import { mensajeIngreso } from './../models/mensaje';
 
 import { contrasenaInterface } from './../models/contrasena';
@@ -29,7 +30,10 @@ export class ProfesorServiceService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
   
-  url='http://ec2-18-224-19-123.us-east-2.compute.amazonaws.com:3000';
+  //url='http://ec2-18-224-19-123.us-east-2.compute.amazonaws.com:3000';
+
+
+  url= environment.apiUrl
 
   curso: Observable<any>;
   cursos: Observable<any>;

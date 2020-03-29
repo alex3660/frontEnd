@@ -14,14 +14,15 @@ import { comentarioForoInterface } from 'src/app/models/comentario-foro';
 })
 export class MensajeForoComponent implements OnInit {
 
-  constructor(private datapi :DataApiService, private profeApi:ProfesorServiceService, private router: Router) { }
+  constructor(public datapi :DataApiService, public profeApi:ProfesorServiceService, private router: Router) { }
 
   foro: foroListInterface;
   profesor: profesorInterface;
-  comentarios: comentarioInterface;
+  comentarios: any;
   coment: comentarioForoInterface ={
   comentario:'',
   };
+  pageActual: number = 1;
 
 
   ngOnInit() {

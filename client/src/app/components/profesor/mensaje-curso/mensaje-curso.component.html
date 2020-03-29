@@ -45,9 +45,7 @@
             </div>
             <p class="mb-1">{{mensaje.mensaje}}</p>
            
-          </a>  
-
-         
+          </a>        
         </li>
         
       </ul>
@@ -63,12 +61,10 @@
               <div class="card_register">
                 <div class="card">
                   <div class="card-body text-center">
-                    <form #formRegister="ngForm" (ngSubmit)="agregarMensaje(formRegister)">
+                    <form #formRegister="ngForm" (ngSubmit)="agregarMensaje()">
                       <h1 class="h3 mb-3 font-weight-normal">Ingresar Mensaje</h1>
-                      
-                      
                       <div class="form-group">
-                        
+                       
                         <textarea name="descripcion" id="descripcion" class="form-control" cols="50" rows="4" [(ngModel)]="men.mensaje"></textarea>
                       </div>
 

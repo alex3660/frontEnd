@@ -20,6 +20,7 @@ export class AgregaAlumnoCursoComponent implements OnInit {
   file:File;
   filtro = '';
   pageActual: number = 1;
+  closeResult: string;
   incomingfile(event) 
     {
     this.file= event.target.files[0]; 

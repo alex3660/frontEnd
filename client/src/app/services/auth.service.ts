@@ -1,3 +1,4 @@
+import { environment } from './../../../../client/src/environments/environment.prod';
 import { adminInterface } from './../models/admin-interface';
 import { profesorInterface } from './../models/profesor-inteface';
 import { Injectable } from '@angular/core';
@@ -18,8 +19,9 @@ export class AuthService {
   private token: string;
   constructor( private http: HttpClient) { }
 
- url='http://ec2-18-224-19-123.us-east-2.compute.amazonaws.com:3000'
+ //url='http://ec2-18-224-19-123.us-east-2.compute.amazonaws.com:3000'
   //url ='http://192.168.100.7:3000'
+  url= environment.apiUrl
   public jwrespose : JwtResponseI = {
 
     userName: '',

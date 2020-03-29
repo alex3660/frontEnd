@@ -1,3 +1,4 @@
+import { environment } from './../../../../client/src/environments/environment.prod';
 import { asignarCursointerface } from './../models/agregar-alumno-curso';
 import { alumnoInterface } from './../models/alumno-interface';
 import { JwtResponseI } from 'src/app/models/jwt-response';
@@ -39,8 +40,8 @@ export class DataApiService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
  // url ='http://192.168.100.7:3000'
-  url='http://ec2-18-224-19-123.us-east-2.compute.amazonaws.com:3000'
-
+  //url='http://ec2-18-224-19-123.us-east-2.compute.amazonaws.com:3000'
+  url= environment.apiUrl
   headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json",
     Authorization: this.authService.gettoken()

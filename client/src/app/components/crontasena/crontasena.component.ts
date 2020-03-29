@@ -27,7 +27,7 @@ export class CrontasenaComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  public isError = false;
   cambiarContrasena(){
     this.user = this.authService.getProfesor();
     this.contrasena.id= this.user[0].idProfesor;

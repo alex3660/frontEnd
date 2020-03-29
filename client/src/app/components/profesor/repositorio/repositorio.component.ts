@@ -17,7 +17,7 @@ import { faUserAlt, faFileAlt} from '@fortawesome/free-solid-svg-icons';
 export class RepositorioComponent implements OnInit {
 
   constructor(
-    private profeApi: ProfesorServiceService, 
+    public profeApi: ProfesorServiceService, 
     private router: Router,
     private modalService: NgbModal,
     @Inject(DOCUMENT) private documento: Document) { }
@@ -29,6 +29,7 @@ export class RepositorioComponent implements OnInit {
     closeResult: string
     faCoffee = faUserAlt;
     faKey = faFileAlt;;
+    pageActual: number = 1;
     incomingfile(event) 
       {
       this.file= event.target.files; 
@@ -39,8 +40,7 @@ export class RepositorioComponent implements OnInit {
   }
 
 
-  descargas: descargaInterface
-
+  descargas: any;
   uploadedFiles: Array < File > ;
 
   ngOnInit() {

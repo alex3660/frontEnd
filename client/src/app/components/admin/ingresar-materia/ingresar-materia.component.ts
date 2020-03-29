@@ -11,10 +11,10 @@ import { Router } from '@angular/router';
 })
 export class IngresarMateriaComponent implements OnInit {
 
-  constructor(private dataApi: DataApiService, private router: Router) { }
+  constructor(public dataApi: DataApiService, public router: Router) { }
 
   
-  private materias: MateriaInterface;
+  materias: MateriaInterface;
   filtro = '';
   pageActual: number = 1;
 

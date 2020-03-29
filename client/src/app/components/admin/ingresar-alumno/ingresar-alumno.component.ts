@@ -14,8 +14,8 @@ import { Router } from '@angular/router';
 
 export class IngresarAlumnoComponent implements OnInit {
 
-  constructor(private dataApi: DataApiService, private router: Router) { }
-  private alumnos: alumnoInterface;
+  constructor(public dataApi: DataApiService, public router: Router) { }
+  alumnos: alumnoInterface;
   filtro = '';
   pageActual: number = 1;
 

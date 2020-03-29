@@ -18,7 +18,7 @@ export class AalumnoIndividualCursoComponent implements OnInit {
   
   filtro = '';
   pageActual: number = 1;
-  
+  closeResult: string;
   alumno:alumnoInterface={
     idAlumno:'',
     cedula:'',

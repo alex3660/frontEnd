@@ -17,12 +17,12 @@ import { faUserAlt, faKey} from '@fortawesome/free-solid-svg-icons';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router, private location: Location) { }
+  constructor(public authService: AuthService, private router: Router, private location: Location) { }
 
   faCoffee = faUserAlt;
   faKey = faKey;
 
-  private user: JwtResponseI = {
+  user: JwtResponseI = {
     userName: '',
     passwd: '',
     tipo: ''

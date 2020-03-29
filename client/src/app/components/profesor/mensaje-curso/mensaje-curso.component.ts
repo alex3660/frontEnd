@@ -18,12 +18,13 @@ export class MensajeCursoComponent implements OnInit {
 
   constructor(private datapi :DataApiService, private profeApi:ProfesorServiceService, private router: Router) { }
 
-  mensajeLista: Mensaje;
+  mensajeLista: any;
   profesor: profesorInterface;
   men: mensajeIngreso={
     idCurso:'',
     mensaje:''
   };
+  pageActual: number = 1;
   curso: cursoInterface;
   ngOnInit() {
 

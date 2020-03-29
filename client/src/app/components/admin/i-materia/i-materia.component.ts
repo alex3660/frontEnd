@@ -16,6 +16,7 @@ export class IMateriaComponent implements OnInit {
   constructor(private dataApi: DataApiService, private router: Router, private activatedRoute: ActivatedRoute, private modalService: NgbModal) { }
   arrayBuffer:any;
   file:File;
+  closeResult: string;
   incomingfile(event) 
     {
     this.file= event.target.files[0]; 

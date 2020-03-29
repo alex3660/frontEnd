@@ -39,7 +39,7 @@
       </ul>
 
       <ul class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let comentario of comentarios  | paginate: { itemsPerPage: 4, currentPage: pageActual }">
+        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let comentario of comentarios | paginate: { itemsPerPage: 4, currentPage: pageActual }">
           <a  class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">{{comentario.nombre}}</h5>
@@ -64,7 +64,7 @@
               <div class="card_register">
                 <div class="card">
                   <div class="card-body text-center">
-                    <form #formRegister="ngForm" (ngSubmit)="agregarComentario(formRegister)">
+                    <form #formRegister="ngForm" (ngSubmit)="agregarComentario()">
                       <h1 class="h3 mb-3 font-weight-normal">Ingresar Comentario</h1>
                       
                       

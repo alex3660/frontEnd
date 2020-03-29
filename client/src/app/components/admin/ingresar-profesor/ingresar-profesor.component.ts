@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class IngresarProfesorComponent implements OnInit {
 
-  constructor(private dataApi: DataApiService, private router: Router) { }
-  private profesores: profesorInterface;
+  constructor(public dataApi: DataApiService, public router: Router) { }
+  profesores: profesorInterface;
   filtro = '';
   pageActual: number = 1;
 

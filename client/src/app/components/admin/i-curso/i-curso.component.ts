@@ -14,14 +14,15 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ICursoComponent implements OnInit {
 
-  constructor(private dataApi: DataApiService, private router: Router, private activatedRoute: ActivatedRoute, private modalService: NgbModal) { }
+  constructor(public dataApi: DataApiService, private router: Router, private activatedRoute: ActivatedRoute, private modalService: NgbModal) { }
 
   arrayBuffer:any;
   file:File;
-  private profesores: profesorInterface;
-  private materias: MateriaInterface;
+  profesores: profesorInterface;
+  materias: MateriaInterface;
   filtro = '';
   pageActual: number = 1;
+  closeResult: string;
   incomingfile(event) 
     {
     this.file= event.target.files[0]; 
