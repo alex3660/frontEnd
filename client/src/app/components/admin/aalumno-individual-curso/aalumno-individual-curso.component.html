@@ -12,18 +12,11 @@
   </mat-card>
 </div>
 <ul class="nav nav-pills">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/admin/curso">Lista Cursos</a>
     
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/admin/curso/ingresar">Ingresar Curso</a>
-    </li>
     <li class="nav-item">
         <a class="nav-link" routerLink="/admin/curso/agregaca">Asignar Alumnos</a>
      </li>
-     <li class="nav-item">
-      <a class="nav-link" routerLink="/admin/curso/agregaia">Asignar Alumno</a>
-   </li>
+     
     
   </ul>
 <section id="register" class="mb-5 mt-5">
@@ -40,10 +33,11 @@
                                         
                   
                   <div class="form-group">
-                    <input type="text" #name="ngModel" name="cedula" class="form-control" placeholder=" Cedula Alumno" [(ngModel)]="alumno.cedula" (click)="openM(contM)" required                    >
+                    <input type="text" #name="ngModel" name="Curso" class="form-control" placeholder="Codigo Curso" [(ngModel)]="curso.codigoCurso" (click)="open(content)" required  >
+                    
                   </div> 
                   <div class="form-group">
-                    <input type="text" #name="ngModel" name="Curso" class="form-control" placeholder="Codigo Curso" [(ngModel)]="curso.codigoCurso" (click)="open(content)" required  >
+                    <input type="text" #name="ngModel" name="cedula" class="form-control" placeholder=" Cedula Alumno" [(ngModel)]="alumno.cedula" (click)="openM(contM)" required >
                   </div> 
                   <button type="submit" class="btn btn-lg btn-primary float-right" (ngSubmit)="Guardar()">Asignar</button>
                                            
@@ -88,7 +82,7 @@
             </thead>
            
             <tbody>
-            <tr *ngFor="let curso of cursos | filtroc:filtro  | paginate: { itemsPerPage: 6, currentPage: pageActual }" (click)="buscarc(curso.codigoCurso)">
+            <tr *ngFor="let curso of cursos | filtroc:filtro  | paginate: { itemsPerPage: 6, currentPage: pageActual }" (click)="buscarc(curso.codigoCurso)" (click)="modal.dismiss('Cross click')">
                 <th scope="row">{{curso.codigoCurso}}</th>
                 <td>{{curso.nombre}}</td>
                 <td>{{curso.nombreMateria}}</td>
@@ -123,7 +117,7 @@
 
   <ng-template #contM let-modal>
     <div class="modal-header">
-      <input type="text" class="form-contro" name="filtro" placeholder="Buscar..." [(ngModel)]="filtro">
+      <input type="text" class="form-contro" name="filtro" placeholder="Buscar..." [(ngModel)]="filtro1">
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -144,7 +138,7 @@
             </thead>
            
             <tbody>
-            <tr *ngFor="let alumno of alumnos  | filter:filtro | paginate: { itemsPerPage: 6, currentPage: pageActual }" (click)="buscarp(alumno.cedula)">
+            <tr *ngFor="let alumno of alumnos  | filter:filtro1 | paginate: { itemsPerPage: 6, currentPage: pageActual }" (click)="buscarp(alumno.cedula)" (click)="modal.dismiss('Cross click')">
                 <th scope="row">{{alumno.numUnico}}</th>
                 <td>{{alumno.cedula}}</td>
                 <td>{{alumno.nombre1}} {{alumno.nombre2}} {{alumno.apellido1}} {{alumno.apellido2}}</td>

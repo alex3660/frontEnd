@@ -4,6 +4,7 @@ import { ProfesorServiceService } from 'src/app/services/profesor-service.servic
 import { alumnoCursoInterface } from 'src/app/models/alumno-curso';
 import { cursoInterface } from 'src/app/models/crurso-interface';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-moda-l-cursoprofesor',
@@ -34,20 +35,35 @@ export class ModaLCursoprofesorComponent implements OnInit {
 }
 
 eliminar(id: string){
-    
-  console.log(id);
-  if( confirm('ESTA SEGURO DE ELIMINAR EL ALUMNO')){
-    this.dataApi.deleteAlumnoCurso(id).subscribe(
-      res => {
-        console.log(res);
-        this.router.navigate(['/admin/curso/lista']);
-        this.ngOnInit();
-      },
-      err => {console.error(err);
-        alert('No se elimino el Alumno');
-      }
-    );
-  }
+
+  Swal.fire({
+    title: 'Esta Seguro de Eliminar Alumno',
+    text: '',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'SI!',
+    cancelButtonText: 'Cancelar'
+    }).then((result) => {
+    if (result.value) {
+      this.dataApi.deleteAlumnoCurso(id).subscribe(
+        res => {
+          console.log(res);
+          this.router.navigate(['/admin/curso/lista']);
+          this.ngOnInit();
+        },
+        err => {console.error(err);
+          alert('No se elimino el Alumno');
+        }
+      );
+      Swal.fire(
+        'ELIMINADO!',
+        'El Alumno se ha Eliminado con EXITO!',
+        'success'
+      )
+    }
+  })    
   
 }
 

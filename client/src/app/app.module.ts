@@ -27,7 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Material } from './materials';
 import { AdminNavegarComponent } from './components/admin/admin-inicio/admin-navegar/admin-navegar.component';
 import { NavegComponent } from './components/naveg/naveg.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { IAlumnoComponent } from './components/admin/i-alumno/i-alumno.component';
 import { IMateriaComponent } from './components/admin/i-materia/i-materia.component';
 import { IProfesorComponent } from './components/admin/i-profesor/i-profesor.component';
@@ -65,6 +65,12 @@ import { EditTallerComponent } from './components/profesor/edit-taller/edit-tall
 import { AalumnoIndividualCursoComponent } from './components/admin/aalumno-individual-curso/aalumno-individual-curso.component';
 import { CrontasenaComponent } from './components/crontasena/crontasena.component';
 import { MensajeCursoComponent } from './components/profesor/mensaje-curso/mensaje-curso.component';
+import { NavpComponent } from './navp/navp.component';
+import { LAdminComponent } from './components/admin/l-admin/l-admin.component';
+import { IAdminComponent } from './components/admin/i-admin/i-admin.component';
+import { EAdminComponent } from './components/admin/e-admin/e-admin.component';
+import { DatePipe } from '@angular/common';
+import { FilteraPipe } from './pipes/filtera.pipe';
 
 @NgModule({
   declarations: [
@@ -115,7 +121,14 @@ import { MensajeCursoComponent } from './components/profesor/mensaje-curso/mensa
     EditTallerComponent,
     AalumnoIndividualCursoComponent,
     CrontasenaComponent,
-    MensajeCursoComponent
+    MensajeCursoComponent,
+    NavpComponent,
+    LAdminComponent,
+    IAdminComponent,
+    EAdminComponent,
+    FilteraPipe,
+    
+    
     
       
   ],
@@ -130,13 +143,16 @@ import { MensajeCursoComponent } from './components/profesor/mensaje-curso/mensa
     BrowserModule,
     FontAwesomeModule,
     NgxPaginationModule,
-    NgbModule
+    NgbModule,    
+    ReactiveFormsModule
+  
     
        
   ],
   providers: [DataApiService,
   AuthService,
-ProfesorServiceService],
+ProfesorServiceService,
+DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

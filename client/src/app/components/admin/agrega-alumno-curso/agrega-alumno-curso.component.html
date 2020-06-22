@@ -12,15 +12,7 @@
       </mat-card>
     </div>
   <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/admin/curso">Lista Cursos</a>
       
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/admin/curso/ingresar">Ingresar Curso</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" routerLink="/admin/curso/agregaca">Asignar Alumnos</a>
-       </li>
        <li class="nav-item">
         <a class="nav-link" routerLink="/admin/curso/agregaia">Asignar Alumno</a>
      </li>
@@ -51,9 +43,6 @@
                         </div>
                                               
                       </div> 
-                      <button type="submit" class="btn btn-md btn-primary float-right " (click)="Upload()">Asignar Alumnos</button>
-                      
-                      
                       
                     </form>
 
@@ -94,7 +83,7 @@
                     </thead>
                    
                     <tbody>
-                    <tr *ngFor="let curso of cursos | filtroc:filtro  | paginate: { itemsPerPage: 6, currentPage: pageActual }" (click)="buscarc(curso.codigoCurso)">
+                    <tr *ngFor="let curso of cursos | filtroc:filtro  | paginate: { itemsPerPage: 6, currentPage: pageActual }" (click)="buscarc(curso.codigoCurso)" (click)="modal.dismiss('Cross click')">
                         <th scope="row">{{curso.codigoCurso}}</th>
                         <td>{{curso.nombre}}</td>
                         <td>{{curso.nombreMateria}}</td>

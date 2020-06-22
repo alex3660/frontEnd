@@ -11,15 +11,7 @@
     </mat-grid-list>
   </mat-card>
 </div>
-<ul class="nav nav-pills">
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/admin/profesor">Lista Profesores</a>
-  
-  <li class="nav-item">
-    <a class="nav-link" routerLink="/admin/profesor/ingresar">Ingresar Profesor</a>
-  </li>
-  
-</ul>
+
 
 <section id="register" class="mb-5 mt-5">
   <div class="container">
@@ -70,19 +62,28 @@
                 </div>
                 
                 <div class="form-row">
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-6">
                     <input type="email" #email="ngModel" name="email" class="form-control" placeholder="Email" [(ngModel)]="user.correo" required
                       >
                   </div>
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-6">
                     <input type="text" #name="ngModel" name="telefono" class="form-control" placeholder="telefono" [(ngModel)]="user.telefono" required 
                       maxlength="15">
-                  </div> 
-                  <div class="form-group col-md-4">
+                  </div>
+                 </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
                     <input type="text" #name="ngModel" name="oficina" class="form-control" placeholder="oficina" [(ngModel)]="user.oficina" required 
                       maxlength="15">
                   </div>
-    
+                  <div class="form-group col-md-6">
+                    <select name ="tipo"  id="exampleFormControlSelect1" placeholder="TIPO" class="form-control" [(ngModel)]="user.estado">
+                    <option value="Nuevo">Nuevo</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                   </select>
+              </div>  
 
                 </div>
                

@@ -1,3 +1,4 @@
+import { async } from '@angular/core/testing';
 import { asignarCursointerface } from './../../../models/agregar-alumno-curso';
 import { cursoInterface } from './../../../models/crurso-interface';
 import { alumnoInterface } from './../../../models/alumno-interface';
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as XLSX from 'ts-xlsx';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -81,7 +84,6 @@ export class AgregaAlumnoCursoComponent implements OnInit {
   this.dataApi
   .getcursoId(id)
   .subscribe((materia: cursoInterface) => {(this.curso = materia),
-    alert('Curso Asignado'),
     console.log(materia),  
     this.curso.codigoCurso=id,
     this.rca.idCurso=materia[0].idCurso})
@@ -107,10 +109,10 @@ export class AgregaAlumnoCursoComponent implements OnInit {
   }
 
 
-  Upload() {
+  async Upload() {
     
     let fileReader = new FileReader();
-    fileReader.onload = (e) => {
+    fileReader.onload = async (e) => {
         this.arrayBuffer = fileReader.result;
         var data = new Uint8Array(this.arrayBuffer);
         var arr = new Array();
@@ -121,25 +123,16 @@ export class AgregaAlumnoCursoComponent implements OnInit {
         var first_sheet_name = workbook.SheetNames[0];
         var worksheet = workbook.Sheets[first_sheet_name];
         this.listaAlumnos=(XLSX.utils.sheet_to_json(worksheet,{raw:true}));               
-                
+        var lista1=[]
+        var temp:asignarCursointerface;
         for (var i =0; i< this.listaAlumnos.length; i++){
-          this.dataApi
+          await this.dataApi
           .getAlumnoId(this.listaAlumnos[i].cedula)
-          .subscribe((profesor: alumnoInterface) => {(this.alumno = profesor), 
+          .subscribe(async(profesor: alumnoInterface) => {await(this.alumno = profesor); 
            //this.rca.idAlumno=profesor[0].idAlumno, 
            this.lista.push(profesor[0].idAlumno); 
-           
-           var temp:asignarCursointerface={idAlumno:this.lista[i],idCurso: this.rca.idCurso};
-           this.listRca.push(temp);
-           //console.log(this.listRca)   
-            
-          }); 
-          
-        } 
-        //console.log(this.lista)
-        var temp:asignarCursointerface;
-        this.lista.forEach((n)=>[ 
-        temp={idCurso: this.rca.idCurso, idAlumno: n}, console.log(temp),
+           temp={idCurso: this.rca.idCurso, idAlumno:profesor[0].idAlumno },
+          console.log(temp),
         this.dataApi.saveAlumnocurso(temp)
         .subscribe(
           res => {
@@ -148,9 +141,14 @@ export class AgregaAlumnoCursoComponent implements OnInit {
           },
           err => console.error(err)
         )
-      
-      
-      ]);
+          }); 
+        } 
+        ;
+      Swal.fire(
+        'Exito!',
+        'Alumnos Asignados con EXITO!',
+        'success'
+      )
 
     }
     fileReader.readAsArrayBuffer(this.file);

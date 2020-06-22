@@ -4,6 +4,7 @@ import { DataApiService } from 'src/app/services/data-api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as XLSX from 'ts-xlsx';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -48,10 +49,21 @@ export class IProfesorComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          alert('PROFESOR INGRESADO CON EXITO!');
+          Swal.fire(
+            'Exito!',
+            'El Profesor ha sido Ingresado con EXITO!',
+            'success'
+          )
           this.router.navigate(['/admin/profesor']);
         },
-        err => console.error(err)
+        err => {console.error(err);
+          Swal.fire(
+            'Error!',
+            'Error en Datos!',
+            'error'
+          )
+
+        }
       )
   }
 
@@ -94,7 +106,11 @@ export class IProfesorComponent implements OnInit {
           
         
         }
-        
+        Swal.fire(
+          'Exito!',
+          'Profesores Ingresados con EXITO!',
+          'success'
+        )  
     }
     fileReader.readAsArrayBuffer(this.file);
 

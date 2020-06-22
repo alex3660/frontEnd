@@ -14,7 +14,7 @@
           <div class="card">
             <div class="card-body text-center">
               <form #formLogin="ngForm" (ngSubmit)="nuevaSession()">
-                <h1 class="h3 mb-3 font-weight-normal" *ngIf="!isError">Login</h1>
+                <h1 class="h3 mb-3 font-weight-normal" *ngIf="!isError">Iniciar Sesión</h1>
                 <div class="alert alert-danger" role="alert" *ngIf="isError">
                   Something is wrong!
                 </div>
@@ -25,7 +25,7 @@
                       <option value="Administrador">Administrador</option>
                       <option value="Profesor">Profesor</option>
                      </select>
-                  </div>
+                </div>
                   <div class="input-group flex-nowrap">
                       <div class="input-group-prepend bg-primary text-white">
                         <span class="input-group-text bg-primary text-white" id="addon-wrapping"><fa-icon [icon]="faCoffee"></fa-icon></span>
@@ -41,8 +41,10 @@
                         
                       </div>                         
 
-                <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
-              
+                      <div class="form-group">
+                        <button type="submit" class="btn btn'md btn-primary btn-block">Iniciar Sesión</button>
+                      </div>
+                
               </form>
             </div>
           </div>

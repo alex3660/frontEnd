@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { faUserAlt, faFileAlt} from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-repositorio',
@@ -62,11 +63,12 @@ export class RepositorioComponent implements OnInit {
     }
     this.profeApi.uploadFile(formData,this.curso.idCurso).subscribe((res)=> {
       console.log('response received is ', res);
-      alert('ARCHIVO SUBIDO CON EXITO!!!');
+      Swal.fire(
+        'Exito!',
+        'El Archivo ha sido Adjuntado con EXITO!',
+        'success'
+      );
       this.ngOnInit();
-      
-      
-
     });
     this.router.navigate(['/profesor/repositorio']);
     }
@@ -94,20 +96,37 @@ export class RepositorioComponent implements OnInit {
     }
 
     eliminar(repoid: string){
-    if( confirm('ESTA SEGURO DE ELIMINAR EL ARCHIVO')){
-      this.profeApi.deleteRepositorio(repoid).subscribe(
-        res => {
-          console.log(res);
-          this.router.navigate(['/profesor/repositorio']);
-          this.ngOnInit();
-        },
-        err => {console.error(err);
-          alert('No se elimino el tarea');
-          this.ngOnInit();
+
+      Swal.fire({
+        title: 'Esta Seguro de Eliminar Archivo',
+        text: '',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'SI!',
+        cancelButtonText: 'Cancelar'
+        }).then((result) => {
+        if (result.value) {
+          this.profeApi.deleteRepositorio(repoid).subscribe(
+            res => {
+              console.log(res);
+              this.router.navigate(['/profesor/repositorio']);
+              this.ngOnInit();
+            },
+            err => {console.error(err);
+              
+              this.ngOnInit();
+            }
+            
+          );
+          Swal.fire(
+            'ELIMINADO!',
+            'El Archivo se ha Eliminado con EXITO!',
+            'success'
+          )
         }
-        
-      );
-    }
+      })
     
       
     }

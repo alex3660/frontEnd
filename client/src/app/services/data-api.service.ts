@@ -1,3 +1,4 @@
+import { adminInterface } from './../models/admin-interface';
 import { environment } from './../../../../client/src/environments/environment.prod';
 import { asignarCursointerface } from './../models/agregar-alumno-curso';
 import { alumnoInterface } from './../models/alumno-interface';
@@ -167,6 +168,60 @@ export class DataApiService {
     }
   }
 
+  //ADMINISTRACION ADMIN
+  setAdminis( admin: adminInterface){
+    let admin_string = JSON.stringify(admin);
+    localStorage.setItem('Admin', admin_string);
+  }
+  getAdminis(): adminInterface{
+    let admin_string = localStorage.getItem("Admin");
+    if ( !isNullOrUndefined(admin_string)){
+      let admin: adminInterface = JSON.parse(admin_string);
+      return admin;
+    }
+    else{
+      return null;
+    }
+  }
+
+
+  listAdmin(){
+    let token = this.authService.gettoken();
+    const url_api = this.url+'/admin';
+    return this.http.get(url_api);
+    
+  }
+
+  saveAdmin(admin: adminInterface){
+    //token
+    //not null
+    let token = this.authService.gettoken();
+    const url_api = this.url+'/admin';
+    return this.http.post<adminInterface>(url_api, admin, {headers: this.headers})
+    .pipe(map(data => data ));
+    
+  }
+
+  editAdmin(admin: adminInterface){
+    //token
+    //not null
+    let token = this.authService.gettoken();
+    const url_api = this.url+'/admin';
+    return this.http.put<profesorInterface>(url_api, admin)
+    .pipe(map(data => data ));
+    
+  }
+
+  deleteAdministrador(id: string){
+    //token
+    //not null
+    let token = this.authService.gettoken();
+    const url_api = this.url+`/admin/${id}`;
+    return this.http.delete(url_api)
+    .pipe(map(data => data ));
+    
+  }
+  
 
   //ADMINISTRACION PROFESOR
   getProfesor(){

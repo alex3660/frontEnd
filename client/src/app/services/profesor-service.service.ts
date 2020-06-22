@@ -28,13 +28,8 @@ import { comentarioForoInterface } from '../models/comentario-foro';
 })
 export class ProfesorServiceService {
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
-  
-  //url='http://ec2-18-224-19-123.us-east-2.compute.amazonaws.com:3000';
-
-
+  constructor(private http: HttpClient, private authService: AuthService) { }  
   url= environment.apiUrl
-
   curso: Observable<any>;
   cursos: Observable<any>;
 
@@ -135,7 +130,6 @@ export class ProfesorServiceService {
   //TAREAS
 
   getTareaC(id: string){
-    
     const url_api =this.url+`/tarea/curso/${id}`;
     return (this.curso = this.http.get(url_api));
   }
@@ -149,13 +143,9 @@ export class ProfesorServiceService {
   }
 
   editTarea(tarea: tareaInterface){
-    //token
-    //not null
-    let token = this.authService.gettoken();
     const url_api = this.url+'/tarea';
     return this.http.put<tareaInterface>(url_api, tarea)
-    .pipe(map(data => data ));
-    
+    .pipe(map(data => data ));  
   }
 
   deleteTarea(elimin:eliminarInterface){
@@ -325,8 +315,11 @@ saveMensaje(id: string, mensaje: mensajeIngreso)
   
 }
 
+
   
 }
+
+
 
 
 

@@ -4,6 +4,7 @@ import { DataApiService } from 'src/app/services/data-api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as XLSX from 'ts-xlsx';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -53,11 +54,20 @@ export class IMateriaComponent implements OnInit {
     this.dataApi.saveMateria(this.materia)
       .subscribe(
         res => {
-          console.log(res);
-          alert('MATERIA INGRESADO CON EXITO!');
+          Swal.fire(
+            'Exito!',
+            'La Materia ha sido Ingresado con EXITO!',
+            'success'
+          )
           this.router.navigate(['/admin/materia']);
         },
-        err => console.error(err)
+        err =>{
+          Swal.fire(
+            'Error!',
+            'Error en Datos!',
+            'error'
+          )
+        }
       )
   }
 
@@ -97,7 +107,11 @@ export class IMateriaComponent implements OnInit {
           
         
         }
-        
+        Swal.fire(
+          'Exito!',
+          'Materias Ingresadas con EXITO!',
+          'success'
+        )
     }
     fileReader.readAsArrayBuffer(this.file);
 

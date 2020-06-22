@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { alumnoInterface } from 'src/app/models/alumno-interface';
 import { cursoInterface } from 'src/app/models/crurso-interface';
 import { asignarCursointerface } from 'src/app/models/agregar-alumno-curso';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-aalumno-individual-curso',
@@ -17,6 +18,7 @@ export class AalumnoIndividualCursoComponent implements OnInit {
 
   
   filtro = '';
+  filtro1 = '';
   pageActual: number = 1;
   closeResult: string;
   alumno:alumnoInterface={
@@ -52,7 +54,6 @@ export class AalumnoIndividualCursoComponent implements OnInit {
     this.dataApi
     .getcursoId(id)
     .subscribe((materia: cursoInterface) => {(this.curso = materia),
-      alert('Curso Asignado'),
       console.log(materia),  
       this.curso.codigoCurso=id,
       this.rca.idCurso=materia[0].idCurso})
@@ -72,7 +73,6 @@ export class AalumnoIndividualCursoComponent implements OnInit {
       this.dataApi
     .getAlumnoId(cedula)
     .subscribe((profesor: alumnoInterface) => {(this.alumno = profesor),
-      alert('Alumno Asignado'),
       this.alumno.cedula=cedula,
       console.log(profesor), 
       this.rca.idAlumno=profesor[0].idAlumno}); 
@@ -85,11 +85,21 @@ export class AalumnoIndividualCursoComponent implements OnInit {
       this.dataApi.saveAlumnocurso(this.rca)
         .subscribe(
           res => {
-            console.log(res);
-            alert('ALUMNO ASIGNADO CON EXITO!');
+            Swal.fire(
+              'Exito!',
+              'Alumno Asignado con EXITO!',
+              'success'
+            )
             this.router.navigate(['/admin/curso']);
           },
-          err => console.error(err)
+          err => {console.error(err)
+            Swal.fire(
+              'Error!',
+              'Error en Datos!',
+              'error'
+            )
+          }
+
         );    
   
   

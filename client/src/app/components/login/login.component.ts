@@ -9,6 +9,7 @@ import { Location } from '@angular/common';
 import { isError } from 'util';
 import { JwtResponseI } from 'src/app/models/jwt-response';
 import { faUserAlt, faKey} from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -62,7 +63,11 @@ export class LoginComponent implements OnInit {
 
             else if(res.profesor[0].estado == 'Inactivo'){
 
-              alert('SU INGRESO NO ES POSSIBLE')
+              Swal.fire(
+                'Error!',
+                'Accesso Denegado usuario inactivo!',
+                'error'
+              )
 
             }
 
@@ -75,7 +80,11 @@ export class LoginComponent implements OnInit {
 
         },
         err => {console.error(err);
-        alert('ERROR EN DATOS');
+          Swal.fire(
+            'Error!',
+            'Error el usuario o contraseña no coinciden!',
+            'error'
+          )
         
         }
       )

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfesorServiceService } from 'src/app/services/profesor-service.service';
 import { tareaInterface } from 'src/app/models/tarea';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-i-tarea',
@@ -37,7 +38,11 @@ export class ITareaComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res);
-        alert('INGRESO DE TAREA EXITOSO!!!');
+        Swal.fire(
+          'Exito!',
+          'La Tarea ha sido Ingresada con EXITO!',
+          'success'
+        )
         this.router.navigate(['/profesor/tareas']);
       },
       err => console.error(err)

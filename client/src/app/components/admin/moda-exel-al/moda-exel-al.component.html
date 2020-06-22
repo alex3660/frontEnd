@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-sm navbar-dark " style="background-color: #1a355b!important;">
+
+    <a class="navbar-brand" href="/profesor/inicio">
+      <img class="card-img-top" src="https://www.utpl.edu.ec/proyectomiddleware/sites/default/files/images/logo-politecnica.png" style="max-width: 100px; max-height: 100px"  alt="">
+    </a>
+
+        <a class="navbar-brand" routerLink="/profesor/inicio">DETRI</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <div class="d-inline-block" ngbDropdown #myDrop7="ngbDropdown" style="background-color: #1a355b!important;">
+                  <button class="btn btn-link mr-2" id="dropdownManual" style="color: #d8dadb!important;" ngbDropdownAnchor (focus)="myDrop7.open()">Cursos</button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownManual">
+                    <button ngbDropdownItem routerLink="/profesor/curso">Lista Cursos</button>
+                    <button ngbDropdownItem routerLink="/profesor/curso/menu">Lista Alumnos</button>
+                </div>
+                </div>
+              </li> 
+              
+              <li>
+                <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown" style="background-color: #1a355b!important;">
+                  <button class="btn btn-link mr-2" id="dropdownManual" style="color: #d8dadb!important;" ngbDropdownAnchor (focus)="myDrop.open()">Tareas</button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownManual">
+                    <button ngbDropdownItem routerLink="/profesor/tareas">Lista Tareas</button>
+                    <button ngbDropdownItem routerLink="/profesor/tareas/ingresar">Ingresar Tareas</button>
+                </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="d-inline-block" ngbDropdown #myDrop2="ngbDropdown" style="background-color: #1a355b!important;">
+                  <button class="btn btn-link mr-2" id="dropdownManual" style="color: #d8dadb!important;" ngbDropdownAnchor (focus)="myDrop2.open()">Talleres</button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownManual">
+                    <button ngbDropdownItem routerLink="/profesor/talleres">Lista Talleres</button>
+                    <button ngbDropdownItem routerLink="/profesor/talleres/ingresar">Ingresar Talleres</button>
+                </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="d-inline-block" ngbDropdown #myDrop4="ngbDropdown" style="background-color: #1a355b!important;">
+                  <button class="btn btn-link mr-2" id="dropdownManual" style="color: #d8dadb!important;" ngbDropdownAnchor (focus)="myDrop4.open()">Evaluaciones</button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownManual">
+                    <button ngbDropdownItem routerLink="/profesor/evaluaciones">Lista Evaluaciones</button>
+                    <button ngbDropdownItem routerLink="/profesor/evaluaciones/ingresar">Ingresar Evaluaciones</button>
+                </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="d-inline-block" ngbDropdown #myDrop5="ngbDropdown" style="background-color: #1a355b!important;">
+                  <button class="btn btn-link mr-2" id="dropdownManual" style="color: #d8dadb!important;" ngbDropdownAnchor (focus)="myDrop5.open()">Foros</button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownManual">
+                    <button ngbDropdownItem routerLink="/profesor/foro">Lista Foros</button>
+                    <button ngbDropdownItem routerLink="/profesor/foro/ingresar">Ingresar Foros</button>
+                </div>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/repositorio" style="color: #d8dadb!important;">Repositorio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/profesor/mensaje" style="color: #d8dadb!important;">Mensajes</a>
+              </li>
+              
+            </ul>
+          </div>
+      
+        <div class="ml-auto" id="navbarNav">
+            
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <div class="d-inline-block" ngbDropdown #myDrop3="ngbDropdown" style="background-color: #1a355b!important;">
+                  <button class="btn btn-link mr-2" id="dropdownManual" style="color: #d8dadb!important;" ngbDropdownAnchor (focus)="myDrop3.open()">Opciones</button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownManual">
+                    <button ngbDropdownItem routerLink="/profesor/passwd">Cambiar Contraseña</button>
+                    <button ngbDropdownItem routerLink="/" (click)="logoutP()">Cerrar Sesión</button>
+                </div>
+                </div>
+              </li>
+            
+            </ul>
+          </div>
+      </nav>

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { cursoInterface } from 'src/app/models/crurso-interface';
 import { ProfesorServiceService } from 'src/app/services/profesor-service.service';
 import { eliminarInterface } from 'src/app/models/eliminar';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-evaluaciones',
@@ -43,19 +44,35 @@ export class EvaluacionesComponent implements OnInit {
     this.elim.idEvento=evaluacionid,
     this.elim.idCurso=idCurso;
     
-    if( confirm('ESTA SEGURO DE ELIMINAR LA EVALUACION!!!')){
-      this.profeApi.deleteEvaluacion(this.elim).subscribe(
-        res => {
-          console.log(res);
-          this.router.navigate(['/profesor/evaluaciones']);
-          this.ngOnInit();
-        },
-        err => {console.error(err);
-          alert('No se elimino Evaluacion');
-        }
-      );
-
-    }
+    Swal.fire({
+      title: 'Esta Seguro de Eliminar Evaluación',
+      text: '',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'SI!',
+      cancelButtonText: 'Cancelar'
+      }).then((result) => {
+      if (result.value) {
+        this.profeApi.deleteEvaluacion(this.elim).subscribe(
+          res => {
+            console.log(res);
+            this.router.navigate(['/profesor/evaluaciones']);
+            this.ngOnInit();
+          },
+          err => {console.error(err);
+            
+          }
+        );
+        Swal.fire(
+          'ELIMINADO!',
+          'La Evaluación se ha Eliminado con EXITO!',
+          'success'
+        )
+      }
+    })
+    
     
        
    

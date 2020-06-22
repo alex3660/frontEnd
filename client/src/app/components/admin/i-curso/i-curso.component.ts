@@ -6,6 +6,7 @@ import { DataApiService } from 'src/app/services/data-api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { isNullOrUndefined } from 'util';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-i-curso',
@@ -21,6 +22,8 @@ export class ICursoComponent implements OnInit {
   profesores: profesorInterface;
   materias: MateriaInterface;
   filtro = '';
+  filtro1 = '';
+  filtro2 = '';
   pageActual: number = 1;
   closeResult: string;
   incomingfile(event) 
@@ -57,9 +60,7 @@ export class ICursoComponent implements OnInit {
     this.profe.cedula=pcedula;
     this.dataApi
   .getProfesorId(pcedula)
-  .subscribe((profesor: profesorInterface) => {(this.profe = profesor),
-    console.log(profesor), 
-    alert('Profesor Asignado'),
+  .subscribe((profesor: profesorInterface) => {(this.profe = profesor), 
     this.profe.cedula=pcedula,
     this.curso.idProfesor=profesor[0].idProfesor,
     this.dataApi.setProfe(profesor)});
@@ -75,7 +76,6 @@ export class ICursoComponent implements OnInit {
     this.dataApi
   .getMateriaId(codMateria)
   .subscribe((materia: MateriaInterface) => {(this.materi = materia),
-    alert('Materia Asignada')
     this.materi.codMateria=codMateria,
     this.curso.idMateria=materia[0].idMateria});
     this.materi.codMateria=codMateria;
@@ -96,12 +96,19 @@ export class ICursoComponent implements OnInit {
   this.dataApi.savecurso(this.curso)
       .subscribe(
         res => {
-          console.log(res);
-          alert('CURSO INGRESADO CON EXITO!');
+          Swal.fire(
+            'Exito!',
+            'El Curso ha sido Ingresado con EXITO!',
+            'success'
+          )
           this.router.navigate(['/admin/curso']);
         },
         err => {console.error(err);
-          alert('ERROR EN DATOS');}
+          Swal.fire(
+            'Error!',
+            'Error en Datos!',
+            'error'
+          )}
       );
 
       console.log(this.curso)

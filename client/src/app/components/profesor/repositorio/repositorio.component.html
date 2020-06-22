@@ -1,4 +1,4 @@
-<app-nav-profesor></app-nav-profesor>
+<app-moda-exel-al></app-moda-exel-al>
 
 <div> 
     <mat-card>
@@ -13,30 +13,11 @@
 
 
 <ul class="nav nav-pills">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/profesor/curso/menu">Lista Alumnos</a>
     
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/profesor/tareas">Tarea</a>
+    <li>
+      <button class="btn btn-link float-right" (click)="open(content)">Cargar Archivo</button>
     </li>
-
-    <li class="nav-item">
-            <a class="nav-link" routerLink="/profesor/evaluaciones">Evaluacion</a>
-    </li>
-    <li class="nav-item">
-            <a class="nav-link" routerLink="/profesor/foro">Foro</a>
-    </li>
-    <li class="nav-item">
-            <a class="nav-link" routerLink="/profesor/talleres">Taller</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/profesor/repositorio">Repositorio</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/profesor/mensaje">Mensaje</a>
-  </li> 
-
-<button class="btn btn-link float-right" (click)="open(content)">Cargar Archivo</button>
+  
 </ul>
        
       <ul class="list-group list-group-flush" >
@@ -55,10 +36,12 @@
 
                 <button type="button" class="btn btn-danger float-right"(click)="eliminar(descarga.idRecurso)">Eliminar</button> 
                 
-                <button type="submit" class="btn btn-success float-right " style="margin-right: 10px"  (click)="llamarDescargar()">
-                    
-                    <a id="descargar" href="http://ec2-18-224-19-123.us-east-2.compute.amazonaws.com:3000/down/descarga/{{descarga.idRecurso}} "  style="color: #f4f9ff!important;" download> Descargar  </a> 
-                </button>        
+          <button type="submit" class="btn btn-success float-right " style="margin-right: 10px" (click)="llamarDescargar()">
+            <a id="descargar" 
+               href="http://ec2-18-224-19-123.us-east-2.compute.amazonaws.com:3000/down/descarga/{{descarga.idRecurso}} "  
+               style="color: #f4f9ff!important;" download> Descargar 
+            </a> 
+          </button>        
         </li>
        </div>
                 

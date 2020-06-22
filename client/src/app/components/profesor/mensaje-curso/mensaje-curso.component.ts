@@ -8,6 +8,7 @@ import { ProfesorServiceService } from 'src/app/services/profesor-service.servic
 import { Router } from '@angular/router';
 import { profesorInterface } from 'src/app/models/profesor-inteface';
 import { cursoInterface } from 'src/app/models/crurso-interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-mensaje-curso',
@@ -47,7 +48,11 @@ export class MensajeCursoComponent implements OnInit {
     this.profeApi.saveMensaje(this.curso.idCurso, this.men)
     .subscribe(
       res => {
-        alert('INGRESO DE MENSAJE EXITOSO!!!');
+        Swal.fire(
+          'Exito!',
+          'El Mensaje ha sido Enviado con EXITO!',
+          'success'
+        );
         this.router.navigate(['/profesor/mensaje']);
         this.ngOnInit();
       },

@@ -13,23 +13,19 @@
   </div>
   
 <ul class="nav nav-pills">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/admin/curso">Lista Cursos</a>
     
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/admin/curso/ingresar">Ingresar Curso</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" routerLink="/admin/curso/agregaca">Asignar Alumnos</a>
-     </li>
         
   </ul>
+  
+    <H1>Lista Alumnos {{curso.nombreMateria}}</H1>
+  
 
 <table class="table table-striped">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">No.</th>                         
                 <th scope="col">Nombre</th>
+                <th scope="col">Correo</th> 
                 <th scope="col"></th> 
                 <th scope="col"></th> 
                 
@@ -41,6 +37,7 @@
             <tr *ngFor="let alumno of alumnos; index as i" >
                 <th scope="row"> {{i+1}}</th>
                 <td>{{alumno.nombreAlumno}}</td>
+                <td>{{alumno.correo}}</td> 
                 
                 <td><td><button type="button" class="btn btn-danger" (click)="eliminar(alumno.idCurso_Alumno)">Eliminar</button></td>                  
                 

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfesorServiceService } from 'src/app/services/profesor-service.service';
 import { Router } from '@angular/router';
 import { cursoInterface } from 'src/app/models/crurso-interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-i-evaluaciones',
@@ -36,7 +37,11 @@ export class IEvaluacionesComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res);
-        alert('INGRESO DE EVALUACION EXITOSO!!!');
+        Swal.fire(
+          'Exito!',
+          'La Evaluación ha sido Ingresada con EXITO!',
+          'success'
+        );
         this.router.navigate(['/profesor/evaluaciones']);
       },
       err => console.error(err)

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfesorServiceService } from 'src/app/services/profesor-service.service';
 import { Router } from '@angular/router';
 import { cursoInterface } from 'src/app/models/crurso-interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-i-talleres',
@@ -37,7 +38,11 @@ export class ITalleresComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res);
-        alert('INGRESO DE TALLER EXITOSO!!!');
+        Swal.fire(
+          'Exito!',
+          'El Taller ha sido Ingresado con EXITO!',
+          'success'
+        )
         this.router.navigate(['/profesor/talleres']);
       },
       err => console.error(err)

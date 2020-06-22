@@ -40,6 +40,9 @@ import { IMateriaComponent } from './components/admin/i-materia/i-materia.compon
 import { ITalleresComponent } from './components/profesor/i-talleres/i-talleres.component';
 import { ProfesorGuard } from './guards/profesor.guard';
 import { EditTareaComponent } from './components/profesor/edit-tarea/edit-tarea.component';
+import { LAdminComponent } from './components/admin/l-admin/l-admin.component';
+import { IAdminComponent } from './components/admin/i-admin/i-admin.component';
+import { EAdminComponent } from './components/admin/e-admin/e-admin.component';
 
 
 
@@ -47,6 +50,9 @@ const routes: Routes = [
   
   {path: '', component: LoginComponent},
   {path: 'admin/inicio', component: AdminInicioComponent, canActivate: [AuthGuard1]},
+  {path: 'admin/admin', component: LAdminComponent, canActivate: [AuthGuard1]},
+  {path: 'admin/admin/ingreso', component: IAdminComponent, canActivate: [AuthGuard1]},
+  {path: 'admin/admin/editar', component: EAdminComponent, canActivate: [AuthGuard1]},
   {path: 'admin/alumno', component: IngresarAlumnoComponent, canActivate: [AuthGuard1]},
   {path: 'admin/alumno/ingresar', component: IAlumnoComponent, canActivate: [AuthGuard1]},
   {path: 'admin/alumno/editar', component: EditarAComponent, canActivate: [AuthGuard1]},

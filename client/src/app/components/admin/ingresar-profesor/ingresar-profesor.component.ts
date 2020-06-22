@@ -2,6 +2,7 @@ import { profesorInterface } from './../../../models/profesor-inteface';
 import { Component, OnInit } from '@angular/core';
 import { DataApiService } from 'src/app/services/data-api.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ingresar-profesor',
@@ -38,22 +39,34 @@ export class IngresarProfesorComponent implements OnInit {
   }
 
   eliminar(profesorid: string){
-    
-    if( confirm('ESTA SEGURO DE ELIMINAR EL PROFESOR')){
-
-      this.dataApi.deleteProfesoR(profesorid).subscribe(
-        res => {
-          console.log(res);
-          this.router.navigate(['/admin/profesor']);
-          this.ngOnInit();
-        },
-        err => {console.error(err);
-          alert('No se elimino el Profesor'); 
-        }
-      );
-    }
-    
-       
+      Swal.fire({
+      title: 'Esta Seguro de Eliminar Profesor',
+      text: '',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'SI!',
+      cancelButtonText: 'Cancelar'
+      }).then((result) => {
+      if (result.value) {
+        this.dataApi.deleteProfesoR(profesorid).subscribe(
+          res => {
+            console.log(res);
+            this.router.navigate(['/admin/profesor']);
+            this.ngOnInit();
+          },
+          err => {console.error(err);
+            
+          }
+        );
+        Swal.fire(
+          'ELIMINADO!',
+          'El Profesor se ha Eliminado con EXITO!',
+          'success'
+        )
+      }
+    })  
    
   }
 }

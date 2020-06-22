@@ -3,6 +3,8 @@ import { alumnoInterface } from './../../../models/alumno-interface';
 import { Component, OnInit, PipeTransform } from '@angular/core';
 import { DataApiService } from 'src/app/services/data-api.service';
 import { Router } from '@angular/router';
+import  Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-ingresar-alumno',
@@ -40,9 +42,18 @@ export class IngresarAlumnoComponent implements OnInit {
 
   }
 
-  eliminar(alumnoid: string){
-    
-   if( confirm('Esta seguro de eliminar el Alumno')){
+  eliminar(alumnoid: string){    
+  Swal.fire({
+  title: 'Esta Seguro de Eliminar Alumno',
+  text: '',
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'SI!',
+  cancelButtonText: 'Cancelar'
+  }).then((result) => {
+  if (result.value) {
     this.dataApi.deleteAlumno(alumnoid).subscribe(
       res => {
         console.log(res);
@@ -50,13 +61,16 @@ export class IngresarAlumnoComponent implements OnInit {
         this.ngOnInit();
       },
       err => {console.error(err);
-        alert('No se elimino el Alumno');
+        
       }
     );
-
-   } 
-    
-       
+    Swal.fire(
+      'ELIMINADO!',
+      'El Alumno se ha Eliminado con EXITO!',
+      'success'
+    )
+  }
+})       
    
   }
   

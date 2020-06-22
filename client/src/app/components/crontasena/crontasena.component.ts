@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { profesorInterface } from 'src/app/models/profesor-inteface';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataApiService } from 'src/app/services/data-api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-crontasena',
@@ -37,7 +38,11 @@ export class CrontasenaComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          alert('CONTRASEÑA CAMBIADA');
+          Swal.fire(
+            'Exito!',
+            'La Contraseña ha sido cambiada con EXITO!',
+            'success'
+          )
           this.router.navigate(['/profesor/inicio']);
         },
         err => console.error(err)

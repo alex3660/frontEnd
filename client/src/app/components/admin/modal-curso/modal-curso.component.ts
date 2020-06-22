@@ -20,6 +20,7 @@ export class ModalCursoComponent implements OnInit {
     this.curso= this.profeApi.getCurrentCuso();
     console.log(this.curso.idCurso);
     this.alumnoCurso()
+    
   }
 
   alumnoCurso(){
@@ -27,7 +28,8 @@ export class ModalCursoComponent implements OnInit {
       this.profeApi
       .getAlumnoC(this.curso.idCurso)
       .subscribe((alumnos: alumnoCursoInterface) => (this.alumnos = alumnos));
-  
+      
+      
     
   }
 

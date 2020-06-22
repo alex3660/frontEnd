@@ -6,6 +6,7 @@ import { MatTableDataSource, throwMatDialogContentAlreadyAttachedError } from '@
 import { ProfesorServiceService } from 'src/app/services/profesor-service.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class CrearCursoComponent implements OnInit {
    }
   public cursos: cursoInterface;
   filtro = '';
+  
   pageActual: number = 1;
   
 
@@ -43,18 +45,35 @@ export class CrearCursoComponent implements OnInit {
 
   eliminar(id: string){
     
-    console.log(id);
-    if( confirm('ESTA SEGURO DE ELIMINAR EL CURSO')){
-      this.dataApi.deleteCurso(id).subscribe(
-      res => {
-        console.log(res);
-        this.router.navigate(['/admin/curso']);
-        this.ngOnInit();
-      },
-      err => {console.error(err);
-        alert('No se elimino el Curso');
+    Swal.fire({
+      title: 'Esta Seguro de Eliminar Curso',
+      text: '',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'SI!',
+      cancelButtonText: 'Cancelar'
+      }).then((result) => {
+      if (result.value) {
+        this.dataApi.deleteCurso(id).subscribe(
+          res => {
+            console.log(res);
+            this.router.navigate(['/admin/curso']);
+            this.ngOnInit();
+          },
+          err => {console.error(err);
+            alert('No se elimino el Curso');
+          }
+        );
+        Swal.fire(
+          'ELIMINADO!',
+          'El Curso se ha Eliminado con EXITO!',
+          'success'
+        )
       }
-    );}
+    })    
+    
     
   }
   

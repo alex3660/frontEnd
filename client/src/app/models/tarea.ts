@@ -9,7 +9,9 @@ export class tareaInterface{
     fechaEntrega?:string;
     tipoEntrega?:string
     
+    
 }
+
 
 
 

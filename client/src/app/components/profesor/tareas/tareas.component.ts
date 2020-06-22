@@ -4,6 +4,7 @@ import { cursoInterface } from './../../../models/crurso-interface';
 import { Component, OnInit } from '@angular/core';
 import { ProfesorServiceService } from 'src/app/services/profesor-service.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tareas',
@@ -41,21 +42,37 @@ export class TareasComponent implements OnInit {
   eliminar(tareaid: string, idcurso: string){
     this.elim.idEvento=tareaid;
     this.elim.idCurso= idcurso;
-    console.log(this.elim)
-    if( confirm('ESTA SEGURO DE ELIMINAR LA TAREA!!!')){
-      this.profeApi.deleteTarea(this.elim).subscribe(
-        res => {
-          console.log(res);
-          this.router.navigate(['/profesor/tareas']);
-          this.ngOnInit();
-        },
-        err => {console.error(err);
-         // alert('No se elimino el tarea');
-          //this.ngOnInit();
-        }
-        
-      );
-    }
+
+    Swal.fire({
+      title: 'Esta Seguro de Eliminar Tarea',
+      text: '',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'SI!',
+      cancelButtonText: 'Cancelar'
+      }).then((result) => {
+      if (result.value) {
+        this.profeApi.deleteTarea(this.elim).subscribe(
+          res => {
+            console.log(res);
+            this.router.navigate(['/profesor/tareas']);
+            this.ngOnInit();
+          },
+          err => {console.error(err);
+           // alert('No se elimino el tarea');
+            //this.ngOnInit();
+          }
+          
+        );
+        Swal.fire(
+          'ELIMINADO!',
+          'La Tarea se ha Eliminado con EXITO!',
+          'success'
+        )
+      }
+    })       
     
   }
 

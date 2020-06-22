@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfesorServiceService } from 'src/app/services/profesor-service.service';
 import { Router } from '@angular/router';
 import { cursoInterface } from 'src/app/models/crurso-interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-i-foro',
@@ -40,7 +41,11 @@ export class IForoComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res);
-        alert('INGRESO DE FORO EXITOSO!!!');
+        Swal.fire(
+          'Exito!',
+          'El Foro ha sido Ingresado con EXITO!',
+          'success'
+        );
         this.router.navigate(['/profesor/foro']);
       },
       err => console.error(err)

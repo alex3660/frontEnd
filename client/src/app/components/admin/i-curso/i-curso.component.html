@@ -12,15 +12,7 @@
       </mat-card>
     </div>
   <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/admin/curso">Lista Cursos</a>
-      
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/admin/curso/ingresar">Ingresar Curso</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" routerLink="/admin/curso/agregaca">Asignar Alumnos</a>
-        </li>     
+          
     </ul>
     
     <section id="register" class="mb-5 mt-5">
@@ -106,17 +98,17 @@
                 </thead>
                
                 <tbody>
-                <tr *ngFor="let profesor of profesores | filtrop:filtro | paginate: { itemsPerPage: 6, currentPage: pageActual }" (click)="buscarp(profesor.cedula)">
+                <tr *ngFor="let profesor of profesores | filtrop:filtro | paginate: { itemsPerPage: 6, currentPage: pageActual }" (click)="buscarp(profesor.cedula)" (click)="modal.dismiss('Cross click')" >
                   
-                    <th scope="row">{{profesor.numUnico}}</th>
+                    <th scope="row">{{profesor.numUnico}} </th>
                     <td>{{profesor.cedula}}</td>
                     <td>{{profesor.nombre1}} {{profesor.nombre2}} {{profesor.apellido1}} {{profesor.apellido2}}</td>
                     <td>{{profesor.oficina}}</td>
-                                              
+                    
+                                            
                 </tr>
-                
                 </tbody>
-                
+                 
               </table>
               <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
               <div class="input-group">
@@ -142,7 +134,7 @@
 
       <ng-template #contM let-modal>
         <div class="modal-header">
-          <input type="text" class="form-contro" name="filtro" placeholder="Buscar..." [(ngModel)]="filtro">
+          <input type="text" class="form-contro" name="filtro" placeholder="Buscar..." [(ngModel)]="filtro1">
           <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -156,14 +148,14 @@
                   <tr>
                     <th scope="col">Codigo</th>
                     <th scope="col">Nombre</th>        
-                    <th scope="col">Numero horas</th>
+                    <th scope="col">Horas</th>
                     
                     
                   </tr>
                 </thead>
                
                 <tbody>
-                <tr *ngFor="let materia of materias | filtrom:filtro  | paginate: { itemsPerPage: 6, currentPage: pageActual }" (click)="buscarM(materia.codMateria)" >
+                <tr *ngFor="let materia of materias | filtrom:filtro1  | paginate: { itemsPerPage: 6, currentPage: pageActual }" (click)="buscarM(materia.codMateria)" (click)="modal.dismiss('Cross click')" >
                     <th scope="row">{{materia.codMateria}}</th>
                     <td>{{materia.nombre}}</td>
                     <td>{{materia.numHoras}}</td>

@@ -6,6 +6,7 @@ import { ProfesorServiceService } from 'src/app/services/profesor-service.servic
 import { DataApiService } from 'src/app/services/data-api.service';
 import { Router } from '@angular/router';
 import { comentarioForoInterface } from 'src/app/models/comentario-foro';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-mensaje-foro',
@@ -46,7 +47,11 @@ export class MensajeForoComponent implements OnInit {
     this.profeApi.saveComentario(this.coment)
     .subscribe(
       res => {
-        alert('INGRESO DE COMENTARIO EXITOSO!!!');
+        Swal.fire(
+          'Exito!',
+          'El Comentario ha sido Ingresado con EXITO!',
+          'success'
+        );
         this.router.navigate(['/profesor/foro/comentario']);
         this.ngOnInit();
       },
