@@ -21,7 +21,7 @@ export class IAlumnoComponent implements OnInit {
   private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   private cedulaPattern: any = /^\d*$/;
   private pattern="[a-zA-Z ]{2,254}"
-  
+    
   constructor(private dataApi: DataApiService,
     private router: Router, private activatedRoute: ActivatedRoute, 
     private modalService: NgbModal) {
@@ -29,7 +29,7 @@ export class IAlumnoComponent implements OnInit {
      }
     createFormGroup(){
       return new FormGroup({
-        cedula: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.cedulaPattern)]),
+        titulo: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.cedulaPattern)]),
         numUnico: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10),Validators.pattern(this.cedulaPattern)]),
         name1: new FormControl('', [Validators.required, Validators.pattern(this.pattern)]),
         name2: new FormControl('', [Validators.required, Validators.pattern(this.pattern)]),
@@ -90,18 +90,18 @@ export class IAlumnoComponent implements OnInit {
     }
   }
 
-  nuevoAlumno() {
+  nuevoAlumno() {      
     if(this.ngForm.valid){
       this.dataApi.saveAlumno(this.user)
       .subscribe(
-        res => {
-          console.log(res);
+        res => {          
+          
+          this.router.navigate(['/admin/alumno']);
           Swal.fire(
-            'Exito!',
-            'El Alumno ha sido Ingresado con EXITO!',
+            'Éxito!',
+            'El Alumno ha sido Ingresado con Éxito!!',
             'success'
           )
-          this.router.navigate(['/admin/alumno']);
         },
         err => {console.error(err);
           Swal.fire(
@@ -129,7 +129,6 @@ export class IAlumnoComponent implements OnInit {
  
 
 
-
   Upload() {
     
     let fileReader = new FileReader();
@@ -143,15 +142,14 @@ export class IAlumnoComponent implements OnInit {
         var first_sheet_name = workbook.SheetNames[0];
         var worksheet = workbook.Sheets[first_sheet_name];
         this.listaAlumnos=(XLSX.utils.sheet_to_json(worksheet,{raw:true}));            
-        console.log(this.listaAlumnos)
-        
+                
         for (var i =0; i< this.listaAlumnos.length; i++){                 
           this.dataApi.saveAlumno(XLSX.utils.sheet_to_json(worksheet,{raw:true})[i])
           .subscribe(
           res => {
           console.log(res);
           Swal.fire(
-          'Exito!',
+          'Éxito!',
           'Alumnos Ingresados con EXITO!',
           'success'
         )
@@ -171,10 +169,8 @@ export class IAlumnoComponent implements OnInit {
     }
     fileReader.readAsArrayBuffer(this.file);
   
-}
+};
 
-
-  
 
   
 

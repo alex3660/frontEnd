@@ -4,6 +4,7 @@ import { ProfesorServiceService } from 'src/app/services/profesor-service.servic
 import { Router } from '@angular/router';
 import { cursoInterface } from 'src/app/models/crurso-interface';
 import Swal from 'sweetalert2';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-i-talleres',
@@ -12,7 +13,27 @@ import Swal from 'sweetalert2';
 })
 export class ITalleresComponent implements OnInit {
 
-  constructor(private profeApi:ProfesorServiceService, private router: Router) { }
+  public ngForm: FormGroup
+  
+  constructor(private profeApi:ProfesorServiceService, private router: Router) { 
+    this.ngForm = this.createFormGroup()
+  }
+
+  createFormGroup(){
+    return new FormGroup({
+      titulo: new FormControl('', [Validators.required]),
+      date: new FormControl('', [Validators.required]),
+      hora: new FormControl('', [Validators.required]),
+      tipo: new FormControl('', [Validators.required]),
+      descripcion: new FormControl('')
+      })
+  };
+
+  get titulo() { return this.ngForm.get('titulo'); }
+  get date() { return this.ngForm.get('date')}; 
+  get hora() { return this.ngForm.get('hora')}; 
+  get tipo() { return this.ngForm.get('tipo')}; 
+  get descripcion() { return this.ngForm.get('descripcion')}; 
 
   taller:tallerInterface={
     idCurso:'',
@@ -31,6 +52,7 @@ export class ITalleresComponent implements OnInit {
 
   ingresarTaller(){
 
+    if(this.ngForm.valid){
     this.curso=this.profeApi.getCurrentCuso();
     this.taller.idCurso=this.curso.idCurso;
     console.log(this.taller);
@@ -47,6 +69,15 @@ export class ITalleresComponent implements OnInit {
       },
       err => console.error(err)
     )
+    }
+    else{
+      Swal.fire(
+        'Error!',
+        'Ingrese datos de taller validos!',
+        'error'
+      )
+
+    }
 }
 
 }

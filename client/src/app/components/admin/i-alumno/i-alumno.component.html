@@ -17,7 +17,7 @@
 <ul class="nav nav-pills">
     
    
-    <button class="btn btn-link float-right" (click)="open(content)">Cargar Lista Alumnos</button>
+    <button class="btn btn-link float-right" (click)="open(content)">Ingresar  Lista de Alumnos</button>
 
 <hr>
 </ul>
@@ -37,7 +37,7 @@
                   
                   <div class="form-group">
                     
-                    <input type="text"  formControlName="cedula" class="form-control" placeholder="Cedula" [(ngModel)]="user.cedula" required 
+                    <input type="text"  formControlName="cedula" class="form-control" placeholder="Cédula" [(ngModel)]="user.cedula" required 
                       maxlength="10">
                       <div class="alert alert-danger" role="alert"  *ngIf="cedula.invalid  && (cedula.dirty || cedula.touched)">
                         Cédula Inválida
@@ -45,7 +45,7 @@
                   </div>
                    
                   <div class="form-group">
-                    <input type="text"  formControlName="numUnico" class="form-control" placeholder="Numero Unico" [(ngModel)]="user.numUnico" required  >
+                    <input type="text"  formControlName="numUnico" class="form-control" placeholder="Número Único" [(ngModel)]="user.numUnico" required  >
                     <div class="alert alert-danger" role="alert"  *ngIf="numUnico.invalid  && (numUnico.dirty || numUnico.touched)">
                       Número Inválido
                     </div>
@@ -90,7 +90,7 @@
 
                       <div class="form-row">
                         <div class="form-group col-md-6">
-                          <input type="email"  formControlName="email" class="form-control" placeholder="Email" [(ngModel)]="user.correo" required
+                          <input type="email"  formControlName="email" class="form-control" placeholder="Correo Electónico" [(ngModel)]="user.correo" required
                           >
                           <div class="alert alert-danger" role="alert" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.pattern">
                             Dirección de correo Invalida
@@ -98,7 +98,7 @@
                   
                         </div>
                         <div class="form-group col-md-6">
-                          <input type="text"  formControlName="telefono" class="form-control" placeholder="Telefono" [(ngModel)]="user.telefono" required 
+                          <input type="text"  formControlName="telefono" class="form-control" placeholder="Teléfono" [(ngModel)]="user.telefono" required 
                           maxlength="10">
                           <div class="alert alert-danger" role="alert"  *ngIf="telefono.invalid  && (telefono.dirty || telefono.touched)">
                             Teléfono Inválido
@@ -106,8 +106,7 @@
                   
                         </div>
                   
-                      </div>
-                                        
+                      </div>                                        
                   <button type="submit" class="btn btn-lg btn-primary float-right" >Ingresar</button>
                   
                 </form>

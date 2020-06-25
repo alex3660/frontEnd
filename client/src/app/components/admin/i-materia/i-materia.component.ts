@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import * as XLSX from 'ts-xlsx';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -14,7 +15,24 @@ import Swal from 'sweetalert2';
 })
 export class IMateriaComponent implements OnInit {
 
-  constructor(private dataApi: DataApiService, private router: Router, private activatedRoute: ActivatedRoute, private modalService: NgbModal) { }
+  public ngForm: FormGroup
+  private pattern: any = /^\d*$/;
+  
+  
+  constructor(private dataApi: DataApiService, private router: Router, private activatedRoute: ActivatedRoute, private modalService: NgbModal) {
+    this.ngForm = this.createFormGroup()
+   }
+  createFormGroup(){
+    return new FormGroup({
+      codMateria: new FormControl('', [Validators.required]),
+      nombre: new FormControl('', [Validators.required]),
+      horas: new FormControl('', [Validators.required, Validators.pattern(this.pattern)]),
+      })
+  };
+  get codMateria() { return this.ngForm.get('codMateria'); }
+  get nombre() { return this.ngForm.get('nombre'); }
+  get horas() { return this.ngForm.get('horas')}; 
+
   arrayBuffer:any;
   file:File;
   closeResult: string;
@@ -50,13 +68,13 @@ export class IMateriaComponent implements OnInit {
   }
 
   nuevaMateria() {
-    
+    if(this.ngForm.valid){
     this.dataApi.saveMateria(this.materia)
       .subscribe(
         res => {
           Swal.fire(
-            'Exito!',
-            'La Materia ha sido Ingresado con EXITO!',
+            'Éxito!',
+            'La Materia ha sido Ingresado con ÉXITO!',
             'success'
           )
           this.router.navigate(['/admin/materia']);
@@ -69,6 +87,14 @@ export class IMateriaComponent implements OnInit {
           )
         }
       )
+    }
+    else{
+      Swal.fire(
+        'Error!',
+        'Ingrese información de la materia correctamente!',
+        'error'
+      )
+    }
   }
 
   open(content) {

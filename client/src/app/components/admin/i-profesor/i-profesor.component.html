@@ -13,7 +13,7 @@
   </div>
 <ul class="nav nav-pills">
    
-    <button class="btn btn-link float-right" (click)="open(content)">Cargar Lista Profesores</button>
+    <button class="btn btn-link float-right" (click)="open(content)">Ingresar Lista Profesores</button>
     
   </ul>
  
@@ -26,54 +26,81 @@
           <div class="card_register">
             <div class="card">
               <div class="card-body text-center">
-                <form #formRegister="ngForm" (ngSubmit)="nuevoProfesor()">
+                <form [formGroup]="ngForm" (ngSubmit)="nuevoProfesor()">
                   <h1 class="h3 mb-3 font-weight-normal">Ingresar Profesor</h1>
                   
                   <div class="form-group">
-                    <input type="text" #name="ngModel" name="cedula" class="form-control" placeholder="Cedula" [(ngModel)]="user.cedula" required 
-                      maxlength="15">
+                    <input type="text" formControlName="cedula" class="form-control" placeholder="Cédula" [(ngModel)]="user.cedula" required 
+                      maxlength="10">
+                      <div class="alert alert-danger" role="alert"  *ngIf="cedula.invalid  && (cedula.dirty || cedula.touched)">
+                        Cédula Inválida
+                      </div>
                   </div> 
                   <div class="form-group">
-                    <input type="text" #name="ngModel" name="numUnico" class="form-control" placeholder="Numero Unico" [(ngModel)]="user.numUnico" required         >
+                    <input type="text" formControlName="numUnico" class="form-control" placeholder="Número Único" [(ngModel)]="user.numUnico" required         >
+                    <div class="alert alert-danger" role="alert"  *ngIf="numUnico.invalid  && (numUnico.dirty || numUnico.touched)">
+                      Número Inválido
+                    </div>
                   </div>  
                   <div class="form-row">
                     <div class="form-group col-md-6">
-                      <input type="text" #name="ngModel" name="name1" class="form-control" placeholder="Primer Nombre" [(ngModel)]="user.nombre1" required 
-                        maxlength="15">
-                    </div>
-                    <div class="form-group col-md-6">
-                      <input type="text" #name="ngModel" name="name2" class="form-control" placeholder="Segundo Nombre" [(ngModel)]="user.nombre2" required 
-                        maxlength="15">
-                    </div>
-    
-
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <input type="text" #name="ngModel" name="apellido1" class="form-control" placeholder="Primer Apellido" [(ngModel)]="user.apellido1" required 
-                        maxlength="15">
-                    </div>
-                    <div class="form-group col-md-6">
-                      <input type="text" #name="ngModel" name="apellido2" class="form-control" placeholder="Segundo Apellido" [(ngModel)]="user.apellido2" required 
-                        maxlength="15">
-                    </div> 
-    
-
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <input type="email" #email="ngModel" name="email" class="form-control" placeholder="Email" [(ngModel)]="user.correo" required
+                      <input type="text" formControlName="name1" class="form-control" placeholder="Primer Nombre" [(ngModel)]="user.nombre1" required 
                         >
+                        <div class="alert alert-danger" role="alert"  *ngIf="name1.invalid  && (name1.dirty || name1.touched)">
+                          Nombre Inválido
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <input type="text" formControlName="name2" class="form-control" placeholder="Segundo Nombre" [(ngModel)]="user.nombre2" required 
+                        >
+                        <div class="alert alert-danger" role="alert"  *ngIf="name2.invalid  && (name2.dirty || name2.touched)">
+                          Nombre Inválido
+                        </div>
+                    </div>
+    
+
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <input type="text" formControlName="apellido1" class="form-control" placeholder="Primer Apellido" [(ngModel)]="user.apellido1" required 
+                        >
+                        <div class="alert alert-danger" role="alert"  *ngIf="apellido1.invalid  && (apellido1.dirty || apellido1.touched)">
+                          Apellido Inválido
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <input type="text" formControlName="apellido2" class="form-control" placeholder="Segundo Apellido" [(ngModel)]="user.apellido2" required 
+                        >
+                        <div class="alert alert-danger" role="alert"  *ngIf="apellido2.invalid  && (apellido2.dirty || apellido2.touched)">
+                          Apellido Inválido
+                        </div>
+                    </div> 
+    
+
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <input type="email" formControlName="email" class="form-control" placeholder="Correo Electrónico" [(ngModel)]="user.correo" required
+                        >
+                        <div class="alert alert-danger" role="alert" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.pattern">
+                          Dirección de correo Invalida
+                        </div>
                     </div>
                     <div class="form-group col-md-4">
-                      <input type="text" #name="ngModel" name="telefono" class="form-control" placeholder="Telefono" [(ngModel)]="user.telefono" required 
-                        maxlength="15">
+                      <input type="text" formControlName="telefono" class="form-control" placeholder="Telefono" [(ngModel)]="user.telefono" required 
+                        >
+                        <div class="alert alert-danger" role="alert"  *ngIf="telefono.invalid  && (telefono.dirty || telefono.touched)">
+                          Teléfono Inválido
+                        </div>
                     </div> 
                     <div class="form-group col-md-4">
-                      <input type="text" #name="ngModel" name="oficina" class="form-control" placeholder="Oficina" [(ngModel)]="user.oficina" required 
-                        maxlength="15">
+                      <input type="text" formControlName="oficina" class="form-control" placeholder="Oficina" [(ngModel)]="user.oficina" required 
+                        >
+                        <div class="alert alert-danger" role="alert"  *ngIf="oficina.invalid  && (oficina.dirty || oficina.touched)">
+                          Ingrese Oficina
+                        </div>
                     </div> 
     
 
