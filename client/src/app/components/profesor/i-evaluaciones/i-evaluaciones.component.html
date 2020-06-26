@@ -27,29 +27,36 @@
               <div class="card_register">
                 <div class="card">
                   <div class="card-body text-center">
-                    <form #formRegister="ngForm" (ngSubmit)="ingresarE()">
+                    <form [formGroup]="ngForm" (ngSubmit)="ingresarE()">
                       <h1 class="h3 mb-3 font-weight-normal">Ingresar Evaluacion</h1>
                       
                       <div class="form-group">
-                        <input type="text" #name="ngModel" name="cedula" class="form-control" placeholder="Titulo de Evaluacion" [(ngModel)]="evaluacion.nombre" required 
+                        <input type="text" formControlName="titulo" class="form-control" placeholder="Titulo de Evaluacion" [(ngModel)]="evaluacion.nombre" required 
                           >
+                          <div class="alert alert-danger" role="alert"  *ngIf="titulo.invalid  && (titulo.dirty || titulo.touched)">
+                            Ingrese Título
+                          </div>
                       </div> 
                       
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label for="exampleFormControlSelect1">Fecha</label>
-                              <input type="date" id="date" name="date" [(ngModel)]="evaluacion.fechaEntrega" class="form-control">
-                        
+                              <input type="date" formControlName="date" [(ngModel)]="evaluacion.fechaEntrega" class="form-control">
+                              <div class="alert alert-danger" role="alert"  *ngIf="date.invalid  && (date.dirty || date.touched)">
+                                Ingrese Fecha
+                              </div>
                             </div>
                             <div class="form-group col-md-4">
                               <label for="exampleFormControlSelect1">Hora</label>
-                              <input type="time" id="hora" name="hora" [(ngModel)]="evaluacion.horaEntrega" class="form-control"min="07:00" max="18:00">
-                          
+                              <input type="time" formControlName="hora" [(ngModel)]="evaluacion.horaEntrega" class="form-control"min="07:00" max="18:00">
+                              <div class="alert alert-danger" role="alert"  *ngIf="hora.invalid  && (hora.dirty || hora.touched)">
+                                Ingrese Hora
+                              </div>
                               
                             </div> 
                             <div class="form-group col-md-4">
                               <label for="exampleFormControlSelect1">Selecione una Opcion</label>
-                              <select name ="tipo"  id="exampleFormControlSelect1" placeholder="TIPO" class="form-control" [(ngModel)]="evaluacion.tipoEvaluacion">
+                              <select formControlName ="tipo"  id="exampleFormControlSelect1" placeholder="TIPO" class="form-control" [(ngModel)]="evaluacion.tipoEvaluacion">
                                 <option value="Prueba">Prueba</option>
                                 <option value="Examen">Examen</option>
                                 
@@ -61,7 +68,10 @@
 
                       <div class="form-group">
                         <label for="descripcion">Descripción</label>
-                        <textarea name="descripcion" id="descripcion" class="form-control" cols="50" rows="4" [(ngModel)]="evaluacion.descripcion"></textarea>
+                        <textarea formControlName="descripcion" id="descripcion" class="form-control" cols="50" rows="4" [(ngModel)]="evaluacion.descripcion"></textarea>
+                        <div class="alert alert-danger" role="alert"  *ngIf="descripcion.invalid  && (descripcion.dirty || descripcion.touched)">
+                          Ingrese Descripción
+                        </div>
                       </div>
 
                      

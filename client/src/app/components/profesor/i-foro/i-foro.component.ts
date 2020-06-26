@@ -6,6 +6,7 @@ import { ProfesorServiceService } from 'src/app/services/profesor-service.servic
 import { Router } from '@angular/router';
 import { cursoInterface } from 'src/app/models/crurso-interface';
 import Swal from 'sweetalert2';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-i-foro',
@@ -14,7 +15,20 @@ import Swal from 'sweetalert2';
 })
 export class IForoComponent implements OnInit {
 
-  constructor(private datapi :DataApiService, private profeApi:ProfesorServiceService, private router: Router) { }
+  public ngForm: FormGroup
+
+  constructor(private datapi :DataApiService, private profeApi:ProfesorServiceService, private router: Router) { 
+    this.ngForm = this.createFormGroup()
+  }
+  createFormGroup(){
+    return new FormGroup({
+      titulo: new FormControl('', [Validators.required]),
+      descripcion: new FormControl('',[Validators.required])
+      })
+  };
+
+  get titulo() { return this.ngForm.get('titulo'); }
+  get descripcion() { return this.ngForm.get('descripcion')};
 
   curso: cursoInterface;
   profesor: profesorInterface
@@ -32,11 +46,14 @@ export class IForoComponent implements OnInit {
 
   ingresarForo(){
 
+
     this.curso=this.profeApi.getCurrentCuso();
     this.foro.idCurso=this.curso.idCurso;
     this.profesor=this.datapi.getCurrentP()
     this.foro.nombre=this.profesor[0].nombre1+' '+this.profesor[0].nombre2+' '+this.profesor[0].apellido1+' '+this.profesor[0].apellido2
     console.log(this.foro);
+
+    if(this.ngForm.valid){
     this.profeApi.saveForo(this.foro)
     .subscribe(
       res => {
@@ -49,7 +66,12 @@ export class IForoComponent implements OnInit {
         this.router.navigate(['/profesor/foro']);
       },
       err => console.error(err)
-    )
+    )}else{
+      Swal.fire(
+        'Error!',
+        'Ingrese datos de foro validos!',
+        'error'
+      )}
 }
 
 }

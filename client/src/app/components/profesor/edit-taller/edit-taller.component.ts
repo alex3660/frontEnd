@@ -23,7 +23,7 @@ export class EditTallerComponent implements OnInit {
       date: new FormControl('', [Validators.required]),
       hora: new FormControl('', [Validators.required]),
       tipo: new FormControl('', [Validators.required]),
-      descripcion: new FormControl('')
+      descripcion: new FormControl('', [Validators.required])
       })
   };
 

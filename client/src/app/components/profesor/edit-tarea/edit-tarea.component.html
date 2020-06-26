@@ -70,6 +70,9 @@
                       <div class="form-group">
                         <label for="descripcion">Descripción</label>
                         <textarea formControlName="descripcion" id="descripcion" class="form-control" cols="50" rows="4" [(ngModel)]="tarea.descripcion"></textarea>
+                        <div class="alert alert-danger" role="alert"  *ngIf="descripcion.invalid  && (descripcion.dirty || descripcion.touched)">
+                          Ingrese Descripción
+                        </div>
                       </div>
 
                      

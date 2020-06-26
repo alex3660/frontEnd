@@ -84,7 +84,7 @@ const routes: Routes = [
   {path: 'profesor/editar/tarea', component: EditTareaComponent, canActivate: [ProfesorGuard]},
   {path: 'profesor/editar/evaluacion', component: EditEvaluacionComponent, canActivate: [ProfesorGuard]},
   {path: 'profesor/editar/taller', component: EditTallerComponent, canActivate: [ProfesorGuard]},
-  {path: 'profesor/passwd', component: CrontasenaComponent, canActivate: [ProfesorGuard]},
+  {path: 'passwd', component: CrontasenaComponent},
   {path: 'profesor/mensaje', component: MensajeCursoComponent, canActivate: [ProfesorGuard]},
 
 ];

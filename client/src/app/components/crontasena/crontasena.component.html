@@ -1,4 +1,4 @@
-<app-nav-profesor></app-nav-profesor>
+
 
 <section id="login" class="mb-5 mt-5">
     <div class="container">
@@ -7,17 +7,19 @@
           <div class="card_login">
             <div class="card">
               <div class="card-body text-center">
-                <form #formLogin="ngForm" (ngSubmit)="cambiarContrasena()">
-                  <h1 class="h3 mb-3 font-weight-normal" *ngIf="!isError">Cambiar Contrsena</h1>
-                  <div class="alert alert-danger" role="alert" *ngIf="isError">
-                    Error Contraseñas No Coinciden!
-                  </div>
+                <form [formGroup]="ngForm" (ngSubmit)="cambiarContrasena()">
+                  <h1 class="h3 mb-3 font-weight-normal">Cambiar Contraseña</h1>
+                  
                     <div class="input-group flex-nowrap">                    
-                        <input type="password" id="pasw1" name="pass" class="form-control" placeholder="Contrasena Nueva" [(ngModel)]="temp" required>
-                    </div>
+                        <input type="password" formControlName="pass" class="form-control" placeholder="Contrasena Nueva" [(ngModel)]="temp" required>
+                        
+                      </div>
+                      <div class="alert alert-danger" role="alert"  *ngIf="pass.invalid  && (pass.dirty || pass.touched)">
+                        Ingrese una contrseña válida
+                      </div>
                     <div class="input-group flex-nowrap ">
                           
-                          <input type="password" id="password" name="password" class="form-control" placeholder="Confirmar Contrasena" [(ngModel)]="contrasena.passwordNueva" required>
+                          <input type="password" formControlName="password" class="form-control" placeholder="Confirmar Contrasena" [(ngModel)]="contrasena.passwordNueva" required>
                           
                     </div>     
                     <div class="input-group flex-nowrap ">

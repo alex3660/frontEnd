@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { profesorInterface } from 'src/app/models/profesor-inteface';
 import { cursoInterface } from 'src/app/models/crurso-interface';
 import Swal from 'sweetalert2';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-mensaje-curso',
@@ -16,9 +17,17 @@ import Swal from 'sweetalert2';
   styleUrls: ['./mensaje-curso.component.css']
 })
 export class MensajeCursoComponent implements OnInit {
-
-  constructor(private datapi :DataApiService, private profeApi:ProfesorServiceService, private router: Router) { }
-
+  public ngForm: FormGroup
+  constructor(private datapi :DataApiService, private profeApi:ProfesorServiceService, private router: Router) { 
+    this.ngForm = this.createFormGroup()
+  }
+  createFormGroup(){
+    return new FormGroup({
+      descripcion: new FormControl('',[Validators.required])
+      })
+  };
+  get descripcion() { return this.ngForm.get('descripcion')};
+  
   mensajeLista: any;
   profesor: profesorInterface;
   men: mensajeIngreso={
@@ -45,6 +54,7 @@ export class MensajeCursoComponent implements OnInit {
     
     this.curso= this.profeApi.getCurrentCuso(); 
     this.men.idCurso=this.curso.idCurso;
+    if(this.ngForm.valid){
     this.profeApi.saveMensaje(this.curso.idCurso, this.men)
     .subscribe(
       res => {
@@ -57,7 +67,18 @@ export class MensajeCursoComponent implements OnInit {
         this.ngOnInit();
       },
       err => console.error(err)
-    )
+    )}
+    else{
+      Swal.fire(
+        'Error!',
+        'Ingrese Mensaje!',
+        'error'
+      )}
+      this.onResetForm();
+}
+
+onResetForm(): void {
+  this.ngForm.reset();
 }
 
 }

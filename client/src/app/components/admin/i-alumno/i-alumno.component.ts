@@ -29,7 +29,7 @@ export class IAlumnoComponent implements OnInit {
      }
     createFormGroup(){
       return new FormGroup({
-        titulo: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.cedulaPattern)]),
+        cedula: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(this.cedulaPattern)]),
         numUnico: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10),Validators.pattern(this.cedulaPattern)]),
         name1: new FormControl('', [Validators.required, Validators.pattern(this.pattern)]),
         name2: new FormControl('', [Validators.required, Validators.pattern(this.pattern)]),

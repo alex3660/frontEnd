@@ -26,17 +26,23 @@
               <div class="card_register">
                 <div class="card">
                   <div class="card-body text-center">
-                    <form #formRegister="ngForm" (ngSubmit)="ingresarForo()">
+                    <form [formGroup]="ngForm" (ngSubmit)="ingresarForo()">
                       <h1 class="h3 mb-3 font-weight-normal">Ingresar Foro</h1>
                       
                       <div class="form-group">
-                        <input type="text" #name="ngModel" name="cedula" class="form-control" placeholder="Titulo de Foro" [(ngModel)]="foro.tema" required 
+                        <input type="text" formControlName="titulo" class="form-control" placeholder="Titulo de Foro" [(ngModel)]="foro.tema" required 
                           >
+                          <div class="alert alert-danger" role="alert"  *ngIf="titulo.invalid  && (titulo.dirty || titulo.touched)">
+                            Ingrese Título
+                          </div>
                       </div> 
 
                       <div class="form-group">
                         <label for="descripcion">Comentario</label>
-                        <textarea name="descripcion" id="descripcion" class="form-control" cols="50" rows="4" [(ngModel)]="foro.comentario"></textarea>
+                        <textarea formControlName="descripcion" id="descripcion" class="form-control" cols="50" rows="4" [(ngModel)]="foro.comentario"></textarea>
+                        <div class="alert alert-danger" role="alert"  *ngIf="descripcion.invalid  && (descripcion.dirty || descripcion.touched)">
+                          Ingrese Comentario
+                        </div>
                       </div>
 
                      
